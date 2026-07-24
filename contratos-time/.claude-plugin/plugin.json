@@ -5,8 +5,5 @@
   "author": {
     "name": "SCIENT"
   },
-  "keywords": ["contratos", "rh", "onboarding", "google drive", "docx", "full-time", "freelancer"],
-  "commands": "./commands",
-  "agents": "./agents",
-  "skills": "./skills"
+  "keywords": ["contratos", "rh", "onboarding", "google drive", "docx", "full-time", "freelancer"]
 }

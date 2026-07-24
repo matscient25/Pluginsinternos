@@ -1,5 +1,5 @@
 ---
-name: contratos-time
+name: contratos
 description: Como gerar contratos do time (Full time e Freelancer) a partir de templates .docx com placeholders {{CAMPO}}, preenchendo os dados da pessoa e salvando como Google Doc no Drive. Use quando o usuario pedir para criar, gerar ou preencher um contrato de contratacao.
 ---
 
