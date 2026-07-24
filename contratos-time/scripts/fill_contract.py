@@ -247,8 +247,67 @@ def _resolve_fields(p, mapping, stats):
         stats["unfilled"].add(m.group(1))
 
 
+_NS_DECL_RE = re.compile(r'xmlns:([\w.\-]+)\s*=\s*"([^"]+)"')
+_XML_DECL = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\r\n'
+
+
+def _register_all_ns(xml_bytes):
+    """Registra TODOS os prefixos de namespace declarados no XML para que a
+    serializacao preserve os prefixos originais (w, w14, mc, wp, r, ...). Sem
+    isso, o ElementTree renomeia prefixos e quebra `mc:Ignorable` -> o Word
+    acusa 'conteudo ilegivel'."""
+    head = xml_bytes.decode("utf-8", "replace")[:20000]
+    for pfx, uri in set(_NS_DECL_RE.findall(head)):
+        try:
+            ET.register_namespace(pfx, uri)
+        except (ValueError, TypeError):
+            pass
+
+
+def _root_tag_span(text):
+    """(inicio, fim) do tag de abertura do elemento raiz, pulando <?xml?>/<!-- -->."""
+    i, n = 0, len(text)
+    while i < n:
+        lt = text.find("<", i)
+        if lt < 0:
+            return None
+        if text.startswith("<?", lt) or text.startswith("<!--", lt):
+            gt = text.find(">", lt)
+            if gt < 0:
+                return None
+            i = gt + 1
+            continue
+        gt = text.find(">", lt)
+        return (lt, gt) if gt >= 0 else None
+    return None
+
+
+def _reinject_root_ns(orig_bytes, out_text):
+    """Reinjeta no root do XML de saida as declaracoes xmlns que o ElementTree
+    tenha descartado (as que so aparecem em `mc:Ignorable`), preservando a
+    validade que o Word exige."""
+    orig = orig_bytes.decode("utf-8", "replace")
+    so, to = _root_tag_span(orig), _root_tag_span(out_text)
+    if not so or not to:
+        return out_text
+    orig_tag = orig[so[0]:so[1] + 1]
+    out_tag = out_text[to[0]:to[1] + 1]
+    decls = re.findall(r'xmlns(?::[\w.\-]+)?\s*=\s*"[^"]*"', orig_tag)
+    missing = [d for d in decls if d not in out_tag]
+    if not missing:
+        return out_text
+    m = re.match(r"<[\w:.\-]+", out_tag)
+    at = to[0] + m.end()
+    return out_text[:at] + " " + " ".join(missing) + out_text[at:]
+
+
+def _serialize(root, orig_bytes):
+    out = ET.tostring(root, encoding="unicode")
+    return (_XML_DECL + _reinject_root_ns(orig_bytes, out)).encode("utf-8")
+
+
 def _process_xml(xml_bytes, mapping, stats):
-    ET.register_namespace("w", W_NS)
+    _register_all_ns(xml_bytes)
     root = ET.fromstring(xml_bytes)
     _resolve_block_sections(root, mapping, stats)
     _resolve_repeats(root, mapping, stats)
@@ -256,7 +315,7 @@ def _process_xml(xml_bytes, mapping, stats):
         _resolve_inline_sections(p, mapping, stats)
     for p in root.iter(P_TAG):
         _resolve_fields(p, mapping, stats)
-    return ET.tostring(root, encoding="UTF-8", xml_declaration=True)
+    return _serialize(root, xml_bytes)
 
 
 def _new_stats():

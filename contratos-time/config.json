@@ -18,6 +18,12 @@
 
   "modalidades": ["full time", "part time"],
 
+  "genero_map": {
+    "feminino": {"brasileiro_a": "brasileira", "administrador_a": "administradora", "portador_a": "portadora", "inscrito_a": "inscrita", "empresario_a": "empresária"},
+    "masculino": {"brasileiro_a": "brasileiro", "administrador_a": "administrador", "portador_a": "portador", "inscrito_a": "inscrito", "empresario_a": "empresário"}
+  },
+  "_genero_note": "Pergunte o gênero (feminino/masculino) e preencha os campos {{brasileiro_a}}, {{administrador_a}}, {{portador_a}}, {{inscrito_a}}, {{empresario_a}} com os valores do mapa. O Estado Civil é informado já flexionado (ex.: solteira/solteiro).",
+
   "intake_extra": {
     "cartao_cnpj": "Peça o cartão CNPJ da pessoa. Dele saem Razão social, CNPJ e o ENDEREÇO — o endereço que vai no contrato é SEMPRE o endereço do CNPJ (Endereço Completo, Cidade, UF, Nº CEP).",
     "email_preferencia": "Peça o e-mail de preferência da pessoa (usado no onboarding para criar o e-mail corporativo). Não vai no corpo do contrato; guarde no checklist.",

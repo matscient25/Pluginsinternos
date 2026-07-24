@@ -28,13 +28,16 @@ Como todos são contratados **PJ**, NÃO pergunte CLT/PJ. Pergunte (se não vier
 6. **Cartão CNPJ** — peça o cartão CNPJ da pessoa. Dele saem `Razão social`,
    `CNPJ` e o **endereço**. O endereço que vai no contrato é **SEMPRE o do CNPJ**
    (`Endereço Completo`, `Cidade`, `UF`, `Nº CEP`).
-7. **Demais dados da pessoa** — `Nome Completo da Pessoas`, `Estado Civil`,
-   `Nº do RG`, `Nº do CPF`.
-8. **E-mail de preferência** — para o onboarding (criar e-mail corporativo). NÃO
+7. **Demais dados da pessoa** — `Nome Completo da Pessoas`, `Estado Civil`
+   (já flexionado: "solteira"/"solteiro", "casada"/"casado"), `Nº do RG`, `Nº do CPF`.
+8. **Gênero** — feminino ou masculino. Define a flexão de `{{brasileiro_a}}`,
+   `{{administrador_a}}`, `{{portador_a}}`, `{{inscrito_a}}`, `{{empresario_a}}`
+   (ver `genero_map`): feminino → "a", masculino → "o".
+9. **E-mail de preferência** — para o onboarding (criar e-mail corporativo). NÃO
    vai no contrato; guarde no checklist.
-9. **Plano de saúde** (SOMENTE full-time) — pergunte se houve negociação de plano
-   de saúde. Se sim: `PLANO_SAUDE=true` e peça a operadora (`PLANO_OPERADORA`).
-   Se não: `PLANO_SAUDE=false`. Freelancer não tem essa cláusula.
+10. **Plano de saúde** (SOMENTE full-time) — pergunte se houve negociação de plano
+    de saúde. Se sim: `PLANO_SAUDE=true` e peça a operadora (`PLANO_OPERADORA`).
+    Se não: `PLANO_SAUDE=false`. Freelancer não tem essa cláusula.
 
 Se algo não estiver claro, pergunte — nunca chute.
 
@@ -43,6 +46,9 @@ Regras:
 - **Cargo → conteúdo**: copie `Objeto`, `Área` e `Serviços` do `roles[<cargo>]`
   do config para os dados. `Serviços` é uma lista (a cláusula tem `{{*Serviços}}`,
   que vira um bullet por item).
+- **Gênero → flexão**: com base no gênero, preencha `{{brasileiro_a}}`,
+  `{{administrador_a}}`, `{{portador_a}}`, `{{inscrito_a}}`, `{{empresario_a}}`
+  usando o `genero_map` do config (feminino → "a", masculino → "o").
 - **Ano SEMPRE atual**: `AAAA` = `date +%Y` (ano corrente), sempre.
 - **Data/DD/Mês**: da data de vigência informada; se não houver, use hoje.
   `Data`=dd/mm/aaaa, `DD`=dia, `Mês`=mês por extenso pt-BR (ex.: agosto).
