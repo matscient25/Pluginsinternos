@@ -1,0 +1,17 @@
+{
+  "name": "pluginsinternos",
+  "owner": {
+    "name": "SCIENT"
+  },
+  "metadata": {
+    "description": "Plugins internos do time SCIENT para Claude Code."
+  },
+  "plugins": [
+    {
+      "name": "contratos-time",
+      "source": "./contratos-time",
+      "description": "Conduz a contratação do time (Full time e Freelancer): gera contratos preenchidos a partir de templates .docx, salva como Google Doc no Drive, e coordena o checklist de contratação.",
+      "version": "0.1.0"
+    }
+  ]
+}
