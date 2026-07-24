@@ -17,19 +17,26 @@ Drive (ou rode `/contratos-time:setup`).
 ## 2. Faça as perguntas de intake
 Como todos são contratados **PJ**, NÃO pergunte CLT/PJ. Pergunte (se não vier em
 `$ARGUMENTS`):
-1. **Cargo** — um dos `roles` do config: GTM Expert, Forward Deployment Engineer,
-   Especialista de Hubspot, Engenheiro de dados. O cargo define automaticamente
-   `Objeto`, `Área` e a lista `Serviços` (que preenche os 2 lugares do contrato:
-   a cláusula do Objeto e a lista de serviços).
-2. **Modalidade** — full time ou part time.
-3. **Salário** — valor mensal (`Salario`) e por extenso (`salario por extenso`).
-4. **Data de vigência** — início do contrato (atualiza `Data`/`DD`/`Mês`).
-5. **Dados da PJ e da pessoa** — `Razão social`, `CNPJ`, `Endereço Completo`,
-   `Cidade`, `UF`, `Nº CEP`, `Nome Completo da Pessoas`, `Estado Civil`,
+1. **Tipo de contrato** — full-time ou freelancer (define o template).
+2. **Cargo/atividade** — um dos `roles` do config: GTM Expert, Forward Deployment
+   Engineer, Especialista de Hubspot, Engenheiro de dados. O cargo define
+   `Objeto`, `Área`, a lista `Serviços` (os 2 lugares do contrato) e a `sigla`
+   usada no nome do arquivo.
+3. **Modalidade** — full time ou part time (usada no nome do arquivo).
+4. **Salário** — valor mensal (`Salario`) e por extenso (`salario por extenso`).
+5. **Data de vigência** — início do contrato (atualiza `Data`/`DD`/`Mês`).
+6. **Cartão CNPJ** — peça o cartão CNPJ da pessoa. Dele saem `Razão social`,
+   `CNPJ` e o **endereço**. O endereço que vai no contrato é **SEMPRE o do CNPJ**
+   (`Endereço Completo`, `Cidade`, `UF`, `Nº CEP`).
+7. **Demais dados da pessoa** — `Nome Completo da Pessoas`, `Estado Civil`,
    `Nº do RG`, `Nº do CPF`.
+8. **E-mail de preferência** — para o onboarding (criar e-mail corporativo). NÃO
+   vai no contrato; guarde no checklist.
+9. **Plano de saúde** (SOMENTE full-time) — pergunte se houve negociação de plano
+   de saúde. Se sim: `PLANO_SAUDE=true` e peça a operadora (`PLANO_OPERADORA`).
+   Se não: `PLANO_SAUDE=false`. Freelancer não tem essa cláusula.
 
-Tipo de contrato: full-time por padrão (o template atual). Se não estiver claro
-qual template usar, pergunte — nunca chute.
+Se algo não estiver claro, pergunte — nunca chute.
 
 ## 3. Monte os dados
 Regras:
@@ -78,10 +85,14 @@ python3 "${CLAUDE_PLUGIN_ROOT}/scripts/fill_contract.py" \
 Confira o relatório: se `unfilled` não estiver vazio, resolva antes de subir.
 
 ## 7. Suba para o Drive como Google Doc editável
-Gere o título com o `filename_pattern` do tipo, substituindo os `{{campos}}` do
-padrão pelos valores (ex.: `{{Nome Completo da Pessoas}}` e `{{Data}}`). Leia o
-docx preenchido em base64 (`base64 -w0 "$TMP/contrato.docx"`)
-e crie o arquivo:
+Gere o **nome do arquivo** pela `filename_rule`: `{Primeiro Nome}_{Atividade}_{Modelo}`.
+- `Primeiro Nome` = 1º nome de `Nome Completo da Pessoas` (ex.: "João").
+- `Atividade` = `sigla` do cargo escolhido (ex.: FDE, Hubspot, GTM, Dados).
+- `Modelo` = `Freelancer` (freelancer) ou `Fulltime`/`Parttime` (full-time,
+  conforme a modalidade).
+Ex.: `Joao_FDE_Fulltime`, `José_Hubspot_Freelancer`.
+
+Leia o docx preenchido em base64 (`base64 -w0 "$TMP/contrato.docx"`) e crie o arquivo:
 - `mcp__Google_Drive__create_file` com:
   - `title`: o título gerado
   - `parentId`: `destination_folder_id`

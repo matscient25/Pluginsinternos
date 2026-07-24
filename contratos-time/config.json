@@ -1,9 +1,12 @@
 {
-  "_comment": "Templates ficam embarcados no plugin em templates/. Preencha destination_folder_id com o ID da pasta do Drive onde os contratos gerados devem cair (parte da URL apos /folders/). Rode /contratos-time:setup para ajuda.",
+  "_comment": "Templates embarcados em templates/. Rode /contratos-time:setup para ajuda.",
 
-  "destination_folder_id": "COLE_AQUI_O_ID_DA_PASTA_DE_DESTINO",
+  "destination_folder_id": "1Zruibh8wECstNcVhs3pIN0N16-FrN8-Y",
 
   "output_format": "google_doc",
+
+  "filename_rule": "{Primeiro Nome}_{Atividade}_{Modelo}",
+  "_filename_note": "Ex.: Joao_FDE_Fulltime, José_Hubspot_Freelancer. Primeiro Nome = 1o nome de 'Nome Completo da Pessoas'. Atividade = 'sigla' do cargo. Modelo = Fulltime/Parttime (full-time, conforme modalidade) ou Freelancer.",
 
   "auto_date_fields": {
     "Data": "%d/%m/%Y",
@@ -15,9 +18,16 @@
 
   "modalidades": ["full time", "part time"],
 
+  "intake_extra": {
+    "cartao_cnpj": "Peça o cartão CNPJ da pessoa. Dele saem Razão social, CNPJ e o ENDEREÇO — o endereço que vai no contrato é SEMPRE o endereço do CNPJ (Endereço Completo, Cidade, UF, Nº CEP).",
+    "email_preferencia": "Peça o e-mail de preferência da pessoa (usado no onboarding para criar o e-mail corporativo). Não vai no corpo do contrato; guarde no checklist.",
+    "plano_saude": "SOMENTE full-time: pergunte se houve negociação de plano de saúde. Se sim, PLANO_SAUDE=true e peça a operadora (PLANO_OPERADORA). Freelancer não tem essa cláusula."
+  },
+
   "roles": {
     "gtm-expert": {
       "label": "GTM Expert",
+      "sigla": "GTM",
       "Objeto": "gestão de projetos e desenvolvimento de produto",
       "Área": "Projetos de Go to Market",
       "Serviços": [
@@ -26,6 +36,7 @@
     },
     "forward-deployment": {
       "label": "Forward Deployment Engineer",
+      "sigla": "FDE",
       "Objeto": "gestão de projetos, desenvolvimento de produto e implementação de ferramentas de CRM, automação e inteligência comercial",
       "Área": "Projetos de Go to Market",
       "Serviços": [
@@ -35,6 +46,7 @@
     },
     "hubspot": {
       "label": "Especialista de Hubspot",
+      "sigla": "Hubspot",
       "Objeto": "gestão de projetos e implementação de módulos de marketing, vendas, serviços e outros da ferramenta HubSpot",
       "Área": "Go to Market Stack",
       "Serviços": [
@@ -43,6 +55,7 @@
     },
     "engenheiro-dados": {
       "label": "Engenheiro de dados",
+      "sigla": "Dados",
       "Objeto": "gestão de projetos de dados, construção de pipelines, integrações, processamento e modelagem de dados",
       "Área": "Área de dados",
       "Serviços": [
@@ -58,32 +71,29 @@
   "contract_types": {
     "full-time": {
       "label": "Full time",
+      "modelo": "Fulltime",
       "template_path": "templates/full_time.docx",
       "template_file_id": "",
-      "filename_pattern": "Contrato Full time - {{Nome Completo da Pessoas}} - {{Data}}",
       "required_fields": [
-        "Razão social",
-        "CNPJ",
-        "Endereço Completo",
-        "Cidade",
-        "UF",
-        "Nº CEP",
-        "Nome Completo da Pessoas",
-        "Estado Civil",
-        "Nº do RG",
-        "Nº do CPF",
-        "Salario",
-        "salario por extenso"
+        "Razão social", "CNPJ", "Endereço Completo", "Cidade", "UF", "Nº CEP",
+        "Nome Completo da Pessoas", "Estado Civil", "Nº do RG", "Nº do CPF",
+        "Salario", "salario por extenso"
       ],
-      "notes": "Contrato de Prestacao de Servicos (PJ). 'RAZAO SOCIAL' (maiusculo) usa o mesmo valor de 'Razão social'. Campos de data (Data/DD/Mês/AAAA) sao preenchidos automaticamente com a data de hoje, salvo instrucao em contrario."
+      "has_plano_saude": true,
+      "notes": "Contrato de Prestacao de Servicos (PJ). 'RAZAO SOCIAL' (maiusculo) = 'Razão social' em maiusculas. Modelo no nome do arquivo = Fulltime (ou Parttime se part time). Tem clausula condicional de plano de saude (PLANO_SAUDE)."
     },
     "freelancer": {
       "label": "Freelancer",
+      "modelo": "Freelancer",
       "template_path": "templates/freelancer.docx",
       "template_file_id": "",
-      "filename_pattern": "Contrato Freelancer - {{Nome Completo da Pessoas}} - {{Data}}",
-      "required_fields": [],
-      "notes": "PENDENTE: subir o template de freelancer em templates/freelancer.docx e rodar /contratos-time:setup para mapear os campos reais."
+      "required_fields": [
+        "Razão social", "CNPJ", "Endereço Completo", "Cidade", "UF", "Nº CEP",
+        "Nome Completo da Pessoas", "Estado Civil", "Nº do RG", "Nº do CPF",
+        "Salario", "salario por extenso"
+      ],
+      "has_plano_saude": false,
+      "notes": "Contrato de Prestacao de Servicos (PJ), mais enxuto, sem bonus e SEM plano de saude. Atividade especifica via cargo (Objeto/Área/Serviços)."
     }
   }
 }
