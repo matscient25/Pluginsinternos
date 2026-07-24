@@ -43,6 +43,18 @@ campos, o fluxo e:
   Dados: `{"PLANO_SAUDE": true, "PLANO_OPERADORA": "Bradesco Saude", ...}`.
   Se `PLANO_SAUDE` for true, sempre confirme com o usuario a operadora e as
   condicoes antes de gerar — nunca deixe campos do plano em branco.
+- **Listas repetiveis**: um paragrafo com `{{*CHAVE}}` e repetido uma vez por
+  item de `data[CHAVE]` (lista), preservando o estilo (bullet/numeracao). Usado
+  na clausula de Servicos: `{{*Serviços}}` vira um item por servico do cargo.
+- **Cargos (roles)**: o config tem `roles` com 4 perfis (GTM Expert, Forward
+  Deployment Engineer, Especialista de Hubspot, Engenheiro de dados). Cada um
+  define `Objeto` (clausula do Objeto), `Área` (clausula dos Servicos) e
+  `Serviços` (lista). Escolher o cargo preenche esses 3 automaticamente — os
+  "2 lugares" do contrato que descrevem o que a pessoa faz.
+- **Ano SEMPRE atual**: `AAAA` usa o ano corrente. `Data`/`DD`/`Mês` vem da data
+  de vigencia; sem ela, a data de hoje. `Mês` por extenso pt-BR.
+- **Modalidade**: pergunte full time ou part time (todos sao PJ; nao pergunte
+  CLT/PJ). Guarde no registro/checklist.
 - **Nunca deixe `{{...}}` cru** no contrato final. Se o template tem um
   placeholder sem valor, pergunte ao usuario antes de gerar. O script sai com
   codigo 3 e lista `unfilled` justamente para pegar isso.

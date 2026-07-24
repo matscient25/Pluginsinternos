@@ -29,6 +29,7 @@ Saida (stdout): JSON com placeholders, replaced, unfilled, sections, extra_keys.
 Codigo de saida: 3 se sobraram placeholders sem valor (salvo --allow-unfilled).
 """
 import argparse
+import copy
 import json
 import re
 import sys
@@ -40,11 +41,14 @@ T_TAG = f"{{{W_NS}}}t"
 P_TAG = f"{{{W_NS}}}p"
 XML_SPACE = "{http://www.w3.org/XML/1998/namespace}space"
 
-# Campo: qualquer conteudo entre {{ }} que NAO comece com # ou / (marcadores de
-# secao). Aceita espacos e acentos na chave, ex.: {{Nome Completo da Pessoas}}.
-FIELD_RE = re.compile(r"\{\{\s*([^{}#/][^{}]*?)\s*\}\}")
+# Campo: qualquer conteudo entre {{ }} que NAO comece com # / ou * (marcadores).
+# Aceita espacos e acentos na chave, ex.: {{Nome Completo da Pessoas}}.
+FIELD_RE = re.compile(r"\{\{\s*([^{}#/*][^{}]*?)\s*\}\}")
 SEC_OPEN_RE = re.compile(r"\{\{\s*#\s*([A-Za-z0-9_.\-]+)\s*\}\}")
 SEC_CLOSE_RE = re.compile(r"\{\{\s*/\s*([A-Za-z0-9_.\-]+)\s*\}\}")
+# Lista repetivel: {{*CHAVE}} num paragrafo -> o paragrafo e repetido uma vez por
+# item da lista em data[CHAVE], preservando o estilo (bullet/numeracao) do Word.
+REPEAT_RE = re.compile(r"\{\{\s*\*\s*([^{}]+?)\s*\}\}")
 
 FALSY = {"", "false", "0", "nao", "não", "no", "n", "off", "none", "null"}
 
@@ -187,6 +191,48 @@ def _resolve_block_sections(root, mapping, stats):
             break
 
 
+# ── 2b. Listas repetiveis {{*CHAVE}} (um paragrafo por item) ──────────────────
+def _resolve_repeats(root, mapping, stats):
+    changed = True
+    while changed:
+        changed = False
+        parent = {c: par for par in root.iter() for c in par}
+        for p in list(root.iter(P_TAG)):
+            m = REPEAT_RE.search(_p_text(p))
+            if not m:
+                continue
+            key = m.group(1).strip()
+            par = parent.get(p)
+            if par is None:
+                continue
+            items = mapping.get(key, [])
+            if isinstance(items, str):
+                items = [items]
+            if not isinstance(items, list):
+                items = [str(items)]
+            idx = list(par).index(p)
+
+            def make_finder(value):
+                def finder(full):
+                    mm = REPEAT_RE.search(full)
+                    if mm and mm.group(1).strip() == key:
+                        return (mm.start(), mm.end(), str(value))
+                    return None
+                return finder
+
+            clones = []
+            for value in items:
+                clone = copy.deepcopy(p)
+                _edit_paragraph(clone, make_finder(value))
+                clones.append(clone)
+            for off, el in enumerate(clones):
+                par.insert(idx + off, el)
+            par.remove(p)
+            stats["repeats"][key] = len(items)
+            changed = True
+            break
+
+
 # ── 3. Campos simples {{CAMPO}} ───────────────────────────────────────────────
 def _resolve_fields(p, mapping, stats):
     def finder(full):
@@ -205,6 +251,7 @@ def _process_xml(xml_bytes, mapping, stats):
     ET.register_namespace("w", W_NS)
     root = ET.fromstring(xml_bytes)
     _resolve_block_sections(root, mapping, stats)
+    _resolve_repeats(root, mapping, stats)
     for p in root.iter(P_TAG):
         _resolve_inline_sections(p, mapping, stats)
     for p in root.iter(P_TAG):
@@ -214,7 +261,7 @@ def _process_xml(xml_bytes, mapping, stats):
 
 def _new_stats():
     return {"placeholders": set(), "replaced": {}, "unfilled": set(),
-            "sections": {}, "warnings": []}
+            "sections": {}, "repeats": {}, "warnings": []}
 
 
 def run(template, out, mapping, allow_unfilled):
@@ -231,11 +278,13 @@ def run(template, out, mapping, allow_unfilled):
         with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as zout:
             for it in items:
                 zout.writestr(it, payload[it.filename])
+    known = stats["placeholders"] | set(stats["sections"]) | set(stats["repeats"])
     report = {
         "placeholders": sorted(stats["placeholders"]),
         "sections": stats["sections"],
+        "repeats": stats["repeats"],
         "unfilled": sorted(stats["unfilled"]),
-        "extra_keys": sorted(set(mapping) - stats["placeholders"] - set(stats["sections"])),
+        "extra_keys": sorted(set(mapping) - known),
         "warnings": stats["warnings"],
         "output": out,
     }
@@ -246,7 +295,7 @@ def run(template, out, mapping, allow_unfilled):
 
 
 def list_placeholders(template):
-    fields, sections = set(), set()
+    fields, sections, repeats = set(), set(), set()
     with zipfile.ZipFile(template, "r") as zin:
         for it in zin.infolist():
             if not _is_text_part(it.filename):
@@ -256,11 +305,13 @@ def list_placeholders(template):
                 full = _p_text(p)
                 for m in SEC_OPEN_RE.finditer(full):
                     sections.add(m.group(1))
-                # campos que NAO sao marcadores de secao
+                for m in REPEAT_RE.finditer(full):
+                    repeats.add(m.group(1).strip())
+                # campos que NAO sao marcadores de secao/lista
                 for m in FIELD_RE.finditer(full):
                     fields.add(m.group(1))
-    print(json.dumps({"fields": sorted(fields), "sections": sorted(sections)},
-                     ensure_ascii=False, indent=2))
+    print(json.dumps({"fields": sorted(fields), "sections": sorted(sections),
+                      "repeats": sorted(repeats)}, ensure_ascii=False, indent=2))
     return 0
 
 

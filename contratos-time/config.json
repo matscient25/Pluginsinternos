@@ -9,7 +9,50 @@
     "Data": "%d/%m/%Y",
     "DD": "%d",
     "Mês": "mes_por_extenso",
-    "AAAA": "%Y"
+    "AAAA": "ano_atual"
+  },
+  "_auto_date_note": "AAAA usa SEMPRE o ano atual. Data/DD/Mês vêm da data de vigência informada; se não houver, usam a data de hoje.",
+
+  "modalidades": ["full time", "part time"],
+
+  "roles": {
+    "gtm-expert": {
+      "label": "GTM Expert",
+      "Objeto": "gestão de projetos e desenvolvimento de produto",
+      "Área": "Projetos de Go to Market",
+      "Serviços": [
+        "Gestão de Projetos e Desenvolvimento de Produto"
+      ]
+    },
+    "forward-deployment": {
+      "label": "Forward Deployment Engineer",
+      "Objeto": "gestão de projetos, desenvolvimento de produto e implementação de ferramentas de CRM, automação e inteligência comercial",
+      "Área": "Projetos de Go to Market",
+      "Serviços": [
+        "Gestão de projetos e desenvolvimento de produto",
+        "Desenvolvimento e implementação de ferramentas de CRM, Automação e Inteligência Comercial"
+      ]
+    },
+    "hubspot": {
+      "label": "Especialista de Hubspot",
+      "Objeto": "gestão de projetos e implementação de módulos de marketing, vendas, serviços e outros da ferramenta HubSpot",
+      "Área": "Go to Market Stack",
+      "Serviços": [
+        "Gestão de projetos e Implementação de módulos de marketing, vendas, serviços e outros da ferramenta Hubspot"
+      ]
+    },
+    "engenheiro-dados": {
+      "label": "Engenheiro de dados",
+      "Objeto": "gestão de projetos de dados, construção de pipelines, integrações, processamento e modelagem de dados",
+      "Área": "Área de dados",
+      "Serviços": [
+        "Gestão de Projetos de Dados",
+        "Construção de pipelines",
+        "Integrações",
+        "Processamento e modelagem de dados",
+        "Desenvolvimento de projetos de dados sob demanda"
+      ]
+    }
   },
 
   "contract_types": {

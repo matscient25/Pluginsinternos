@@ -14,21 +14,34 @@ Leia `${CLAUDE_PLUGIN_ROOT}/config.json`. Se `destination_folder_id` ainda
 estiver com "COLE_AQUI...", peça ao usuário o link/ID da pasta de destino do
 Drive (ou rode `/contratos-time:setup`).
 
-## 2. Determine o tipo de contrato
-A partir de `$ARGUMENTS`, identifique se é **full-time** ou **freelancer**.
-Se não estiver claro, pergunte antes de continuar — nunca chute o tipo.
+## 2. Faça as perguntas de intake
+Como todos são contratados **PJ**, NÃO pergunte CLT/PJ. Pergunte (se não vier em
+`$ARGUMENTS`):
+1. **Cargo** — um dos `roles` do config: GTM Expert, Forward Deployment Engineer,
+   Especialista de Hubspot, Engenheiro de dados. O cargo define automaticamente
+   `Objeto`, `Área` e a lista `Serviços` (que preenche os 2 lugares do contrato:
+   a cláusula do Objeto e a lista de serviços).
+2. **Modalidade** — full time ou part time.
+3. **Salário** — valor mensal (`Salario`) e por extenso (`salario por extenso`).
+4. **Data de vigência** — início do contrato (atualiza `Data`/`DD`/`Mês`).
+5. **Dados da PJ e da pessoa** — `Razão social`, `CNPJ`, `Endereço Completo`,
+   `Cidade`, `UF`, `Nº CEP`, `Nome Completo da Pessoas`, `Estado Civil`,
+   `Nº do RG`, `Nº do CPF`.
 
-## 3. Reúna os dados da pessoa
-Extraia de `$ARGUMENTS` os campos. Os obrigatórios estão em `required_fields`
-do tipo escolhido. Regras:
-- **Campos de data** (`Data`, `DD`, `Mês`, `AAAA` — ver `auto_date_fields`):
-  preencha automaticamente com a data de hoje, salvo instrução em contrário.
-  Use `date +%d/%m/%Y` (Data), `date +%d` (DD), `date +%Y` (AAAA) e o **mês por
-  extenso em pt-BR** para `Mês` (ex.: julho).
-- **Chaves espelhadas**: se o template tiver `RAZAO SOCIAL` (maiúsculo) além de
-  `Razão social`, use o mesmo valor (em maiúsculas) para os dois.
-- **CPF/CNPJ**: confira o número de dígitos. Se um campo obrigatório faltar,
-  **pergunte** — não invente dados.
+Tipo de contrato: full-time por padrão (o template atual). Se não estiver claro
+qual template usar, pergunte — nunca chute.
+
+## 3. Monte os dados
+Regras:
+- **Cargo → conteúdo**: copie `Objeto`, `Área` e `Serviços` do `roles[<cargo>]`
+  do config para os dados. `Serviços` é uma lista (a cláusula tem `{{*Serviços}}`,
+  que vira um bullet por item).
+- **Ano SEMPRE atual**: `AAAA` = `date +%Y` (ano corrente), sempre.
+- **Data/DD/Mês**: da data de vigência informada; se não houver, use hoje.
+  `Data`=dd/mm/aaaa, `DD`=dia, `Mês`=mês por extenso pt-BR (ex.: agosto).
+- **Chaves espelhadas**: `RAZAO SOCIAL` = `Razão social` em MAIÚSCULAS.
+- **CPF/CNPJ**: confira dígitos. Faltou campo obrigatório? **Pergunte** — nunca
+  invente dados. Guarde a `modalidade` para o registro/checklist.
 
 ## 4. Obtenha o template
 O template fica embarcado no plugin. Copie-o para um diretório temporário:
