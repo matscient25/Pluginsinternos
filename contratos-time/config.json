@@ -1,0 +1,46 @@
+{
+  "_comment": "Templates ficam embarcados no plugin em templates/. Preencha destination_folder_id com o ID da pasta do Drive onde os contratos gerados devem cair (parte da URL apos /folders/). Rode /contratos-time:setup para ajuda.",
+
+  "destination_folder_id": "COLE_AQUI_O_ID_DA_PASTA_DE_DESTINO",
+
+  "output_format": "google_doc",
+
+  "auto_date_fields": {
+    "Data": "%d/%m/%Y",
+    "DD": "%d",
+    "Mês": "mes_por_extenso",
+    "AAAA": "%Y"
+  },
+
+  "contract_types": {
+    "full-time": {
+      "label": "Full time",
+      "template_path": "templates/full_time.docx",
+      "template_file_id": "",
+      "filename_pattern": "Contrato Full time - {{Nome Completo da Pessoas}} - {{Data}}",
+      "required_fields": [
+        "Razão social",
+        "CNPJ",
+        "Endereço Completo",
+        "Cidade",
+        "UF",
+        "Nº CEP",
+        "Nome Completo da Pessoas",
+        "Estado Civil",
+        "Nº do RG",
+        "Nº do CPF",
+        "Salario",
+        "salario por extenso"
+      ],
+      "notes": "Contrato de Prestacao de Servicos (PJ). 'RAZAO SOCIAL' (maiusculo) usa o mesmo valor de 'Razão social'. Campos de data (Data/DD/Mês/AAAA) sao preenchidos automaticamente com a data de hoje, salvo instrucao em contrario."
+    },
+    "freelancer": {
+      "label": "Freelancer",
+      "template_path": "templates/freelancer.docx",
+      "template_file_id": "",
+      "filename_pattern": "Contrato Freelancer - {{Nome Completo da Pessoas}} - {{Data}}",
+      "required_fields": [],
+      "notes": "PENDENTE: subir o template de freelancer em templates/freelancer.docx e rodar /contratos-time:setup para mapear os campos reais."
+    }
+  }
+}
