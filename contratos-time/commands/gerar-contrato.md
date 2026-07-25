@@ -98,10 +98,14 @@ Gere o **nome do arquivo** pela `filename_rule`: `{Primeiro Nome}_{Atividade}_{M
 Ex.: `Joao_FDE_Fulltime.docx`. Gere o `--out` já com esse nome, num diretório que
 o usuário acessa (ex.: `~/Downloads/<nome>.docx`), não em `$TMP`.
 
-## 8. Coloque no Drive — SEM empurrar base64 pelo conector
-IMPORTANTE: **não** use `mcp__Google_Drive__create_file` com `base64Content` para o
-`.docx`. Um contrato vira ~60k caracteres de base64 que o modelo teria que
-reproduzir caractere a caractere — é lento e caro (pode levar minutos). Escolha:
+## 8. Coloque no Drive — NUNCA empurrar base64 pelo conector
+REGRA ABSOLUTA: **JAMAIS** use `mcp__Google_Drive__create_file` com `base64Content`
+para o `.docx`, em nenhuma circunstância. O modelo teria que reproduzir ~60k
+caracteres de base64 caractere a caractere (minutos, travando). Se o upload
+automático (A) não estiver disponível, vá direto para (B) entrega manual. Não
+existe terceira opção; base64 está proibido.
+
+Escolha:
 
 - **(A) Upload direto pelo script (rápido, se configurado):** se `upload.rclone_remote`
   estiver preenchido no config (ex.: `gdrive`), rode o preenchimento já com o
@@ -114,9 +118,11 @@ reproduzir caractere a caractere — é lento e caro (pode levar minutos). Escol
   ```
   O script cria a subpasta da pessoa dentro da pasta de destino e sobe o `.docx`
   direto, sem passar pelo modelo (sem base64). Confira `"upload": "ok"` no retorno.
-- **(B) Entrega para arrastar (padrão, zero setup):** entregue o `.docx` ao
-  usuário (informe o caminho local do arquivo) e peça para **arrastar para a
-  subpasta** da pessoa no Drive. É o caminho de segundos.
+- **(B) Entrega para arrastar (fallback, ex.: claude.ai web sem rclone):**
+  entregue o `.docx` ao usuário (arquivo/Saídas) e peça para **baixar e arrastar
+  para a subpasta** da pessoa no Drive. Use este caminho SEMPRE que o rclone não
+  estiver disponível (o ambiente web na nuvem não tem o rclone do Mac). Nunca
+  caia no base64.
 
 Subpasta e pré-onboarding (baratos, pode usar o conector):
 - Crie a subpasta com o nome da pessoa: `mcp__Google_Drive__create_file` com
