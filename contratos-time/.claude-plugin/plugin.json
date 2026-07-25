@@ -1,6 +1,6 @@
 {
   "name": "contratos-time",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Conduz a contratacao do time (Full time e Freelancer): gera contratos a partir de templates .docx, preenche os dados e salva como Google Doc no Drive, e coordena o checklist de contratacao (notebook, assinatura, e-mail, data de inicio, pre-onboarding).",
   "author": {
     "name": "SCIENT"

@@ -383,9 +383,11 @@ def load_data(arg):
     return json.loads(arg)
 
 
-def upload_rclone(path, dest):
+def upload_rclone(path, dest, root_id=None):
     """Sobe o arquivo direto pro Drive via rclone (sem passar pelo modelo).
-    `dest` = 'remote:pasta/arquivo.docx'. Requer `rclone` instalado e um remote
+    `dest` = 'remote:SubpastaDaPessoa/arquivo.docx'. Se `root_id` for dado, o
+    remote e ancorado nessa pasta (o ID da pasta de destino do Drive), entao a
+    subpasta da pessoa e criada dentro dela. Requer `rclone` instalado e um remote
     do Google Drive configurado (rclone config). Retorna True/False."""
     import shutil
     import subprocess
@@ -394,10 +396,13 @@ def upload_rclone(path, dest):
                           "reason": "rclone nao encontrado. Instale e rode `rclone config` "
                                     "para criar um remote do Google Drive."}, ensure_ascii=False))
         return False
+    cmd = ["rclone", "copyto", path, dest]
+    if root_id:
+        cmd += ["--drive-root-folder-id", root_id]
     try:
-        subprocess.run(["rclone", "copyto", path, dest], check=True,
-                       capture_output=True, text=True)
-        print(json.dumps({"upload": "ok", "dest": dest}, ensure_ascii=False))
+        subprocess.run(cmd, check=True, capture_output=True, text=True)
+        print(json.dumps({"upload": "ok", "dest": dest, "root_id": root_id},
+                         ensure_ascii=False))
         return True
     except subprocess.CalledProcessError as e:
         print(json.dumps({"upload": "erro", "stderr": (e.stderr or "")[:800]},
@@ -413,7 +418,9 @@ def main():
     ap.add_argument("--list", action="store_true")
     ap.add_argument("--allow-unfilled", action="store_true")
     ap.add_argument("--rclone-dest", help="Sobe o .docx gerado pro Drive via rclone. "
-                                          "Ex.: 'gdrive:Contratos/Joao Silva/Joao_FDE_Fulltime.docx'")
+                                          "Ex.: 'gdrive:Joao Silva/Joao_FDE_Fulltime.docx'")
+    ap.add_argument("--rclone-root-id", help="ID da pasta de destino no Drive; ancora o "
+                                             "remote nela (a subpasta da pessoa e criada dentro).")
     args = ap.parse_args()
     if args.list:
         return list_placeholders(args.template)
@@ -421,7 +428,7 @@ def main():
         ap.error("--out e obrigatorio quando nao se usa --list")
     code = run(args.template, args.out, load_data(args.data), args.allow_unfilled)
     if args.rclone_dest and code in (0, 3):
-        upload_rclone(args.out, args.rclone_dest)
+        upload_rclone(args.out, args.rclone_dest, args.rclone_root_id)
     return code
 
 

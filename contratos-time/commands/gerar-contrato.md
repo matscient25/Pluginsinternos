@@ -103,14 +103,17 @@ IMPORTANTE: **não** use `mcp__Google_Drive__create_file` com `base64Content` pa
 `.docx`. Um contrato vira ~60k caracteres de base64 que o modelo teria que
 reproduzir caractere a caractere — é lento e caro (pode levar minutos). Escolha:
 
-- **(A) Upload direto pelo script (rápido, se configurado):** se houver `rclone`
-  instalado e um remote do Drive configurado (`upload.rclone_remote` no config ou
-  env `GDRIVE_RCLONE_REMOTE`), rode:
+- **(A) Upload direto pelo script (rápido, se configurado):** se `upload.rclone_remote`
+  estiver preenchido no config (ex.: `gdrive`), rode o preenchimento já com o
+  upload, ancorando na pasta de destino pelo ID (`destination_folder_id`):
   ```
-  python3 "${CLAUDE_PLUGIN_ROOT}/scripts/fill_contract.py" --template ... --out <nome>.docx --data @dados.json \
-    --rclone-dest "<remote>:<pasta_destino>/<Nome da Pessoa>/<nome>.docx"
+  python3 "${CLAUDE_PLUGIN_ROOT}/scripts/fill_contract.py" \
+    --template "$TMP/modelo.docx" --out "<nome>.docx" --data @"$TMP/dados.json" \
+    --rclone-dest "<rclone_remote>:<Nome Completo da Pessoas>/<nome>.docx" \
+    --rclone-root-id "<destination_folder_id>"
   ```
-  O script sobe o arquivo direto, sem passar pelo modelo.
+  O script cria a subpasta da pessoa dentro da pasta de destino e sobe o `.docx`
+  direto, sem passar pelo modelo (sem base64). Confira `"upload": "ok"` no retorno.
 - **(B) Entrega para arrastar (padrão, zero setup):** entregue o `.docx` ao
   usuário (informe o caminho local do arquivo) e peça para **arrastar para a
   subpasta** da pessoa no Drive. É o caminho de segundos.

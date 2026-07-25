@@ -7,9 +7,9 @@
   "_output_note": "Gera .docx (não converter para Google Doc: a conversão desformata fonte/título/espaçamento). O .docx abre editável no Google Docs em modo Office, com formatação idêntica.",
 
   "upload": {
-    "modo": "manual",
-    "rclone_remote": "",
-    "_nota": "NUNCA subir o .docx via conector do Drive com base64: o modelo teria que reproduzir ~60k caracteres, o que leva minutos. modo 'manual' (padrão): o plugin gera o .docx localmente e o usuário arrasta para a subpasta no Drive (rápido, zero setup). modo 'rclone': se você instalar o rclone e configurar um remote do Google Drive (rclone config), preencha rclone_remote (ex.: 'gdrive') e o script sobe direto com --rclone-dest. Subpasta e pré-onboarding (texto) podem usar o conector, pois são baratos."
+    "modo": "rclone",
+    "rclone_remote": "gdrive",
+    "_nota": "NUNCA subir o .docx via conector do Drive com base64: o modelo teria que reproduzir ~60k caracteres, o que leva minutos. modo 'rclone' (ativo): o script sobe direto com `--rclone-dest \"gdrive:<Nome da Pessoa>/<arquivo>.docx\" --rclone-root-id <destination_folder_id>` (cria a subpasta da pessoa dentro da pasta de destino). Requer rclone instalado + remote 'gdrive' (rclone config). modo 'manual': gera o .docx e o usuário arrasta para a subpasta. Subpasta e pré-onboarding (texto) podem usar o conector, pois são baratos."
   },
 
   "filename_rule": "{Primeiro Nome}_{Atividade}_{Modelo}",
