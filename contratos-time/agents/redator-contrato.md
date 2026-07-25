@@ -32,8 +32,10 @@ pergunta.
    da pessoa (`Nome Completo da Pessoas`) via `create_file` com
    `mimeType=application/vnd.google-apps.folder`; guarde o `id` (PASTA_ID).
 9. **Suba**: `create_file` com `parentId=PASTA_ID`, o base64 do docx,
-   `contentMimeType` de docx e `disableConversionToGoogleType=false` (vira Google
-   Doc editavel). Nome do arquivo pela `filename_rule` (Nome_Atividade_Modelo).
+   `contentMimeType` de docx e `disableConversionToGoogleType=true` (mantem como
+   .docx; NAO converter, pois a conversao desformata). O arquivo abre editavel no
+   Google Docs (modo Office). Nome do arquivo pela `filename_rule` com sufixo
+   `.docx` (ex.: `Joao_FDE_Fulltime.docx`).
 10. **Reporte** o link da subpasta e do Google Doc, tipo, campos preenchidos e
     clausulas incluidas. Limpe `$TMP`.
 

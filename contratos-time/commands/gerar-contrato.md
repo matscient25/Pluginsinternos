@@ -108,11 +108,14 @@ Ex.: `Joao_FDE_Fulltime`, `José_Hubspot_Freelancer`.
 
 Leia o docx preenchido em base64 (`base64 -w0 "$TMP/contrato.docx"`) e crie o arquivo:
 - `mcp__Google_Drive__create_file` com:
-  - `title`: o título gerado
+  - `title`: o título gerado (com sufixo `.docx`)
   - `parentId`: `PASTA_ID` (a subpasta da pessoa)
   - `base64Content`: o base64 do contrato preenchido
   - `contentMimeType`: `application/vnd.openxmlformats-officedocument.wordprocessingml.document`
-  - `disableConversionToGoogleType`: `false` (converte o .docx em Google Doc editável)
+  - `disableConversionToGoogleType`: `true` — **NÃO converter**. A conversão para
+    Google Doc nativo desformata (troca fonte/título/espaçamento). Salvo como
+    `.docx`, o arquivo abre editável no Google Docs (modo Office) com a
+    formatação idêntica ao contrato aprovado.
 
 ## 9. Reporte
 Devolva ao usuário o **link** da subpasta e do Google Doc criado, o tipo de
