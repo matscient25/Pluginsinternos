@@ -1,0 +1,64 @@
+{
+  "_comment": "Plugin de contratos de CLIENTE da SCIENT. Template embarcado em templates/cliente.docx.",
+
+  "destination_folder_id": "COLE_AQUI_O_ID_DA_PASTA_DE_CONTRATOS_DE_CLIENTE",
+  "_destination_note": "PENDENTE: pasta do Drive onde os contratos de cliente gerados devem cair (não é a de homologação). Cria subpasta por cliente (nome fantasia).",
+
+  "output_format": "docx",
+  "_output_note": "Gera .docx (não converter para Google Doc: a conversão desformata). Upload: NUNCA base64 pelo conector; usar rclone (--rclone-dest + --rclone-root-id) ou entregar para arrastar. Igual ao contratos-time.",
+
+  "marca": "SCIENT",
+  "estilo": {"sem_travessao": true, "_nota": "Marca sempre SCIENT (maiúsculo). Nunca usar travessão (—)."},
+
+  "codigo_rule": {
+    "formato": "{FANTASIA3}{SCI}{AAAA}{DD}{MM}",
+    "exemplo": "VITSCI20262507 (cliente 'Vittude', em 25/07/2026)",
+    "_nota": "FANTASIA3 = 3 primeiras letras do NOME FANTASIA em maiúsculas; SCI = fixo; depois ANO(AAAA) + DIA(DD) + MÊS(MM). CONFIRMAR ordem data com o usuário (ano, dia, mês). O código vai no nome do arquivo, cabeçalho ({{CODIGO}}), rodapé e no {{TITULO_PROPOSTA}}."
+  },
+
+  "titulo_proposta_pattern": "{CODIGO} PROPOSTA {NOME_FANTASIA} <> SCIENT - {PRODUTO}",
+
+  "produtos_scient": {
+    "ENGENHARIA DE GTM": "core business",
+    "DISCOVERY CONTINUA": "produto só de discovery",
+    "IMPLEMENTAÇÃO HUBSPOT": "serviço de implementação de HubSpot",
+    "GTM ENGINEER CERTIFIED": "certificação de GTM Engineer"
+  },
+
+  "cnpj_api": {
+    "base_url": "https://api.cpfcnpj.com.br",
+    "token": "16e671a0f52d5b9684292ca4a4c3d804",
+    "_nota": "Consulta do CNPJ do cliente para pré-preencher Razão Social, endereço e o sócio administrador (Representante legal). REQUER rede liberada para api.cpfcnpj.com.br (bloqueada no ambiente de dev). Se a API não responder, PERGUNTE os dados. Doc: https://www.cpfcnpj.com.br/dev/"
+  },
+
+  "intake": {
+    "pergunta_ao_operador": ["CNPJ do cliente", "Cartão CNPJ do cliente", "Link da proposta aceita (PPT)", "Produto SCIENT", "Nome fantasia (se a API não trouxer)"],
+    "_nota": "Do CNPJ (via API ou cartão CNPJ) saem Razão Social, endereço e representante legal. Nome fantasia define as 3 letras do código."
+  },
+
+  "anexo_proposta": {
+    "_nota": "Anexo I = os slides da proposta aceita (PPT). Ideal: colar todos os slides no docx. É a parte mais pesada (precisa converter slides em imagens). Ver docs/anexo-proposta.md quando implementado; enquanto isso, referenciar o link da proposta no Anexo I."
+  },
+
+  "homologacao": {
+    "pasta_drive_id": "1NiZyZF9sTBB1mP-nIxJJFJq_silytG3C",
+    "documentos": [
+      {"nome": "Contrato social", "validade": null},
+      {"nome": "Cartão CNPJ", "validade": null},
+      {"nome": "Certidão negativa Federal", "validade": null},
+      {"nome": "Certificado de Regularidade do FGTS (CRF)", "validade": "1 mês",
+       "aviso": "O CRF vale 1 mês a partir da emissão. Se o cliente solicitar, avisar que será necessário emitir uma nova guia. O Giovanni consegue emitir."}
+    ],
+    "dados_para_homologacao": {
+      "razao_social": "Scient Consultoria de Gestão Empresarial Ltda.",
+      "cnpj": "48.893.099/0001-24",
+      "endereco": "Rua Augusto dos Anjos, nº 225, Apt. 16, Melville Empresarial I e II, Barueri/SP, CEP 06485-370",
+      "email_faturamento": "giovanni@scient.cc",
+      "financeiro_nome": "Matheus Pinheiro",
+      "financeiro_email": "matheus@scient.cc",
+      "representante_legal_nome": "Giovanni Barbosa Salvador",
+      "representante_legal_cpf": "366.599.668-62"
+    },
+    "_nota": "Skill de homologação: dá acesso aos docs na pasta acima e gera o artefato PDF 'Dados para Homologação' (design SCIENT) com os dados_para_homologacao. O artefato pode ser único, dentro da pasta de homologação."
+  }
+}

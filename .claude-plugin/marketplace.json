@@ -12,6 +12,12 @@
       "source": "./contratos-time",
       "description": "Conduz a contratação do time (Full time e Freelancer): gera contratos preenchidos a partir de templates .docx, salva como Google Doc no Drive, e coordena o checklist de contratação.",
       "version": "0.4.3"
+    },
+    {
+      "name": "contratos-clientes",
+      "source": "./contratos-clientes",
+      "description": "Gera contratos de cliente da SCIENT: código de proposta, produto, dados do CNPJ e título da proposta, com skill de homologação (docs + artefato Dados para Homologação).",
+      "version": "0.1.0"
     }
   ]
 }
