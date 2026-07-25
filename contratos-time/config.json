@@ -4,7 +4,13 @@
   "destination_folder_id": "1Zruibh8wECstNcVhs3pIN0N16-FrN8-Y",
 
   "output_format": "docx",
-  "_output_note": "Salvar como .docx no Drive SEM converter (disableConversionToGoogleType=true). A conversão para Google Doc nativo desformata (troca fontes, título, espaçamento). O .docx abre editável no Google Docs (modo Office) mantendo a formatação idêntica ao contrato aprovado.",
+  "_output_note": "Gera .docx (não converter para Google Doc: a conversão desformata fonte/título/espaçamento). O .docx abre editável no Google Docs em modo Office, com formatação idêntica.",
+
+  "upload": {
+    "modo": "manual",
+    "rclone_remote": "",
+    "_nota": "NUNCA subir o .docx via conector do Drive com base64: o modelo teria que reproduzir ~60k caracteres, o que leva minutos. modo 'manual' (padrão): o plugin gera o .docx localmente e o usuário arrasta para a subpasta no Drive (rápido, zero setup). modo 'rclone': se você instalar o rclone e configurar um remote do Google Drive (rclone config), preencha rclone_remote (ex.: 'gdrive') e o script sobe direto com --rclone-dest. Subpasta e pré-onboarding (texto) podem usar o conector, pois são baratos."
+  },
 
   "filename_rule": "{Primeiro Nome}_{Atividade}_{Modelo}",
   "_filename_note": "Ex.: Joao_FDE_Fulltime, José_Hubspot_Freelancer. Primeiro Nome = 1o nome de 'Nome Completo da Pessoas'. Atividade = 'sigla' do cargo. Modelo = Fulltime/Parttime (full-time, conforme modalidade) ou Freelancer.",

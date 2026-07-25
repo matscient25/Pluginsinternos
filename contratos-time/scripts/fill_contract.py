@@ -383,6 +383,28 @@ def load_data(arg):
     return json.loads(arg)
 
 
+def upload_rclone(path, dest):
+    """Sobe o arquivo direto pro Drive via rclone (sem passar pelo modelo).
+    `dest` = 'remote:pasta/arquivo.docx'. Requer `rclone` instalado e um remote
+    do Google Drive configurado (rclone config). Retorna True/False."""
+    import shutil
+    import subprocess
+    if not shutil.which("rclone"):
+        print(json.dumps({"upload": "skipped",
+                          "reason": "rclone nao encontrado. Instale e rode `rclone config` "
+                                    "para criar um remote do Google Drive."}, ensure_ascii=False))
+        return False
+    try:
+        subprocess.run(["rclone", "copyto", path, dest], check=True,
+                       capture_output=True, text=True)
+        print(json.dumps({"upload": "ok", "dest": dest}, ensure_ascii=False))
+        return True
+    except subprocess.CalledProcessError as e:
+        print(json.dumps({"upload": "erro", "stderr": (e.stderr or "")[:800]},
+                         ensure_ascii=False))
+        return False
+
+
 def main():
     ap = argparse.ArgumentParser(description="Preenche {{CAMPO}} e resolve {{#SECAO}} em .docx.")
     ap.add_argument("--template", required=True)
@@ -390,12 +412,17 @@ def main():
     ap.add_argument("--data", help='JSON ou @arquivo.json')
     ap.add_argument("--list", action="store_true")
     ap.add_argument("--allow-unfilled", action="store_true")
+    ap.add_argument("--rclone-dest", help="Sobe o .docx gerado pro Drive via rclone. "
+                                          "Ex.: 'gdrive:Contratos/Joao Silva/Joao_FDE_Fulltime.docx'")
     args = ap.parse_args()
     if args.list:
         return list_placeholders(args.template)
     if not args.out:
         ap.error("--out e obrigatorio quando nao se usa --list")
-    return run(args.template, args.out, load_data(args.data), args.allow_unfilled)
+    code = run(args.template, args.out, load_data(args.data), args.allow_unfilled)
+    if args.rclone_dest and code in (0, 3):
+        upload_rclone(args.out, args.rclone_dest)
+    return code
 
 
 if __name__ == "__main__":

@@ -90,37 +90,42 @@ python3 "${CLAUDE_PLUGIN_ROOT}/scripts/fill_contract.py" \
 ```
 Confira o relatório: se `unfilled` não estiver vazio, resolva antes de subir.
 
-## 7. Crie a subpasta da pessoa no Drive
-Dentro de `destination_folder_id`, crie uma **subpasta com o nome da pessoa**
-(`Nome Completo da Pessoas`) e salve os arquivos dentro dela:
-- `mcp__Google_Drive__create_file` com `title` = nome da pessoa,
-  `mimeType` = `application/vnd.google-apps.folder`, `parentId` = `destination_folder_id`.
-- Guarde o `id` retornado (`PASTA_ID`) para usar como `parentId` do contrato e do
-  pré-onboarding.
+## 7. Nomeie e salve o .docx num local estável
+Gere o **nome do arquivo** pela `filename_rule`: `{Primeiro Nome}_{Atividade}_{Modelo}.docx`
+- `Primeiro Nome` = 1º nome de `Nome Completo da Pessoas`.
+- `Atividade` = `sigla` do cargo (FDE, Hubspot, GTM, Dados).
+- `Modelo` = `Freelancer`, ou `Fulltime`/`Parttime` (full-time, conforme modalidade).
+Ex.: `Joao_FDE_Fulltime.docx`. Gere o `--out` já com esse nome, num diretório que
+o usuário acessa (ex.: `~/Downloads/<nome>.docx`), não em `$TMP`.
 
-## 8. Suba o contrato como Google Doc editável
-Gere o **nome do arquivo** pela `filename_rule`: `{Primeiro Nome}_{Atividade}_{Modelo}`.
-- `Primeiro Nome` = 1º nome de `Nome Completo da Pessoas` (ex.: "João").
-- `Atividade` = `sigla` do cargo escolhido (ex.: FDE, Hubspot, GTM, Dados).
-- `Modelo` = `Freelancer` (freelancer) ou `Fulltime`/`Parttime` (full-time,
-  conforme a modalidade).
-Ex.: `Joao_FDE_Fulltime`, `José_Hubspot_Freelancer`.
+## 8. Coloque no Drive — SEM empurrar base64 pelo conector
+IMPORTANTE: **não** use `mcp__Google_Drive__create_file` com `base64Content` para o
+`.docx`. Um contrato vira ~60k caracteres de base64 que o modelo teria que
+reproduzir caractere a caractere — é lento e caro (pode levar minutos). Escolha:
 
-Leia o docx preenchido em base64 (`base64 -w0 "$TMP/contrato.docx"`) e crie o arquivo:
-- `mcp__Google_Drive__create_file` com:
-  - `title`: o título gerado (com sufixo `.docx`)
-  - `parentId`: `PASTA_ID` (a subpasta da pessoa)
-  - `base64Content`: o base64 do contrato preenchido
-  - `contentMimeType`: `application/vnd.openxmlformats-officedocument.wordprocessingml.document`
-  - `disableConversionToGoogleType`: `true` — **NÃO converter**. A conversão para
-    Google Doc nativo desformata (troca fonte/título/espaçamento). Salvo como
-    `.docx`, o arquivo abre editável no Google Docs (modo Office) com a
-    formatação idêntica ao contrato aprovado.
+- **(A) Upload direto pelo script (rápido, se configurado):** se houver `rclone`
+  instalado e um remote do Drive configurado (`upload.rclone_remote` no config ou
+  env `GDRIVE_RCLONE_REMOTE`), rode:
+  ```
+  python3 "${CLAUDE_PLUGIN_ROOT}/scripts/fill_contract.py" --template ... --out <nome>.docx --data @dados.json \
+    --rclone-dest "<remote>:<pasta_destino>/<Nome da Pessoa>/<nome>.docx"
+  ```
+  O script sobe o arquivo direto, sem passar pelo modelo.
+- **(B) Entrega para arrastar (padrão, zero setup):** entregue o `.docx` ao
+  usuário (informe o caminho local do arquivo) e peça para **arrastar para a
+  subpasta** da pessoa no Drive. É o caminho de segundos.
+
+Subpasta e pré-onboarding (baratos, pode usar o conector):
+- Crie a subpasta com o nome da pessoa: `mcp__Google_Drive__create_file` com
+  `mimeType=application/vnd.google-apps.folder`, `parentId=destination_folder_id`.
+- Pré-onboarding é TEXTO: crie via `mcp__Google_Drive__create_file` com
+  `textContent` (barato, sem base64), dentro da subpasta.
 
 ## 9. Reporte
-Devolva ao usuário o **link** da subpasta e do Google Doc criado, o tipo de
-contrato, e um resumo dos campos preenchidos. Se algum placeholder ficou sem
-valor, avise explicitamente.
+Informe: caminho do `.docx` gerado (ou link, se subiu via rclone), link da
+subpasta, tipo de contrato, resumo dos campos e cláusulas. Se `unfilled` não
+estava vazio, avise. Se foi pelo caminho (B), lembre o usuário de arrastar o
+`.docx` para a subpasta.
 
 Nunca escreva arquivos dentro da pasta do plugin; use sempre `$TMP`. Limpe o
 temporário ao final (`rm -rf "$TMP"`).

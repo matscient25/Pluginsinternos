@@ -28,16 +28,17 @@ pergunta.
    o bloco.
 7. **Gere**: `fill_contract.py --template ... --out "$TMP/contrato.docx"
    --data @"$TMP/dados.json"`. Se `unfilled` nao vier vazio, resolva antes.
-8. **Subpasta**: dentro de `destination_folder_id`, crie uma subpasta com o nome
-   da pessoa (`Nome Completo da Pessoas`) via `create_file` com
-   `mimeType=application/vnd.google-apps.folder`; guarde o `id` (PASTA_ID).
-9. **Suba**: `create_file` com `parentId=PASTA_ID`, o base64 do docx,
-   `contentMimeType` de docx e `disableConversionToGoogleType=true` (mantem como
-   .docx; NAO converter, pois a conversao desformata). O arquivo abre editavel no
-   Google Docs (modo Office). Nome do arquivo pela `filename_rule` com sufixo
-   `.docx` (ex.: `Joao_FDE_Fulltime.docx`).
-10. **Reporte** o link da subpasta e do Google Doc, tipo, campos preenchidos e
-    clausulas incluidas. Limpe `$TMP`.
+8. **Nome/arquivo**: gere o `--out` com o nome da `filename_rule`
+   (`Nome_Atividade_Modelo.docx`) num local acessivel ao usuario (ex.:
+   `~/Downloads/`), nao em `$TMP`.
+9. **Coloque no Drive SEM base64**: NUNCA use `create_file` com `base64Content`
+   para o .docx (o modelo teria que reproduzir ~60k chars, leva minutos). Ou:
+   (A) se houver rclone configurado (`upload.rclone_remote`/`GDRIVE_RCLONE_REMOTE`),
+   rode o script com `--rclone-dest "<remote>:<pasta>/<Nome>/<arquivo>.docx"`;
+   (B) senao, ENTREGUE o .docx ao usuario (informe o caminho) para ele arrastar
+   para a subpasta. A subpasta pode ser criada via `create_file` (folder, barato).
+10. **Reporte** o caminho/link do .docx, o link da subpasta, tipo, campos e
+    clausulas. Nao deixe `$TMP` com o arquivo final (salve no local acessivel).
 
 Trabalhe sempre em diretorio temporario; nunca grave dentro do plugin.
 Dados sensiveis (CPF, salario) nao devem vazar em logs desnecessarios.

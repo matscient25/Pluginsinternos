@@ -8,20 +8,32 @@ description: Como gerar contratos do time (Full time e Freelancer) a partir de t
 Este projeto gera contratos preenchidos preservando **exatamente** a formatacao
 do template, sem edicao manual.
 
-## Como funciona (por que baixar-preencher-subir)
+## Como funciona
 
-O conector do Google Drive **nao** oferece "substituir texto" dentro de um
-Google Doc existente. Para manter a formatacao do template E preencher os
-campos, o fluxo e:
+Os templates `.docx` ja vem embarcados em `templates/`. O fluxo e:
 
-1. **Baixar** o template `.docx` do Drive (`download_file_content` → base64).
-   Se o template for um Google Doc, exportar como `.docx`
-   (`exportMimeType: application/vnd.openxmlformats-officedocument.wordprocessingml.document`).
-2. **Preencher** os placeholders `{{CAMPO}}` localmente com
+1. **Preencher** os placeholders `{{CAMPO}}` (e secoes/listas) localmente com
    `scripts/fill_contract.py` — pura stdlib, preserva fonte/negrito/tabelas e
    lida com placeholders quebrados em varios runs pelo Word.
-3. **Subir** o `.docx` preenchido para a pasta de destino via `create_file`,
-   deixando a conversao ligada → vira um **Google Doc editavel**.
+2. **Salvar** o `.docx` gerado num local acessivel (ex.: `~/Downloads/`), com o
+   nome da `filename_rule`.
+3. **Colocar no Drive** dentro da subpasta da pessoa. Sobre o upload, ver abaixo.
+
+## Upload (regra importante)
+
+**NUNCA** subir o `.docx` pelo conector do Drive com `base64Content`: o modelo
+teria que reproduzir ~60 mil caracteres de base64 caractere a caractere, o que
+leva **minutos** e e caro. Em vez disso:
+
+- **Padrao (zero setup):** gere o `.docx` e **entregue ao usuario** para ele
+  arrastar para a subpasta no Drive (segundos).
+- **Automatico (opcional):** com `rclone` instalado e um remote do Drive
+  (`rclone config`), rode `fill_contract.py ... --rclone-dest
+  "<remote>:<pasta>/<Nome>/<arquivo>.docx"` — sobe direto, sem passar pelo modelo.
+
+Nao converter para Google Doc nativo (a conversao desformata). O `.docx` abre
+editavel no Google Docs em modo Office. Subpasta e pre-onboarding (texto) podem
+usar o conector, pois sao baratos.
 
 ## Convencoes
 
