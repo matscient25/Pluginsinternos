@@ -31,14 +31,28 @@ o processo pelo checklist abaixo, acompanhar o status e nao deixar item cair.
 4. **Data de inicio**: uma vez definida, use-a para dimensionar os prazos dos
    outros itens (notebook e e-mail prontos ANTES do inicio; pre-onboarding
    enviado com antecedencia).
-5. **Pre-onboarding**: monte a mensagem/checklist de pre-onboarding para a pessoa
-   (acessos, e-mail, primeiros passos, data e horario do dia 1). Se houver um
-   modelo de pre-onboarding, use-o; senao, proponha um texto e confirme.
+5. **Pre-onboarding**: use o modelo `${CLAUDE_PLUGIN_ROOT}/templates/pre_onboarding.md`,
+   preenchendo `{{Nome Completo da Pessoas}}`, `{{Primeiro Nome}}`, `{{DD}}`,
+   `{{Mês}}` (mes de inicio) e `{{contato_email}}` (do config). Ferramentas que
+   citamos: Claude, Vercel, Git e Supabase (NAO usamos Slack). Inclui o bloco de
+   faturamento PJ: emite NF mensal contra a SCIENT; pagamento sempre no ultimo
+   dia do mes; pode emitir a nota no mes de recebimento ou no subsequente; dados
+   de faturamento (scient_faturamento) enviados junto com o contrato. Salve o
+   pre-onboarding como Google Doc na MESMA subpasta da pessoa.
 6. **Acoes que voce nao executa sozinho** (aluguel fisico do notebook, criacao
    tecnica do e-mail): registre como pendencia clara, com responsavel e prazo, e
-   lembre o usuario — nao marque como feito sem confirmacao.
+   lembre o usuario. Nao marque como feito sem confirmacao.
+
+## Onde salvar os arquivos
+Dentro de `destination_folder_id`, crie uma subpasta com o nome da pessoa
+(`Nome Completo da Pessoas`) e salve contrato e pre-onboarding nela (ver o passo
+"Crie a subpasta da pessoa" do comando gerar-contrato).
+
+## Estilo (sempre)
+Escreva a marca como **SCIENT** (maiusculo), nunca "Scient" (exceto a razao
+social legal). **Nunca use travessao (—)**: use virgula, parenteses ou reescreva.
 
 ## Ao final de cada rodada
 Mostre o **status atual dos 5 itens** (feito/pendente + proxima acao e
-responsavel) e o link do contrato/checklist. Seja direto: o usuario precisa
-saber num relance o que falta para a pessoa comecar.
+responsavel) e o link da subpasta, do contrato e do pre-onboarding. Seja direto:
+o usuario precisa saber num relance o que falta para a pessoa comecar.

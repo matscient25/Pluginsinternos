@@ -60,10 +60,19 @@ campos, o fluxo e:
   codigo 3 e lista `unfilled` justamente para pegar isso.
 - **DATA**: se nao informada, use a data de hoje em pt-BR (dd/mm/aaaa).
 - **Nao invente dados** (CPF, valores, cargo). Falta obrigatorio → pergunte.
-- **Dois tipos, dois templates**: `full-time` e `freelancer`, cada um com seu
-  `template_file_id` em `config.json`. Sempre confirme o tipo antes de gerar.
-- **Titulo do arquivo**: use `filename_pattern` do tipo (ex.:
-  `Contrato Freelancer - {{NOME}} - {{DATA}}`).
+- **Dois tipos, dois templates**: `full-time` e `freelancer` (embarcados em
+  `templates/`). Sempre confirme o tipo antes de gerar.
+- **Nome do arquivo**: `filename_rule` = `Nome_Atividade_Modelo` (ex.:
+  `Joao_FDE_Fulltime`, `José_Hubspot_Freelancer`).
+- **Subpasta por pessoa**: no Drive, crie uma subpasta com o nome da pessoa
+  dentro de `destination_folder_id` e salve contrato + pré-onboarding nela.
+- **Pré-onboarding**: use `templates/pre_onboarding.md`. Ferramentas: Claude,
+  Vercel, Git, Supabase (NAO usamos Slack). Inclui faturamento PJ: NF mensal
+  contra a SCIENT, pagamento sempre no ultimo dia do mes, nota emitida no mes de
+  recebimento ou no subsequente, dados de faturamento (`scient_faturamento`)
+  enviados junto com o contrato. Contato = `contato_email` do config.
+- **Estilo**: marca sempre **SCIENT** (maiusculo), nunca "Scient" (exceto a
+  razao social legal). **Nunca use travessao (—)**.
 
 ## Arquivos
 

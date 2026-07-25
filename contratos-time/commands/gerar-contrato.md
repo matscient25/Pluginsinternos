@@ -90,7 +90,15 @@ python3 "${CLAUDE_PLUGIN_ROOT}/scripts/fill_contract.py" \
 ```
 Confira o relatório: se `unfilled` não estiver vazio, resolva antes de subir.
 
-## 7. Suba para o Drive como Google Doc editável
+## 7. Crie a subpasta da pessoa no Drive
+Dentro de `destination_folder_id`, crie uma **subpasta com o nome da pessoa**
+(`Nome Completo da Pessoas`) e salve os arquivos dentro dela:
+- `mcp__Google_Drive__create_file` com `title` = nome da pessoa,
+  `mimeType` = `application/vnd.google-apps.folder`, `parentId` = `destination_folder_id`.
+- Guarde o `id` retornado (`PASTA_ID`) para usar como `parentId` do contrato e do
+  pré-onboarding.
+
+## 8. Suba o contrato como Google Doc editável
 Gere o **nome do arquivo** pela `filename_rule`: `{Primeiro Nome}_{Atividade}_{Modelo}`.
 - `Primeiro Nome` = 1º nome de `Nome Completo da Pessoas` (ex.: "João").
 - `Atividade` = `sigla` do cargo escolhido (ex.: FDE, Hubspot, GTM, Dados).
@@ -101,15 +109,19 @@ Ex.: `Joao_FDE_Fulltime`, `José_Hubspot_Freelancer`.
 Leia o docx preenchido em base64 (`base64 -w0 "$TMP/contrato.docx"`) e crie o arquivo:
 - `mcp__Google_Drive__create_file` com:
   - `title`: o título gerado
-  - `parentId`: `destination_folder_id`
+  - `parentId`: `PASTA_ID` (a subpasta da pessoa)
   - `base64Content`: o base64 do contrato preenchido
   - `contentMimeType`: `application/vnd.openxmlformats-officedocument.wordprocessingml.document`
   - `disableConversionToGoogleType`: `false` (converte o .docx em Google Doc editável)
 
-## 8. Reporte
-Devolva ao usuário o **link (viewUrl)** do Google Doc criado, o tipo de
+## 9. Reporte
+Devolva ao usuário o **link** da subpasta e do Google Doc criado, o tipo de
 contrato, e um resumo dos campos preenchidos. Se algum placeholder ficou sem
 valor, avise explicitamente.
 
 Nunca escreva arquivos dentro da pasta do plugin; use sempre `$TMP`. Limpe o
 temporário ao final (`rm -rf "$TMP"`).
+
+**Estilo:** escreva a marca como **SCIENT** (maiúsculo), nunca "Scient" (exceto a
+razão social legal no contrato). **Nunca use travessão (—)**: use vírgula,
+parênteses ou reescreva.

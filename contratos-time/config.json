@@ -8,6 +8,25 @@
   "filename_rule": "{Primeiro Nome}_{Atividade}_{Modelo}",
   "_filename_note": "Ex.: Joao_FDE_Fulltime, José_Hubspot_Freelancer. Primeiro Nome = 1o nome de 'Nome Completo da Pessoas'. Atividade = 'sigla' do cargo. Modelo = Fulltime/Parttime (full-time, conforme modalidade) ou Freelancer.",
 
+  "drive_subpasta_por_pessoa": true,
+  "_drive_note": "Dentro de destination_folder_id, crie uma subpasta com o nome da pessoa ('Nome Completo da Pessoas') e salve TODOS os arquivos (contrato + pré-onboarding) dentro dela.",
+
+  "contato_email": "matheus@scient.cc",
+  "_contato_note": "E-mail que assina o pré-onboarding e é o canal de contato. Cada pessoa que usar o plugin deve trocar por SEU e-mail real (o login do Claude pode ser diferente do e-mail real; ex.: login stack@scient.cc, e-mail real matheus@scient.cc).",
+
+  "marca": "SCIENT",
+  "_marca_note": "Sempre escrever a marca como SCIENT (maiúsculo) em comunicações. Exceção: a razão social legal 'Scient Consultoria de Gestão Empresarial Ltda.' no corpo do contrato e nos dados de faturamento (nome jurídico registrado).",
+
+  "scient_faturamento": {
+    "razao_social": "Scient Consultoria de Gestão Empresarial Ltda.",
+    "cnpj": "48.893.099/0001-24",
+    "endereco": "Rua Augusto dos Anjos, nº 225, Apt. 16, Melville Empresarial I e II, Barueri/SP, CEP 06485-370"
+  },
+  "estilo": {
+    "sem_travessao": true,
+    "_nota": "NUNCA usar travessão (—). Use vírgula, parênteses ou reescreva a frase."
+  },
+
   "auto_date_fields": {
     "Data": "%d/%m/%Y",
     "DD": "%d",

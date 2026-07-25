@@ -28,11 +28,17 @@ pergunta.
    o bloco.
 7. **Gere**: `fill_contract.py --template ... --out "$TMP/contrato.docx"
    --data @"$TMP/dados.json"`. Se `unfilled` nao vier vazio, resolva antes.
-8. **Suba**: `create_file` com `parentId=destination_folder_id`, o base64 do
-   docx, `contentMimeType` de docx e `disableConversionToGoogleType=false`
-   (vira Google Doc editavel). Titulo = `filename_pattern` preenchido.
-9. **Reporte** o link do Google Doc, tipo, campos preenchidos e clausulas
-   incluidas. Limpe `$TMP`.
+8. **Subpasta**: dentro de `destination_folder_id`, crie uma subpasta com o nome
+   da pessoa (`Nome Completo da Pessoas`) via `create_file` com
+   `mimeType=application/vnd.google-apps.folder`; guarde o `id` (PASTA_ID).
+9. **Suba**: `create_file` com `parentId=PASTA_ID`, o base64 do docx,
+   `contentMimeType` de docx e `disableConversionToGoogleType=false` (vira Google
+   Doc editavel). Nome do arquivo pela `filename_rule` (Nome_Atividade_Modelo).
+10. **Reporte** o link da subpasta e do Google Doc, tipo, campos preenchidos e
+    clausulas incluidas. Limpe `$TMP`.
 
 Trabalhe sempre em diretorio temporario; nunca grave dentro do plugin.
 Dados sensiveis (CPF, salario) nao devem vazar em logs desnecessarios.
+
+**Estilo:** marca sempre como SCIENT (maiusculo), nunca "Scient" (exceto a razao
+social legal). Nunca use travessao (—): use virgula, parenteses ou reescreva.
