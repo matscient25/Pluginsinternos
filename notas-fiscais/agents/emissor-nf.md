@@ -72,8 +72,10 @@ para o time todo usar. Sequência:
   de recebimento da NF).
 
 ### 8. Conta Azul — serviço e número
-- `find-servico "GTM ENGINEER CERTIFIED"` → pegue o `id` do serviço (tributação padrão
-  já vem no cadastro dele; não mexa).
+- Serviço: use o `id` fixo de `config.json > contaazul.servico.id`
+  (`3abb753d-651a-4704-b083-560f66900a32`, "GTM ENGINEER CERTIFIED"). Só rode
+  `find-servico "GTM ENGINEER CERTIFIED"` se suspeitar que o cadastro mudou.
+  A tributação é a **padrão do serviço** — não mexa.
 - `proximo-numero` → número da venda.
 
 ### 9. Resumo + OK explícito (trava)
@@ -83,7 +85,8 @@ valor, forma de pagamento CARTÃO DE CRÉDITO / sem boleto) e **pergunte explici
 
 ### 10. Criar a venda
 `create-venda --json -` com: `id_cliente`, `numero`, `situacao` "APROVADO", `data_venda`,
-`itens:[{descricao, quantidade: <seats>, valor: <valor unit>, id: <id do serviço>}]`,
+`itens:[{descricao, quantidade: <seats>, valor: <preço unitário VENDIDO>, id: <id do serviço>}]`
+(o `valor` é o preço unitário que o operador informou — **nunca** o preço padrão do serviço),
 `condicao_pagamento:{tipo_pagamento:"CARTAO_CREDITO", opcao_condicao_pagamento:"À vista",
 parcelas:[{data_vencimento, valor}]}`. Nunca use BOLETO_BANCARIO.
 

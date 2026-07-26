@@ -20,11 +20,17 @@
     "api_base": "https://api-v2.contaazul.com",
     "auth_url": "https://auth.contaazul.com/oauth2/token",
     "servico_busca_textual": "GTM ENGINEER CERTIFIED",
+    "servico": {
+      "id": "3abb753d-651a-4704-b083-560f66900a32",
+      "codigo": "GTME",
+      "descricao": "GTM ENGINEER CERTIFIED",
+      "_nota": "id do servico na Conta Azul de PRODUCAO (empresa SCIENT, id_empresa 3080597). O servico tem um preco padrao (~4900), mas ELE NAO VALE: o valor do item da venda e SEMPRE o PRECO UNITARIO VENDIDO informado pelo operador. Confirmar o id com find-servico se um dia o cadastro mudar."
+    },
     "venda": {
       "situacao": "APROVADO",
       "tipo_pagamento": "CARTAO_CREDITO",
       "opcao_condicao_pagamento": "À vista",
-      "_nota": "Educacao = sempre CARTAO_CREDITO e SEM boleto (tipo_pagamento != BOLETO_BANCARIO). A tributacao usada e a PADRAO ja cadastrada no servico."
+      "_nota": "Educacao = sempre CARTAO_CREDITO e SEM boleto (tipo_pagamento != BOLETO_BANCARIO). A tributacao usada e a PADRAO ja cadastrada no servico. itens[].valor = PRECO UNITARIO VENDIDO (nao o preco padrao do servico); itens[].quantidade = numero de seats."
     },
     "env_fixas": ["CONTAAZUL_CLIENT_ID", "CONTAAZUL_CLIENT_SECRET"],
     "token_store": {
