@@ -16,10 +16,11 @@ a API confere/baixa a NFS-e.
 
 ## Onde estão os dados
 - **Supabase** (projeto `gtme`, `config.json > supabase.project_id`), via conector MCP:
-  - `fila_compras` — valor (`amount_brl`), `seat_count`, `customer_doc_type` (PF/PJ),
-    documento, endereço (`billing_*`) e campos de NF (`nf_name`, `nf_email`,
-    `nf_document`, `nf_company`). É a fonte primária.
-  - `inscritos_cohort3` — complementa (nome, e-mail, empresa, valor_pago, order_id).
+  - `inscritos_cohort3` — **fonte primária** (lista de matriculados): nome, e-mail,
+    empresa, `valor_pago`, `order_id`, `tipo`. Busque aqui primeiro.
+  - `fila_compras` — **enriquecimento opcional** (pode não ter o registro): `seat_count`,
+    `customer_doc_type` (PF/PJ), documento, endereço (`billing_*`) e campos de NF
+    (`nf_name`, `nf_email`, `nf_document`, `nf_company`).
 - **Pagar.me** (`scripts/pagarme_lookup.py`) — só redundância: confirma o valor por
   e-mail/nome/documento.
 

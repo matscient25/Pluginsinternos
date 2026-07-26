@@ -60,7 +60,7 @@
     "tabelas_inscritos": ["inscritos_cohort3"],
     "tabela_token_conta_azul": "conta_azul_oauth",
     "tabela_secrets": "notas_fiscais_secrets",
-    "_nota": "Consulta via conector MCP do Supabase (execute_sql). fila_compras ja traz valor, seats, documento, doc_type (PF/PJ), endereco e campos de NF (nf_name, nf_email, nf_document, nf_company). Cohort 4 sera adicionado depois.",
+    "_nota": "Consulta via conector MCP do Supabase (execute_sql). BUSCAR PRIMEIRO em inscritos_cohort3 (lista de matriculados, ~104) — e onde o aluno quase sempre esta. fila_compras (~62) e um subconjunto do webhook e pode NAO ter o registro; quando tem, enriquece com seats, doc_type (PF/PJ), documento, endereco e campos de NF. Cohort 4 sera adicionado depois.",
     "campos_fila_compras": [
       "order_id", "paid_at", "amount_brl", "seat_count", "purchase_type",
       "customer_name", "customer_email", "customer_document", "customer_doc_type", "customer_phone",

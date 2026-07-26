@@ -31,11 +31,16 @@ Pergunte: **a nota é para Pessoa Física ou Pessoa Jurídica?**
 ### 2. Descobrir a compra (Supabase)
 Peça o **e-mail** (ou nome/empresa) do aluno e busque no Supabase via conector MCP
 (`execute_sql`, project_id em `config.json > supabase.project_id`):
-- `fila_compras` por `customer_email`, `nf_email`, `customer_name`, `nf_company` ou `order_id`.
-  Traz valor (`amount_brl`), `seat_count`, `customer_doc_type` (PF/PJ), documento,
-  endereço (`billing_*`) e campos de NF (`nf_name`, `nf_email`, `nf_document`, `nf_company`).
-- Cruze com `inscritos_cohort3` (por `email`/`nome`).
-Use SQL parametrizado/escapado. Cohort 4 será adicionado depois em `tabelas_inscritos`.
+- **PRIMEIRO em `inscritos_cohort3`** (lista de matriculados — é onde o aluno quase
+  sempre está): por `email`, `nome_completo`, `nome`, `empresa` ou `order_id`. Traz
+  `nome_completo`, `email`, `empresa`, `valor_pago`, `order_id`, `tipo`.
+- **DEPOIS, se houver, enriqueça com `fila_compras`** (ATENÇÃO: pode NÃO ter o registro):
+  por `customer_email`, `nf_email`, `customer_name`, `nf_company` ou `order_id`. Quando
+  existe, traz `seat_count`, `customer_doc_type` (PF/PJ), documento, endereço (`billing_*`)
+  e campos de NF (`nf_name`, `nf_email`, `nf_document`, `nf_company`).
+- Se a `fila_compras` não achar, **siga com o que tem em `inscritos_cohort3`** e **peça ao
+  operador** o que faltar (documento, endereço, RG, nº de seats). Nunca invente.
+Use SQL escapado. Cohort 4 será adicionado depois em `tabelas_inscritos`.
 
 ### 3. Redundância (Pagar.me)
 Rode `PAGARME_SECRET_KEY="<do Supabase>" python3 "${CLAUDE_PLUGIN_ROOT}/scripts/pagarme_lookup.py" --email <email>`
