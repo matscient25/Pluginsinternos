@@ -18,6 +18,12 @@
       "source": "./contratos-clientes",
       "description": "Gera contratos de cliente da SCIENT: código de proposta, produto, dados do CNPJ e título da proposta, com skill de homologação (docs + PDF Dados para Homologação).",
       "version": "0.2.0"
+    },
+    {
+      "name": "notas-fiscais",
+      "source": "./notas-fiscais",
+      "description": "Emite a NF da certificação GTM Engineer sem envolver o Matheus: descobre a compra (Supabase + Pagar.me), cadastra o cliente e cria a venda no Conta Azul, e orienta o clique de Emitir Nota.",
+      "version": "0.1.0"
     }
   ]
 }

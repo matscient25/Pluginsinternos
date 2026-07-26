@@ -1,0 +1,59 @@
+{
+  "_comment": "Plugin de emissao de NF da certificacao GTM Engineer. Segredos NUNCA aqui: use variaveis de ambiente (ver .env.example e scripts/README.md).",
+
+  "marca": "SCIENT",
+  "estilo": {"sem_travessao": true, "_nota": "Marca sempre SCIENT (maiuscula). Nunca usar travessao (—)."},
+
+  "produto": {
+    "nome_servico": "GTM ENGINEER CERTIFIED",
+    "preco_cheio_por_seat": 5600,
+    "desconto_max_percent": 15,
+    "_nota": "Cada seat/certificacao = R$ 5.600. As vezes ha desconto de ate 15%. O VALOR DA NOTA e o NUMERO DE SEATS sao SEMPRE informados pelo operador (confirmados contra Supabase/Pagar.me). A quantidade na venda = numero de seats."
+  },
+
+  "fluxo": {
+    "emissao_nf": "manual_no_painel",
+    "_nota": "A API da Conta Azul NAO emite NF (so consulta). O plugin vai ATE criar a venda aprovada; o clique 'Emitir Nota' e feito no painel do Conta Azul pelo time. Depois o plugin confere a NFS-e via find-nfse."
+  },
+
+  "contaazul": {
+    "api_base": "https://api-v2.contaazul.com",
+    "auth_url": "https://auth.contaazul.com/oauth2/token",
+    "servico_busca_textual": "GTM ENGINEER CERTIFIED",
+    "venda": {
+      "situacao": "APROVADO",
+      "tipo_pagamento": "CARTAO_CREDITO",
+      "opcao_condicao_pagamento": "À vista",
+      "_nota": "Educacao = sempre CARTAO_CREDITO e SEM boleto (tipo_pagamento != BOLETO_BANCARIO). A tributacao usada e a PADRAO ja cadastrada no servico."
+    },
+    "env": ["CONTAAZUL_CLIENT_ID", "CONTAAZUL_CLIENT_SECRET", "CONTAAZUL_REFRESH_TOKEN"]
+  },
+
+  "pagarme": {
+    "api_base": "https://api.pagar.me/core/v5",
+    "uso": "redundancia",
+    "env": ["PAGARME_SECRET_KEY"],
+    "_nota": "So consulta, para confirmar a compra e o valor por e-mail/nome/documento."
+  },
+
+  "supabase": {
+    "project_id": "hgphthuksmindwedaxjy",
+    "project_name": "gtme",
+    "tabela_compras": "fila_compras",
+    "tabelas_inscritos": ["inscritos_cohort3"],
+    "_nota": "Consulta via conector MCP do Supabase (execute_sql). fila_compras ja traz valor, seats, documento, doc_type (PF/PJ), endereco e campos de NF (nf_name, nf_email, nf_document, nf_company). Cohort 4 sera adicionado depois.",
+    "campos_fila_compras": [
+      "order_id", "paid_at", "amount_brl", "seat_count", "purchase_type",
+      "customer_name", "customer_email", "customer_document", "customer_doc_type", "customer_phone",
+      "nf_name", "nf_email", "nf_document", "nf_company",
+      "billing_street", "billing_number", "billing_complement", "billing_neighborhood",
+      "billing_city", "billing_state", "billing_zip", "students"
+    ]
+  },
+
+  "hosts_para_liberar_na_rede": [
+    "auth.contaazul.com",
+    "api-v2.contaazul.com",
+    "api.pagar.me"
+  ]
+}
