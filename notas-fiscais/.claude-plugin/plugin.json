@@ -1,6 +1,6 @@
 {
   "name": "notas-fiscais",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Emite a NF da certificacao GTM Engineer sem envolver o Matheus: descobre a compra no Supabase e Pagar.me, cadastra o cliente e cria a venda aprovada no Conta Azul (API v2), e orienta o clique de Emitir Nota no painel.",
   "author": {
     "name": "SCIENT"

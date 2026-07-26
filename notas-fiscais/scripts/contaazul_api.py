@@ -33,13 +33,19 @@ from contaazul_auth import get_access_token  # noqa: E402
 API_BASE = os.environ.get("CONTAAZUL_API_BASE", "https://api-v2.contaazul.com")
 
 
+def _bearer():
+    # No modelo compartilhado (Supabase), o agente injeta um access_token valido
+    # via CONTAAZUL_ACCESS_TOKEN e evita renovar. Fora disso, cai no fluxo padrao.
+    return os.environ.get("CONTAAZUL_ACCESS_TOKEN") or get_access_token()
+
+
 def _req(method, path, params=None, body=None):
     url = API_BASE + path
     if params:
         url += "?" + urllib.parse.urlencode({k: v for k, v in params.items() if v is not None})
     data = json.dumps(body).encode() if body is not None else None
     req = urllib.request.Request(url, data=data, method=method)
-    req.add_header("Authorization", "Bearer " + get_access_token())
+    req.add_header("Authorization", "Bearer " + _bearer())
     if data is not None:
         req.add_header("Content-Type", "application/json")
     try:

@@ -48,6 +48,22 @@ Pagar.me (mostre a diferença, não corrija sozinho). A quantidade na venda = se
 - **PJ:** cartão CNPJ da empresa e e-mail para direcionamento da NF.
 Preencha o que já veio do Supabase; peça só o que faltar.
 
+### 6b. Token da Conta Azul (faça ANTES de qualquer chamada à API da Conta Azul)
+O token fica **compartilhado no Supabase** (tabela `conta_azul_oauth`, `id='default'`),
+para o time todo usar. Sequência:
+1. Leia via MCP: `SELECT refresh_token, access_token, access_expires_at FROM conta_azul_oauth WHERE id='default'`.
+2. Se `refresh_token` for NULL → o plugin ainda **não foi configurado**; avise o operador
+   que falta o refresh_token inicial (setup único) e pare a parte da Conta Azul.
+3. Se `access_token` existir e `access_expires_at` > agora + 1 min → **reutilize** esse
+   access_token (não renove).
+4. Senão, renove:
+   `CONTAAZUL_REFRESH_TOKEN="<refresh_token>" python3 "${CLAUDE_PLUGIN_ROOT}/scripts/contaazul_auth.py" --json`
+   → devolve `{access_token, refresh_token, access_expires_at}`. **Grave de volta** via MCP:
+   `UPDATE conta_azul_oauth SET refresh_token=$1, access_token=$2, access_expires_at=$3, updated_at=now(), updated_by=$4 WHERE id='default'`
+   (o refresh_token rotaciona — gravar o novo é obrigatório).
+5. Nas chamadas do `contaazul_api.py`, injete o token válido:
+   `CONTAAZUL_ACCESS_TOKEN="<access_token>" python3 "${CLAUDE_PLUGIN_ROOT}/scripts/contaazul_api.py" ...`
+
 ### 7. Conta Azul — cliente
 - Procure primeiro: `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/contaazul_api.py" find-pessoa --documento <cpf/cnpj>` (ou `--email`).
 - Se existir, use o `id`. Se não, monte o JSON e crie com `create-pessoa --json -`

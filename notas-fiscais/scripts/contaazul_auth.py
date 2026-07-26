@@ -17,7 +17,9 @@ Uso:
   python3 contaazul_auth.py            # imprime um access_token valido
   python3 contaazul_auth.py --force    # ignora cache e renova
 """
+import argparse
 import base64
+import datetime
 import json
 import os
 import sys
@@ -78,6 +80,27 @@ def _refresh(refresh_token):
         return json.loads(resp.read().decode())
 
 
+def refresh_tokens(refresh_token=None):
+    """Renova usando o refresh_token informado (ou CONTAAZUL_REFRESH_TOKEN do env) e
+    devolve o conjunto completo. Use no modelo de token COMPARTILHADO (Supabase):
+    o agente le o refresh_token do Supabase, chama isto e grava o resultado de volta."""
+    rt = refresh_token or os.environ.get("CONTAAZUL_REFRESH_TOKEN")
+    if not rt:
+        raise SystemExit("ERRO: informe --refresh-token ou CONTAAZUL_REFRESH_TOKEN.")
+    tok = _refresh(rt)
+    access = tok.get("access_token")
+    if not access:
+        raise SystemExit("ERRO: refresh nao retornou access_token: " + json.dumps(tok))
+    expires_in = int(tok.get("expires_in", 3600))
+    exp_dt = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(seconds=expires_in)
+    return {
+        "access_token": access,
+        "refresh_token": tok.get("refresh_token", rt),
+        "expires_in": expires_in,
+        "access_expires_at": exp_dt.replace(microsecond=0).isoformat(),
+    }
+
+
 def get_access_token(force=False):
     cache = _load_cache()
     now = int(time.time())
@@ -107,5 +130,14 @@ def get_access_token(force=False):
 
 
 if __name__ == "__main__":
-    force = "--force" in sys.argv
-    print(get_access_token(force=force))
+    p = argparse.ArgumentParser(description="Auth OAuth2 Conta Azul")
+    p.add_argument("--json", action="store_true",
+                   help="modelo compartilhado: renova e imprime JSON completo (p/ gravar no Supabase)")
+    p.add_argument("--refresh-token", dest="refresh_token",
+                   help="refresh_token a usar (senao usa CONTAAZUL_REFRESH_TOKEN)")
+    p.add_argument("--force", action="store_true", help="modo arquivo-cache: ignora cache")
+    a = p.parse_args()
+    if a.json:
+        print(json.dumps(refresh_tokens(a.refresh_token), ensure_ascii=False))
+    else:
+        print(get_access_token(force=a.force))

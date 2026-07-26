@@ -26,7 +26,13 @@
       "opcao_condicao_pagamento": "À vista",
       "_nota": "Educacao = sempre CARTAO_CREDITO e SEM boleto (tipo_pagamento != BOLETO_BANCARIO). A tributacao usada e a PADRAO ja cadastrada no servico."
     },
-    "env": ["CONTAAZUL_CLIENT_ID", "CONTAAZUL_CLIENT_SECRET", "CONTAAZUL_REFRESH_TOKEN"]
+    "env_fixas": ["CONTAAZUL_CLIENT_ID", "CONTAAZUL_CLIENT_SECRET"],
+    "token_store": {
+      "modo": "supabase_compartilhado",
+      "tabela": "conta_azul_oauth",
+      "id": "default",
+      "_nota": "O refresh_token rotaciona a cada renovacao, entao NAO fica em variavel de ambiente. Fica no Supabase (tabela conta_azul_oauth), lido/atualizado pelo agente via conector MCP. O access_token (1h) e reaproveitado; so renova quando access_expires_at passou. Setup inicial: gravar o primeiro refresh_token nessa linha (ver scripts/README.md)."
+    }
   },
 
   "pagarme": {
@@ -41,6 +47,7 @@
     "project_name": "gtme",
     "tabela_compras": "fila_compras",
     "tabelas_inscritos": ["inscritos_cohort3"],
+    "tabela_token_conta_azul": "conta_azul_oauth",
     "_nota": "Consulta via conector MCP do Supabase (execute_sql). fila_compras ja traz valor, seats, documento, doc_type (PF/PJ), endereco e campos de NF (nf_name, nf_email, nf_document, nf_company). Cohort 4 sera adicionado depois.",
     "campos_fila_compras": [
       "order_id", "paid_at", "amount_brl", "seat_count", "purchase_type",

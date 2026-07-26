@@ -38,8 +38,16 @@ Cada seat = **R$ 5.600** (desconto de até 15% em alguns casos). O **valor da no
 **nº de seats** são SEMPRE informados pelo operador; o Supabase/Pagar.me servem para
 conferir. Quantidade na venda = seats. Alerte divergências, não corrija sozinho.
 
+## Token da Conta Azul (compartilhado, para o time)
+O `refresh_token` rotaciona a cada renovação, então **não** fica em variável de ambiente.
+Fica no **Supabase**, tabela `conta_azul_oauth` (`id='default'`), lido/atualizado pelo
+agente. O `access_token` (1h) é reaproveitado; só renova quando expira. Fixas em variável
+de ambiente: `CONTAAZUL_CLIENT_ID`, `CONTAAZUL_CLIENT_SECRET`, `PAGARME_SECRET_KEY`.
+Setup inicial (gravar o 1º refresh_token) e detalhes em `scripts/README.md`.
+
 ## Segurança
-- Segredos só por variável de ambiente (`.env` local, fora do git): ver `.env.example`.
+- Segredos fixos só por variável de ambiente (idealmente no Environment compartilhado do
+  time); refresh_token no Supabase. Nada disso no git.
 - Confirme com o operador **antes de criar cliente e antes de criar venda**.
 - Credenciais atuais = conta de **teste** do Conta Azul (devportal).
 - Marca sempre SCIENT (maiúsculo); nunca usar travessão (—).
