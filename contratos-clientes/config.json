@@ -70,8 +70,16 @@
   },
 
   "homologacao": {
-    "modo": "informativo",
-    "_nota": "SEM PDF e SEM upload por enquanto. A skill de homologação só INFORMA (em texto) os dados abaixo e a lista de documentos quando o cliente pedir.",
+    "modo": "artefato_pronto",
+    "_nota": "O PDF 'Dados para Homologação' já existe (gerado 1x) e mora na pasta de homologação do Drive. Fluxo normal: só ENVIAR o link do PDF (abaixo) quando o cliente pedir. Para INFORMAR em texto, use os dados de dados_para_homologacao. Só REGERE o PDF se os dados mudarem (ver artefato_pdf.como_regerar).",
+    "artefato_pdf": {
+      "titulo": "Dados para Homologacao - SCIENT.pdf",
+      "file_id": "1N14ToqiwSL1bBnfN3-JOM-I3qqk4vIvK",
+      "link": "https://drive.google.com/file/d/1N14ToqiwSL1bBnfN3-JOM-I3qqk4vIvK/view",
+      "pasta_drive_id": "1NiZyZF9sTBB1mP-nIxJJFJq_silytG3C",
+      "como_regerar": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/gerar_homologacao_pdf.py\" \"Dados para Homologacao - SCIENT.pdf\" --data DD/MM/AAAA (usa reportlab+pillow; logo em assets/scient_logo.png; dados deste bloco). Arquivo fica ~16 KB, pequeno o bastante para subir pelo conector via base64.",
+      "_nota_upload": "A pasta é um Shared Drive. O upload pelo conector (create_file com parentId=pasta_drive_id + disableConversionToGoogleType) funciona porque stack@scient.cc é editor. Depois de subir uma versão nova, apague as antigas e ajuste o compartilhamento do link para clientes externos."
+    },
     "documentos": [
       "Contrato social",
       "Cartão CNPJ",

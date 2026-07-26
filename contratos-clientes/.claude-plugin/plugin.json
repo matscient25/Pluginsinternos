@@ -1,6 +1,6 @@
 {
   "name": "contratos-clientes",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Gera contratos de cliente da SCIENT a partir do template .docx: código de proposta/contrato, produto SCIENT, dados do CNPJ, título da proposta, e skill de homologação (docs + artefato Dados para Homologação).",
   "author": {
     "name": "SCIENT"

@@ -16,8 +16,8 @@
     {
       "name": "contratos-clientes",
       "source": "./contratos-clientes",
-      "description": "Gera contratos de cliente da SCIENT: código de proposta, produto, dados do CNPJ e título da proposta, com skill de homologação (docs + artefato Dados para Homologação).",
-      "version": "0.1.0"
+      "description": "Gera contratos de cliente da SCIENT: código de proposta, produto, dados do CNPJ e título da proposta, com skill de homologação (docs + PDF Dados para Homologação).",
+      "version": "0.2.0"
     }
   ]
 }

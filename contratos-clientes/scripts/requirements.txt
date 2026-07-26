@@ -1,0 +1,4 @@
+# Dependências do gerador do PDF de homologação (scripts/gerar_homologacao_pdf.py)
+# Instale com: pip install -r requirements.txt
+reportlab>=4.0
+pillow>=10.0
