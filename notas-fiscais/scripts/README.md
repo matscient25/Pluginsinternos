@@ -4,21 +4,25 @@ Só Python 3 (biblioteca padrão) — não precisa instalar nada.
 
 ## Modelo pensado para o TIME
 
-Para todo o time usar (via claude.ai web/desktop), configure **uma vez** no **Environment
-compartilhado** do Claude Code:
+Para todo o time usar (via claude.ai web/desktop), o Environment compartilhado precisa só de:
 
-- **Variáveis de ambiente (fixas):** `CONTAAZUL_CLIENT_ID`, `CONTAAZUL_CLIENT_SECRET`,
-  `PAGARME_SECRET_KEY`.
 - **Rede (allowlist):** `auth.contaazul.com`, `api-v2.contaazul.com`, `api.pagar.me`.
-- **Conector Supabase** disponível no ambiente (o agente usa para o token e para os dados).
+- **Conector Supabase** ativo (o agente usa para segredos, token e dados).
 
-O **refresh_token da Conta Azul NÃO vai em variável de ambiente** — ele rotaciona a cada
-renovação. Fica no **Supabase**, na tabela `conta_azul_oauth` (linha `id='default'`), lida
-e atualizada automaticamente pelo agente. O `access_token` (1h) é reaproveitado; só renova
-quando expira. Isso funciona para qualquer pessoa do time, em qualquer sessão.
+**Nenhum segredo vai no campo de variáveis de ambiente do Environment** — esse campo é
+visível a quem usa o ambiente. Tudo fica no **Supabase**:
+
+- Tabela `notas_fiscais_secrets`: `CONTAAZUL_CLIENT_ID`, `CONTAAZUL_CLIENT_SECRET`,
+  `PAGARME_SECRET_KEY`.
+- Tabela `conta_azul_oauth` (`id='default'`): `refresh_token` (rotaciona a cada renovação) +
+  `access_token` (1h, reaproveitado; só renova quando expira).
+
+O agente lê tudo via conector e injeta como env só na hora de chamar cada script. Funciona
+para qualquer pessoa do time, em qualquer sessão. Ambas as tabelas ficam com RLS ligado
+(só o service_role/conector acessa).
 
 Como as chaves já circularam em chat, **rotacione** quando puder (principalmente a `sk_` da
-Pagar.me).
+Pagar.me e o `client_secret`).
 
 ## Setup inicial (uma vez): gravar o primeiro refresh_token
 

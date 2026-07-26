@@ -9,6 +9,15 @@ seja preciso, confirme antes de qualquer escrita e **nunca invente dados**.
 
 Config e specs: `${CLAUDE_PLUGIN_ROOT}/config.json` e `${CLAUDE_PLUGIN_ROOT}/scripts/README.md`.
 
+## Segredos (leia uma vez, no início)
+Os segredos NÃO ficam em variável de ambiente (o campo do Environment é visível a quem usa
+o ambiente). Ficam no **Supabase**, tabela `notas_fiscais_secrets`, lidos via conector MCP:
+`SELECT name, value FROM notas_fiscais_secrets` → guarda `CONTAAZUL_CLIENT_ID`,
+`CONTAAZUL_CLIENT_SECRET`, `PAGARME_SECRET_KEY`. **Injete-os como variável de ambiente só
+na hora de chamar cada script** (ex.:
+`CONTAAZUL_CLIENT_ID="..." CONTAAZUL_CLIENT_SECRET="..." python3 ... contaazul_auth.py --json`
+e `PAGARME_SECRET_KEY="..." python3 ... pagarme_lookup.py ...`). Nunca imprima os valores.
+
 ## Limite importante (leia antes)
 A API da Conta Azul **NÃO emite NF** (só consulta). Você automatiza **até criar a venda
 aprovada**. O clique **"Emitir Nota"** é feito no painel do Conta Azul por uma pessoa.
@@ -29,7 +38,7 @@ Peça o **e-mail** (ou nome/empresa) do aluno e busque no Supabase via conector 
 Use SQL parametrizado/escapado. Cohort 4 será adicionado depois em `tabelas_inscritos`.
 
 ### 3. Redundância (Pagar.me)
-Rode `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/pagarme_lookup.py" --email <email>`
+Rode `PAGARME_SECRET_KEY="<do Supabase>" python3 "${CLAUDE_PLUGIN_ROOT}/scripts/pagarme_lookup.py" --email <email>`
 (ou `--nome` / `--documento`) e confira se o **valor** bate com o Supabase. Se a rede
 bloquear ou não achar, siga com o Supabase e avise.
 
@@ -56,8 +65,8 @@ para o time todo usar. Sequência:
    que falta o refresh_token inicial (setup único) e pare a parte da Conta Azul.
 3. Se `access_token` existir e `access_expires_at` > agora + 1 min → **reutilize** esse
    access_token (não renove).
-4. Senão, renove:
-   `CONTAAZUL_REFRESH_TOKEN="<refresh_token>" python3 "${CLAUDE_PLUGIN_ROOT}/scripts/contaazul_auth.py" --json`
+4. Senão, renove (injetando client_id/secret do Supabase):
+   `CONTAAZUL_CLIENT_ID="..." CONTAAZUL_CLIENT_SECRET="..." CONTAAZUL_REFRESH_TOKEN="<refresh_token>" python3 "${CLAUDE_PLUGIN_ROOT}/scripts/contaazul_auth.py" --json`
    → devolve `{access_token, refresh_token, access_expires_at}`. **Grave de volta** via MCP:
    `UPDATE conta_azul_oauth SET refresh_token=$1, access_token=$2, access_expires_at=$3, updated_at=now(), updated_by=$4 WHERE id='default'`
    (o refresh_token rotaciona — gravar o novo é obrigatório).

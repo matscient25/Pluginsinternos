@@ -38,16 +38,18 @@ Cada seat = **R$ 5.600** (desconto de até 15% em alguns casos). O **valor da no
 **nº de seats** são SEMPRE informados pelo operador; o Supabase/Pagar.me servem para
 conferir. Quantidade na venda = seats. Alerte divergências, não corrija sozinho.
 
-## Token da Conta Azul (compartilhado, para o time)
-O `refresh_token` rotaciona a cada renovação, então **não** fica em variável de ambiente.
-Fica no **Supabase**, tabela `conta_azul_oauth` (`id='default'`), lido/atualizado pelo
-agente. O `access_token` (1h) é reaproveitado; só renova quando expira. Fixas em variável
-de ambiente: `CONTAAZUL_CLIENT_ID`, `CONTAAZUL_CLIENT_SECRET`, `PAGARME_SECRET_KEY`.
-Setup inicial (gravar o 1º refresh_token) e detalhes em `scripts/README.md`.
+## Segredos e token (tudo no Supabase, para o time)
+**Nenhum segredo vai em variável de ambiente** (o campo do Environment é visível a quem
+usa o ambiente). Tudo fica no Supabase, lido pelo agente via conector e injetado como env
+só na hora de chamar cada script:
+- `notas_fiscais_secrets`: `CONTAAZUL_CLIENT_ID`, `CONTAAZUL_CLIENT_SECRET`, `PAGARME_SECRET_KEY`.
+- `conta_azul_oauth` (`id='default'`): `refresh_token` (rotaciona) + `access_token` (1h,
+  reaproveitado; só renova quando expira).
+Requisitos do Environment: rede liberada (`auth.contaazul.com`, `api-v2.contaazul.com`,
+`api.pagar.me`) e conector Supabase ativo. Detalhes em `scripts/README.md`.
 
 ## Segurança
-- Segredos fixos só por variável de ambiente (idealmente no Environment compartilhado do
-  time); refresh_token no Supabase. Nada disso no git.
+- Nenhum segredo no git nem no campo de env do Environment; tudo no Supabase (RLS on).
 - Confirme com o operador **antes de criar cliente e antes de criar venda**.
-- Credenciais atuais = conta de **teste** do Conta Azul (devportal).
+- Conta Azul em **produção** (empresa SCIENT) — venda/nota são reais.
 - Marca sempre SCIENT (maiúsculo); nunca usar travessão (—).
