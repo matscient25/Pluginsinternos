@@ -2,8 +2,8 @@
 
 Certificação GTM Engineer · SCIENT · aula ao vivo de 2 horas.
 
-- **Deck:** artifact de slides "Building GTM Handbooks & Skills" (28 slides, com notas do apresentador). Fonte dos slides em `aula/deck/` (um HTML por slide + `deck.json`).
-- **Interface visual da jornada:** `aula/jornada.html` (abrir em aba separada; usar nos slides 9 e 23).
+- **Deck:** artifact de slides "Building GTM Handbooks & Skills" (30 telas com cara de interface, racional da aula, com notas do apresentador). Fonte em `aula/deck/` (um HTML por slide + `deck.json`; gerador em `aula/deck/_gerador/`).
+- **Interface visual da jornada:** `aula/jornada.html` (apoio para tirar dúvidas sobre o fluxo).
 - **Plugin:** `gtm-handbooks` instalado no Claude que vai para o telão.
 - **Kit da demo:** `exemplo/vektor/` (Consultoria Vektor × TechScale, Challenger, tudo fictício).
 
@@ -11,33 +11,32 @@ Certificação GTM Engineer · SCIENT · aula ao vivo de 2 horas.
 
 ## Antes da aula (checklist do professor)
 
-- [ ] Plugin instalado e `/handbooks` respondendo numa conversa nova.
-- [ ] Kit `exemplo/vektor/` presente e `exemplo/vektor/saida-esperada/` aberto numa aba (plano B).
-- [ ] Preencher os colchetes dos slides 15 e 24 com os números de `exemplo/vektor/saida-esperada/03-analise/funil.md`.
-- [ ] Confirmar se pode citar o nome do cliente do case do slide 20 (educação). Se não, falar só "um cliente de educação".
-- [ ] Card do plugin publicado no skills.scient.cc e download testado com um login de aluno.
-- [ ] Interface `aula/jornada.html` aberta.
+- [ ] Deck aberto no modo apresentação (30 telas com cara de interface; a barra lateral mostra o passo da jornada).
+- [ ] Confirmar se pode citar o nome do cliente do case da tela 26 (educação). Se não, falar só "cliente de educação".
+- [ ] Card do kit publicado no skills.scient.cc e download testado com um login de aluno (citado na tela 29).
+- [ ] Opcional: plugin instalado e `exemplo/vektor/saida-esperada/` aberto, para a demo extra.
 - [ ] Não citar nenhum cliente com pessoa presente na turma.
 
 ---
 
-## Agenda (120 min)
+## Agenda (120 min) · o deck é o racional, não o manual do plugin
 
-| Tempo | Bloco | Slides | Objetivo |
+| Tempo | Bloco | Telas | O que a turma precisa sair entendendo |
 |---|---|---|---|
-| 0–5 | Abertura | 1–3 | Promessa: plugin, primeiro handbook, primeira skill |
-| 5–20 | 1 · Por que handbooks morrem | 4–7 | Handbook de gaveta × skill; conector é cozinha, skill é receita; 3 níveis |
-| 20–45 | 2 · O método | 8–13 | Declarado × observado × medido; 7 passos; 4 fontes; lente; tags |
-| 45–60 | 3 · O modelo de handbook | 14–16 | 13 seções; manchete é conclusão; passo com frase real e critério binário |
-| 60–80 | 4 · De handbook a skills | 17–21 | Anatomia; descrição; 5 tipos; case de 25 skills; testes |
-| 80–100 | 5 · Demo ao vivo | 22–24 | Plugin rodando no kit Vektor |
-| 100–120 | 6 · Mão na massa | 25–28 | Exercício de 18 min, régua de qualidade, instalação, regras de ouro |
+| 0–20 | Abertura e Por quê | 1–6 | Handbook morre na gaveta; a tese declarado × observado × medido; com IA o handbook vira execução; a jornada em 7 passos |
+| 20–45 | Coletar | 7–12 | As 4 fontes, o que cada uma revela, o que pedir em cada uma e quanto basta. Ênfase na fonte C (documentos), a que mais falta |
+| 45–53 | Lente | 13–14 | A metodologia é a lente; ela vira critério de passagem entre etapas |
+| 53–70 | Analisar | 15–18 | Cruzar as três visões; hipótese da gestão desmentida pelo funil; o que só aparece nos ganhos |
+| 70–90 | Documentar | 19–23 | O que documentar (um handbook por processo), anatomia em 3 camadas, manchete-conclusão, um passo bem feito, tags de evidência |
+| 90–101 | Executar | 24–26 | Cinco tipos de skill; antes, durante e depois da reunião; case de 25 skills |
+| 101–110 | Validar e fechar | 27–30 | Pronto/ajustar/refazer; handbook é produto; como começar amanhã; regras de ouro |
+| 110–120 | Perguntas (ou demo extra) | — | Ver abaixo |
 
-Cortes se atrasar: slide 21 (testes) e slide 7 (três níveis) viram fala de 30 segundos. Nunca corte o Bloco 6 abaixo de 15 min.
+Cortes se atrasar: telas 11 (pessoas) e 23 (tags) viram fala de 30 segundos.
 
 ---
 
-## Roteiro da demo (Bloco 5, 14 min)
+## Demo extra, opcional (fora do deck, 10 min)
 
 Abra uma conversa nova no Claude com o plugin. Narre cada passo em voz alta.
 
@@ -69,13 +68,13 @@ Se o plugin travar, a conexão cair ou a geração demorar mais de 3 min num pas
 
 ## Perguntas para a turma
 
-- Abertura: quem tem um playbook que o time abre toda semana?
-- Bloco 1: no último playbook que vocês escreveram, quanto veio do livro e quanto veio das reuniões?
-- Bloco 2: das 4 fontes, qual vocês conseguiriam pedir amanhã? Qual seria a mais difícil?
-- Bloco 2: qual metodologia o time de vocês realmente fala no dia a dia?
-- Bloco 3: qual seria a manchete do processo comercial de vocês hoje, em uma frase?
-- Bloco 4: alguém reescreve em voz alta a descrição fraca do slide 18?
-- Bloco 6: quem mostra a manchete do handbook que acabou de gerar?
+- Abertura (tela 3): no último playbook que vocês escreveram, quanto veio do livro e quanto veio das reuniões?
+- Coletar (tela 7): das 4 fontes, qual vocês conseguiriam pedir amanhã? Qual é a mais difícil?
+- Coletar (tela 10): que documento da empresa de vocês contradiz o que o time faz?
+- Lente (tela 13): qual metodologia o time realmente fala no dia a dia?
+- Analisar (tela 16): qual hipótese da gestão de vocês nunca foi testada no funil?
+- Documentar (tela 21): qual seria a manchete do processo comercial de vocês hoje, em uma frase?
+- Validar (tela 27): quem de fora do projeto poderia fazer o teste do vendedor novo?
 
 ---
 
