@@ -1,0 +1,29 @@
+<section id="b1-disclosure" data-transition="fade" style="background:#FFFFFF;color:#111111;font-family:'Sora', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:500;color:#0030E8;letter-spacing:3px;text-transform:uppercase">Bloco 1 · Como a skill carrega</p>
+<h2 style="font-size:72px;font-weight:400;line-height:1.1">Três níveis: só entra o que for preciso</h2>
+</div>
+<div style="display:flex;flex-direction:column">
+<div style="display:flex;gap:40px;align-items:center;padding:32px 40px;border:1px solid #E6E6E6;border-left:8px solid #0030E8">
+<p style="font-size:32px;font-weight:600;width:360px">1 · Frontmatter</p>
+<p style="font-size:28px;line-height:1.4;color:#585858;flex:1">Sempre carregado. Nome e descrição: diz ao Claude <b>quando</b> usar a skill.</p>
+</div>
+<div style="display:flex;gap:40px;align-items:center;padding:32px 40px;border:1px solid #E6E6E6;border-top:none;border-left:8px solid #A0B0E8">
+<p style="font-size:32px;font-weight:600;width:360px">2 · SKILL.md</p>
+<p style="font-size:28px;line-height:1.4;color:#585858;flex:1">Carregado quando a tarefa pede. Passos, regras e checklist da etapa.</p>
+</div>
+<div style="display:flex;gap:40px;align-items:center;padding:32px 40px;border:1px solid #E6E6E6;border-top:none;border-left:8px solid #E6E6E6">
+<p style="font-size:32px;font-weight:600;width:360px">3 · Arquivos</p>
+<p style="font-size:28px;line-height:1.4;color:#585858;flex:1">Lidos só se necessário: references/, scripts/, assets/. Perguntas, exemplos, templates.</p>
+</div>
+</div>
+<p style="font-size:36px;font-weight:300;line-height:1.35;width:1500px">Por isso dá para ter 25 skills de GTM sem lotar o contexto.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#585858">Fonte: The Complete Guide to Building Skills for Claude, Anthropic</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;text-align:right;font-size:24px;color:#585858">07</p>
+<aside>Bloco 1, 4 min.
+- Progressive disclosure, conceito do guia oficial.
+- Nível 1: o Claude lê o nome e a descrição de todas as skills o tempo todo. Por isso a descrição é a parte mais importante (voltamos a isso no Bloco 4).
+- Nível 2: o corpo só entra quando a tarefa bate com a descrição.
+- Nível 3: arquivos de apoio entram sob demanda. Ex.: banco de perguntas, objeções, template de e-mail.
+- Consequência prática: handbook grande vira skill enxuta + references.</aside>
+</section>

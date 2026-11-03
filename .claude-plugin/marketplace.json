@@ -24,6 +24,12 @@
       "source": "./notas-fiscais",
       "description": "Emite a NF da certificação GTM Engineer sem envolver o Matheus: descobre a compra (Supabase + Pagar.me), cadastra o cliente e cria a venda no Conta Azul, e orienta o clique de Emitir Nota.",
       "version": "0.2.0"
+    },
+    {
+      "name": "gtm-handbooks",
+      "source": "./gtm-handbooks",
+      "description": "GTM Handbooks & Skills Kit: transforma funil do CRM, transcrições de reuniões, documentos de processo e PPTs de proposta e de produto em handbooks operacionais por etapa e em skills que o time executa com o Claude. Agnóstico de metodologia (Challenger, MEDDPICC, SPIN, SPICED, BANT, GPCTBA, própria). 9 agentes, comece com /handbooks.",
+      "version": "1.0.0"
     }
   ]
 }

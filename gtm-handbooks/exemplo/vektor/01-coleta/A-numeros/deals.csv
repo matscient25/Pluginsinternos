@@ -1,0 +1,123 @@
+deal_id,conta,dono,segmento,valor_mensal,criado_em,status,fechado_em,motivo_perda,entrou_qualificacao,entrou_diagnostico,entrou_proposta,entrou_followup,entrou_contrato,custo_quantificado
+VK-0001,Lumen Log,Lucas Andrade,Logística,80000,2025-11-01,ganho,2025-12-23,,2025-11-04,2025-11-13,2025-11-27,2025-12-02,2025-12-17,sim
+VK-0002,Alta Saúde,Lucas Andrade,Varejo digital,110000,2025-11-03,ganho,2025-12-22,,2025-11-07,2025-11-16,2025-11-26,2025-12-08,2025-12-16,sim
+VK-0003,Orbe Mobi,Lucas Andrade,Logística,140000,2025-11-03,ganho,2025-12-29,,2025-11-06,2025-11-15,2025-11-29,2025-12-10,2025-12-19,sim
+VK-0004,Zeni Hub,Diego Ramos,Logística,150000,2025-11-07,perdido,2025-12-02,timing,2025-11-07,2025-11-18,,,,nao
+VK-0005,Brisa Labs,Patrícia Gomes,Saúde digital,210000,2025-11-08,perdido,2025-11-17,sem decisor,2025-11-09,,,,,nao
+VK-0006,Zeni Data,Lucas Andrade,Fintech,320000,2025-11-10,ganho,2026-01-07,,2025-11-14,2025-11-23,2025-11-29,2025-12-11,2025-12-26,sim
+VK-0007,Tropa Net,Patrícia Gomes,Saúde digital,160000,2025-11-10,perdido,2025-12-08,escolheu concorrente,2025-11-12,2025-11-24,,,,nao
+VK-0008,Zeni Labs,Lucas Andrade,Varejo digital,130000,2025-11-12,perdido,2025-12-16,sem budget,2025-11-14,2025-11-21,2025-12-01,2025-12-08,,sim
+VK-0009,Delta Hub,Patrícia Gomes,Logística,210000,2025-11-20,perdido,2025-12-01,escolheu concorrente,2025-11-20,2025-11-27,,,,nao
+VK-0010,Quanta Pay,Marina Costa,Varejo digital,110000,2025-11-22,perdido,2025-12-10,escolheu concorrente,2025-11-24,2025-12-02,,,,nao
+VK-0011,Tera Log,Marina Costa,Varejo digital,210000,2025-11-23,perdido,2025-12-04,sem decisor,2025-11-24,,2025-11-30,,,nao
+VK-0012,Delta Log,Marina Costa,Saúde digital,100000,2025-11-27,ganho,2026-01-04,,2025-11-27,,2025-12-06,2025-12-14,2025-12-29,nao
+VK-0013,Linha Data,Marina Costa,Saúde digital,180000,2025-11-28,perdido,2025-12-17,sem decisor,2025-11-29,2025-12-09,,,,sim
+VK-0014,Mira Labs,Lucas Andrade,Logística,180000,2025-12-01,ganho,2026-01-21,,2025-12-04,2025-12-08,2025-12-14,2025-12-25,2026-01-13,sim
+VK-0015,Quanta Hub,Diego Ramos,Scale-up SaaS,410000,2025-12-02,perdido,2025-12-22,sem decisor,2025-12-06,2025-12-12,,,,sim
+VK-0016,Hélix Net,Patrícia Gomes,Logística,190000,2025-12-07,perdido,2025-12-25,timing,2025-12-09,2025-12-21,,,,nao
+VK-0017,Zeni Commerce,Diego Ramos,Saúde digital,90000,2025-12-08,perdido,2026-01-10,escolheu concorrente,2025-12-12,,2025-12-22,2026-01-03,,nao
+VK-0018,Kora Go,Marina Costa,Saúde digital,180000,2025-12-09,perdido,2025-12-13,sem decisor,2025-12-10,,,,,nao
+VK-0019,Ponto Pay,Marina Costa,Fintech,280000,2025-12-11,perdido,2026-01-22,preço/hora,2025-12-11,,2025-12-20,2025-12-29,2026-01-13,nao
+VK-0020,Ponto Go,Patrícia Gomes,Logística,200000,2025-12-14,ganho,2026-02-09,,2025-12-15,2025-12-22,2026-01-05,2026-01-14,2026-02-01,nao
+VK-0021,Ícaro Log,Lucas Andrade,Fintech,150000,2025-12-17,perdido,2026-01-10,sem decisor,2025-12-19,2025-12-29,,,,nao
+VK-0022,Nexo Tech,Diego Ramos,Varejo digital,130000,2025-12-19,ganho,2026-02-18,,2025-12-22,2026-01-03,2026-01-16,2026-01-28,2026-02-07,nao
+VK-0023,Tropa Mobi,Diego Ramos,Logística,220000,2025-12-19,perdido,2026-02-07,preço/hora,2025-12-23,,2026-01-02,2026-01-09,2026-01-29,nao
+VK-0024,Brisa Commerce,Marina Costa,Scale-up SaaS,220000,2025-12-19,perdido,2026-01-05,escolheu concorrente,2025-12-22,2025-12-27,,,,nao
+VK-0025,Jade Bank,Lucas Andrade,Scale-up SaaS,410000,2025-12-22,ganho,2026-02-08,,2025-12-24,2025-12-29,2026-01-13,2026-01-24,2026-02-01,sim
+VK-0026,Vega Saúde,Lucas Andrade,Varejo digital,130000,2025-12-23,ganho,2026-02-09,,2025-12-26,2026-01-01,2026-01-15,2026-01-20,2026-01-29,sim
+VK-0027,Faro Go,Patrícia Gomes,Logística,150000,2025-12-25,perdido,2026-01-24,escolheu concorrente,2025-12-28,2026-01-09,,,,nao
+VK-0028,Tera Commerce,Patrícia Gomes,Varejo digital,180000,2025-12-27,ganho,2026-02-26,,2025-12-30,2026-01-09,2026-01-20,2026-01-30,2026-02-19,sim
+VK-0029,Delta Flow,Lucas Andrade,Scale-up SaaS,290000,2025-12-27,ganho,2026-02-08,,2025-12-30,2026-01-04,2026-01-16,2026-01-25,2026-02-03,sim
+VK-0030,Zeni Bank,Marina Costa,Scale-up SaaS,250000,2025-12-31,perdido,2026-01-25,sem decisor,2026-01-04,2026-01-11,,,,nao
+VK-0031,Kora Flow,Marina Costa,Saúde digital,240000,2026-01-02,perdido,2026-01-21,escolheu concorrente,2026-01-05,2026-01-14,,,,nao
+VK-0032,Mira Data,Diego Ramos,Fintech,230000,2026-01-03,perdido,2026-01-20,sem decisor,2026-01-05,,,,,nao
+VK-0033,Tropa Go,Lucas Andrade,Scale-up SaaS,450000,2026-01-07,perdido,2026-01-17,timing,2026-01-09,,,,,nao
+VK-0034,Faro Mobi,Diego Ramos,Fintech,170000,2026-01-07,perdido,2026-02-22,preço/hora,2026-01-10,,2026-01-25,2026-02-06,2026-02-18,nao
+VK-0035,Faro Cloud,Lucas Andrade,Logística,110000,2026-01-13,ganho,2026-02-28,,2026-01-13,2026-01-18,2026-01-28,2026-02-04,2026-02-21,sim
+VK-0036,Ponto Labs,Diego Ramos,Varejo digital,140000,2026-01-18,perdido,2026-01-29,sem decisor,2026-01-21,2026-01-26,,,,nao
+VK-0037,Rumo Log,Diego Ramos,Logística,190000,2026-01-23,perdido,2026-02-08,timing,2026-01-26,2026-02-04,,,,nao
+VK-0038,Tropa Labs,Marina Costa,Scale-up SaaS,400000,2026-01-26,perdido,2026-02-10,sem budget,2026-01-27,,,,,nao
+VK-0039,Prisma Mobi,Lucas Andrade,Scale-up SaaS,350000,2026-01-26,perdido,2026-01-31,sem budget,2026-01-27,,,,,nao
+VK-0040,Ponto Bank,Patrícia Gomes,Fintech,400000,2026-01-27,perdido,2026-02-17,timing,2026-01-27,2026-02-08,,,,sim
+VK-0041,Orbe Labs,Lucas Andrade,Saúde digital,150000,2026-02-01,ganho,2026-03-18,,2026-02-01,2026-02-11,2026-02-18,2026-02-25,2026-03-09,nao
+VK-0042,Tropa Bank,Patrícia Gomes,Logística,100000,2026-02-03,ganho,2026-03-27,,2026-02-03,2026-02-14,2026-02-27,2026-03-07,2026-03-19,sim
+VK-0043,Vega Net,Lucas Andrade,Scale-up SaaS,250000,2026-02-05,perdido,2026-03-18,sem budget,2026-02-08,2026-02-19,2026-02-27,2026-03-05,,sim
+VK-0044,Vértice Data,Patrícia Gomes,Logística,110000,2026-02-05,ganho,2026-03-25,,2026-02-06,2026-02-17,2026-03-01,2026-03-06,2026-03-14,sim
+VK-0045,Prisma Data,Lucas Andrade,Fintech,300000,2026-02-06,ganho,2026-03-27,,2026-02-10,2026-02-15,2026-02-25,2026-03-03,2026-03-16,sim
+VK-0046,Mira Pay,Lucas Andrade,Logística,90000,2026-02-08,perdido,2026-02-20,timing,2026-02-11,,,,,nao
+VK-0047,Hélix Pay,Diego Ramos,Logística,130000,2026-02-10,ganho,2026-04-12,,2026-02-14,2026-02-19,2026-03-05,2026-03-15,2026-04-04,nao
+VK-0048,Vega Mobi,Patrícia Gomes,Logística,180000,2026-02-16,perdido,2026-03-03,sem decisor,2026-02-20,,2026-02-27,,,nao
+VK-0049,Mira Hub,Marina Costa,Varejo digital,180000,2026-02-18,ganho,2026-04-06,,2026-02-19,2026-02-28,2026-03-15,2026-03-24,2026-04-01,sim
+VK-0050,Hélix Tech,Patrícia Gomes,Fintech,190000,2026-02-19,perdido,2026-03-10,preço/hora,2026-02-21,,2026-03-07,,,nao
+VK-0051,Alta Data,Lucas Andrade,Fintech,310000,2026-02-22,perdido,2026-03-12,sem decisor,2026-02-22,2026-03-01,,,,sim
+VK-0052,Tera Go,Patrícia Gomes,Varejo digital,250000,2026-02-25,perdido,2026-04-08,sem budget,2026-02-28,2026-03-05,2026-03-19,2026-03-28,,sim
+VK-0053,Tera Flow,Patrícia Gomes,Logística,180000,2026-03-05,perdido,2026-04-12,preço/hora,2026-03-08,2026-03-16,2026-03-24,2026-04-02,,nao
+VK-0054,Quanta Commerce,Patrícia Gomes,Logística,160000,2026-03-12,perdido,2026-04-02,sem decisor,2026-03-15,2026-03-22,,,,nao
+VK-0055,Mira Go,Marina Costa,Fintech,330000,2026-03-13,ganho,2026-04-28,,2026-03-13,,2026-03-27,2026-04-05,2026-04-18,nao
+VK-0056,Atlas Commerce,Diego Ramos,Scale-up SaaS,280000,2026-03-19,perdido,2026-04-19,escolheu concorrente,2026-03-20,,2026-03-29,2026-04-09,,nao
+VK-0057,Hélix Data,Marina Costa,Logística,170000,2026-03-25,perdido,2026-04-09,sem decisor,2026-03-28,,,,,nao
+VK-0058,Rumo Data,Diego Ramos,Fintech,350000,2026-03-26,perdido,2026-04-14,preço/hora,2026-03-29,,2026-04-07,,,nao
+VK-0059,Vértice Mobi,Lucas Andrade,Saúde digital,230000,2026-04-01,perdido,2026-05-08,timing,2026-04-04,2026-04-11,2026-04-23,,,sim
+VK-0060,Sigma Commerce,Marina Costa,Saúde digital,130000,2026-04-03,perdido,2026-04-28,escolheu concorrente,2026-04-04,2026-04-16,,,,nao
+VK-0061,Prisma Saúde,Patrícia Gomes,Scale-up SaaS,160000,2026-04-03,perdido,2026-04-29,preço/hora,2026-04-04,2026-04-11,2026-04-23,,,nao
+VK-0062,Linha Net,Patrícia Gomes,Varejo digital,210000,2026-04-09,ganho,2026-05-21,,2026-04-11,2026-04-17,2026-04-28,2026-05-04,2026-05-13,sim
+VK-0063,Orbe Hub,Lucas Andrade,Scale-up SaaS,160000,2026-04-10,ganho,2026-05-24,,2026-04-14,2026-04-21,2026-04-30,2026-05-08,2026-05-15,sim
+VK-0064,Linha Labs,Diego Ramos,Fintech,340000,2026-04-11,perdido,2026-04-24,timing,2026-04-15,2026-04-20,,,,nao
+VK-0065,Quanta Net,Patrícia Gomes,Saúde digital,180000,2026-04-12,perdido,2026-04-25,sem decisor,2026-04-14,2026-04-21,,,,nao
+VK-0066,Vértice Commerce,Diego Ramos,Varejo digital,140000,2026-04-16,ganho,2026-06-05,,2026-04-19,2026-04-29,2026-05-10,2026-05-15,2026-05-27,nao
+VK-0067,Zeni Flow,Diego Ramos,Logística,160000,2026-04-18,ganho,2026-06-04,,2026-04-19,,2026-05-01,2026-05-10,2026-05-25,nao
+VK-0068,Rumo Saúde,Lucas Andrade,Saúde digital,150000,2026-04-23,perdido,2026-06-16,timing,2026-04-24,2026-04-29,2026-05-10,2026-05-22,2026-06-01,sim
+VK-0069,Vega Labs,Diego Ramos,Varejo digital,140000,2026-04-28,perdido,2026-05-08,timing,2026-04-30,,,,,nao
+VK-0070,Orbe Go,Patrícia Gomes,Varejo digital,200000,2026-04-30,ganho,2026-06-07,,2026-05-01,2026-05-09,2026-05-19,2026-05-26,2026-06-03,sim
+VK-0071,Jade Hub,Diego Ramos,Scale-up SaaS,150000,2026-04-30,perdido,2026-05-09,timing,2026-04-30,2026-05-06,,,,nao
+VK-0072,Mira Net,Patrícia Gomes,Saúde digital,130000,2026-05-05,perdido,2026-06-02,sem budget,2026-05-09,2026-05-19,2026-05-30,,,sim
+VK-0073,Nuvia Saúde,Marina Costa,Saúde digital,180000,2026-05-11,perdido,2026-06-26,sem decisor,2026-05-12,,2026-05-26,2026-06-05,,nao
+VK-0074,Vega Tech,Patrícia Gomes,Scale-up SaaS,250000,2026-05-15,perdido,2026-06-19,escolheu concorrente,2026-05-16,2026-05-24,2026-06-04,2026-06-09,,nao
+VK-0075,Sigma Net,Diego Ramos,Scale-up SaaS,180000,2026-05-24,perdido,2026-07-05,preço/hora,2026-05-26,,2026-06-02,2026-06-09,2026-06-21,nao
+VK-0076,Tera Tech,Diego Ramos,Logística,100000,2026-05-25,perdido,2026-06-12,sem decisor,2026-05-27,2026-06-08,,,,nao
+VK-0077,Sigma Labs,Diego Ramos,Scale-up SaaS,160000,2026-06-01,perdido,2026-06-12,sem decisor,2026-06-04,2026-06-09,,,,nao
+VK-0078,Vértice Bank,Diego Ramos,Logística,90000,2026-06-05,perdido,2026-06-23,escolheu concorrente,2026-06-05,2026-06-12,,,,sim
+VK-0079,Jade Commerce,Patrícia Gomes,Saúde digital,130000,2026-06-07,perdido,2026-06-20,timing,2026-06-11,,,,,nao
+VK-0080,Zeni Tech,Marina Costa,Saúde digital,250000,2026-06-11,ganho,2026-07-26,,2026-06-14,2026-06-23,2026-07-03,2026-07-11,2026-07-22,sim
+VK-0081,Delta Net,Marina Costa,Varejo digital,250000,2026-06-19,perdido,2026-07-14,preço/hora,2026-06-22,,2026-07-02,2026-07-10,,nao
+VK-0082,Ponto Tech,Patrícia Gomes,Scale-up SaaS,340000,2026-06-19,perdido,2026-07-13,timing,2026-06-20,2026-06-28,,,,sim
+VK-0083,Tera Saúde,Marina Costa,Saúde digital,150000,2026-06-22,ganho,2026-08-09,,2026-06-22,2026-06-27,2026-07-03,2026-07-15,2026-07-28,sim
+VK-0084,Alta Hub,Diego Ramos,Saúde digital,170000,2026-06-24,perdido,2026-07-11,sem decisor,2026-06-28,,,,,nao
+VK-0085,Vértice Hub,Diego Ramos,Logística,190000,2026-06-28,perdido,2026-07-14,preço/hora,2026-07-01,,2026-07-08,,,nao
+VK-0086,Orbita Pay,Diego Ramos,Fintech,260000,2026-06-29,perdido,2026-08-14,preço/hora,2026-06-30,2026-07-07,2026-07-21,2026-07-31,,nao
+VK-0087,Brisa Flow,Patrícia Gomes,Scale-up SaaS,440000,2026-06-30,ganho,2026-08-22,,2026-07-04,2026-07-13,2026-07-21,2026-07-29,2026-08-16,sim
+VK-0088,Brisa Data,Lucas Andrade,Logística,180000,2026-06-30,ganho,2026-08-23,,2026-07-01,2026-07-06,2026-07-15,2026-07-25,2026-08-12,sim
+VK-0089,Ícaro Pay,Lucas Andrade,Saúde digital,140000,2026-07-06,perdido,2026-07-31,sem decisor,2026-07-10,,2026-07-17,,,nao
+VK-0090,Jade Tech,Marina Costa,Scale-up SaaS,290000,2026-07-07,perdido,2026-07-20,timing,2026-07-11,2026-07-16,,,,nao
+VK-0091,Jade Go,Lucas Andrade,Fintech,330000,2026-07-12,perdido,2026-08-30,preço/hora,2026-07-13,,2026-07-23,2026-08-01,2026-08-15,nao
+VK-0092,Faro Data,Diego Ramos,Scale-up SaaS,360000,2026-07-12,ganho,2026-08-24,,2026-07-12,,2026-07-23,2026-08-03,2026-08-13,nao
+VK-0093,Orbe Cloud,Marina Costa,Scale-up SaaS,250000,2026-07-20,perdido,2026-08-14,timing,2026-07-21,2026-08-02,,,,nao
+VK-0094,Faro Labs,Diego Ramos,Varejo digital,270000,2026-07-22,perdido,2026-08-15,timing,2026-07-26,2026-08-03,,,,nao
+VK-0095,Mira Flow,Diego Ramos,Logística,160000,2026-07-24,perdido,2026-08-16,preço/hora,2026-07-28,,2026-08-11,,,nao
+VK-0096,Atlas Labs,Lucas Andrade,Scale-up SaaS,190000,2026-07-26,perdido,2026-08-23,preço/hora,2026-07-29,,2026-08-11,,,nao
+VK-0097,Vértice Go,Lucas Andrade,Saúde digital,190000,2026-07-26,ganho,2026-09-16,,2026-07-26,2026-08-04,2026-08-16,2026-08-28,2026-09-09,sim
+VK-0098,Prisma Commerce,Marina Costa,Varejo digital,210000,2026-07-27,perdido,2026-08-11,escolheu concorrente,2026-07-27,2026-08-08,,,,nao
+VK-0099,Ícaro Mobi,Lucas Andrade,Fintech,180000,2026-07-31,ganho,2026-09-17,,2026-08-01,2026-08-08,2026-08-16,2026-08-27,2026-09-13,nao
+VK-0100,Orbe Log,Diego Ramos,Logística,110000,2026-08-03,ganho,2026-09-10,,2026-08-06,,2026-08-13,2026-08-19,2026-08-31,nao
+VK-0101,TechScale S/A,Lucas Andrade,Scale-up SaaS,380000,2026-08-03,ganho,2026-09-11,,2026-08-04,2026-08-10,2026-08-17,2026-08-24,2026-09-08,sim
+VK-0102,Tropa Tech,Lucas Andrade,Varejo digital,160000,2026-08-04,perdido,2026-08-28,sem decisor,2026-08-08,2026-08-14,,,,nao
+VK-0103,Quanta Labs,Marina Costa,Saúde digital,160000,2026-08-13,perdido,2026-09-04,timing,2026-08-14,2026-08-26,,,,nao
+VK-0104,Linha Commerce,Patrícia Gomes,Fintech,190000,2026-08-16,perdido,2026-09-03,escolheu concorrente,2026-08-19,2026-08-29,,,,nao
+VK-0105,Faro Hub,Patrícia Gomes,Fintech,260000,2026-08-18,perdido,2026-09-03,escolheu concorrente,2026-08-21,2026-08-26,,,,nao
+VK-0106,Vega Hub,Marina Costa,Saúde digital,170000,2026-08-23,perdido,2026-09-26,preço/hora,2026-08-23,,2026-08-30,2026-09-11,,nao
+VK-0107,Orbe Tech,Marina Costa,Varejo digital,160000,2026-08-24,perdido,2026-09-02,timing,2026-08-24,,,,,nao
+VK-0108,Quanta Flow,Lucas Andrade,Logística,160000,2026-08-25,ganho,2026-10-21,,2026-08-29,2026-09-06,2026-09-15,2026-09-25,2026-10-11,sim
+VK-0109,Sigma Tech,Marina Costa,Scale-up SaaS,450000,2026-08-26,perdido,2026-09-23,escolheu concorrente,2026-08-30,2026-09-07,2026-09-15,,,nao
+VK-0110,Zeni Saúde,Diego Ramos,Scale-up SaaS,290000,2026-08-29,perdido,2026-09-16,timing,2026-09-02,,,,,nao
+VK-0111,Linha Hub,Patrícia Gomes,Scale-up SaaS,430000,2026-09-01,perdido,2026-09-07,sem decisor,2026-09-01,,,,,nao
+VK-0112,Lumen Go,Diego Ramos,Varejo digital,110000,2026-09-13,ganho,2026-10-29,,2026-09-16,,2026-09-30,2026-10-11,2026-10-24,nao
+VK-0113,Faro Net,Marina Costa,Varejo digital,230000,2026-09-17,perdido,2026-10-05,sem decisor,2026-09-21,,,,,nao
+VK-0114,Jade Net,Patrícia Gomes,Scale-up SaaS,380000,2026-09-21,perdido,2026-10-08,sem decisor,2026-09-24,,,,,nao
+VK-0115,Ícaro Go,Marina Costa,Varejo digital,160000,2026-09-26,perdido,2026-10-22,timing,2026-09-26,2026-10-08,,,,sim
+VK-0116,Tropa Data,Patrícia Gomes,Fintech,200000,2026-09-26,perdido,2026-10-15,sem decisor,2026-09-30,2026-10-10,,,,nao
+VK-0117,Jade Pay,Marina Costa,Varejo digital,140000,2026-09-27,perdido,2026-10-06,sem decisor,2026-09-29,,,,,nao
+VK-0118,Brisa Go,Patrícia Gomes,Varejo digital,270000,2026-10-06,perdido,2026-10-20,timing,2026-10-08,,,,,nao
+VK-0119,Atlas Flow,Lucas Andrade,Logística,130000,2026-10-08,aberto,,,2026-10-10,2026-10-19,2026-10-28,,,sim
+VK-0120,Jade Log,Marina Costa,Logística,200000,2026-10-08,perdido,2026-10-14,sem budget,2026-10-08,,,,,nao
+VK-0121,Jade Mobi,Diego Ramos,Logística,160000,2026-10-12,aberto,,,2026-10-13,,2026-10-19,2026-10-30,,nao
+VK-0122,Sigma Log,Marina Costa,Saúde digital,110000,2026-10-17,aberto,,,2026-10-17,2026-10-23,,,,sim

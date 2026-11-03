@@ -1,0 +1,638 @@
+<title>Jornada Handbooks & Skills</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lexend:wght@600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: uma coluna larga (1200px), trilho de 7 passos como peça central, painel detalhe | prévia do artefato. Identidade SCIENT: cantos retos, sem gradiente, azul só para ação e estado. */
+:root {
+  --bg: #FFFFFF;
+  --surface: #F5F6FA;
+  --surface-2: #ECEFF8;
+  --fg: #111111;
+  --muted: #585858;
+  --line: #E6E6E6;
+  --accent: #0030E8;
+  --accent-ink: #0030E8;
+  --accent-soft: #A0B0E8;
+  --accent-tint: #EDF0FD;
+  --on-accent: #FFFFFF;
+  --ok: #40E0A8;
+  --ok-ink: #0B6B4A;
+  --code-bg: #111111;
+  --code-fg: #E9ECF5;
+  --code-dim: #8A93AD;
+  --code-key: #A8B8E8;
+  --f-display: 'Sora', 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  --f-body: 'Sora', 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  --f-mark: 'Lexend', 'Sora', sans-serif;
+  --f-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --r: 2px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1E1E1E; --surface: #282828; --surface-2: #303030; --fg: #FFFFFF; --muted: #B4B4B4;
+    --line: #383838; --accent: #0030E8; --accent-ink: #A8B8E8; --accent-soft: #3A4E9E; --accent-tint: #1F2648;
+    --on-accent: #FFFFFF; --ok: #40E0A8; --ok-ink: #40E0A8; --code-bg: #111111; --code-fg: #E9ECF5;
+    --code-dim: #8A93AD; --code-key: #A8B8E8; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1E1E1E; --surface: #282828; --surface-2: #303030; --fg: #FFFFFF; --muted: #B4B4B4;
+  --line: #383838; --accent: #0030E8; --accent-ink: #A8B8E8; --accent-soft: #3A4E9E; --accent-tint: #1F2648;
+  --on-accent: #FFFFFF; --ok: #40E0A8; --ok-ink: #40E0A8; --code-bg: #111111; --code-fg: #E9ECF5;
+  --code-dim: #8A93AD; --code-key: #A8B8E8; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--f-body); font-size: 15px; line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 1200px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 900px) { .wrap { padding-left: max(48px, env(safe-area-inset-left, 0px)); padding-right: max(48px, env(safe-area-inset-right, 0px)); } }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
+p { margin: 0; }
+code, .mono { font-family: var(--f-mono); font-size: .86em; }
+a { color: var(--accent-ink); }
+:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
+
+.eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
+.label { font-size: 10.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+/* Topo */
+.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 60px; }
+.mark { font-family: var(--f-mark); font-weight: 600; letter-spacing: .08em; font-size: 17px; }
+.mark span { color: var(--muted); font-family: var(--f-body); font-weight: 400; letter-spacing: 0; font-size: 13px; margin-left: 12px; }
+@media (max-width: 560px) { .mark span { display: none; } }
+.btn { font-family: var(--f-body); font-size: 13px; font-weight: 500; padding: 10px 18px; border-radius: var(--r); cursor: pointer; border: 1px solid transparent; display: inline-flex; align-items: center; gap: 8px; }
+.btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-ghost { background: transparent; color: var(--fg); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--accent-ink); color: var(--accent-ink); }
+.btn[disabled] { opacity: .35; cursor: default; }
+kbd { font-family: var(--f-mono); font-size: 11px; border: 1px solid currentColor; border-radius: 2px; padding: 0 4px; opacity: .8; }
+
+/* Hero */
+.hero { padding-block: 64px 48px; display: grid; gap: 36px; }
+.hero h1 { font-weight: 300; font-size: clamp(34px, 5.4vw, 60px); line-height: 1.08; letter-spacing: -.02em; max-width: 14ch; }
+.thesis { font-size: clamp(17px, 1.8vw, 21px); font-weight: 300; max-width: 52ch; color: var(--fg); }
+.thesis strong { font-weight: 600; }
+.triad { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--fg); }
+.triad > div { padding: 18px 20px 4px 0; display: grid; gap: 6px; }
+.triad > div + div { padding-left: 20px; border-left: 1px solid var(--line); }
+.triad h3 { font-size: 18px; font-weight: 600; }
+.triad p { color: var(--muted); font-size: 13.5px; }
+.triad .tag { font-family: var(--f-mono); font-size: 11px; color: var(--accent-ink); }
+@media (max-width: 720px) { .triad { grid-template-columns: 1fr; } .triad > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); } }
+
+section.block { padding-block: 56px; border-top: 1px solid var(--line); }
+.section-head { display: grid; gap: 8px; margin-bottom: 32px; max-width: 64ch; }
+.section-head h2 { font-size: clamp(24px, 2.6vw, 30px); font-weight: 400; letter-spacing: -.01em; }
+.section-head p { color: var(--muted); }
+
+/* Trilho */
+.rail { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); position: relative; margin-bottom: 28px; }
+.rail::before { content: ""; position: absolute; left: 0; right: 0; top: 19px; height: 1px; background: var(--line); }
+.step { background: none; border: 0; padding: 0 8px 12px 0; text-align: left; cursor: pointer; display: grid; gap: 10px; position: relative; color: var(--fg); font-family: var(--f-body); }
+.step .dot { width: 38px; height: 38px; border-radius: var(--r); border: 1px solid var(--line); background: var(--bg); display: grid; place-items: center; font-family: var(--f-mono); font-size: 14px; font-weight: 500; color: var(--muted); position: relative; transition: background .2s, color .2s, border-color .2s; }
+.step .name { font-size: 15px; font-weight: 600; }
+.step .q { font-size: 12px; color: var(--muted); line-height: 1.4; }
+.step:hover .dot { border-color: var(--accent-ink); color: var(--accent-ink); }
+.step.done .dot { background: var(--accent-tint); border-color: var(--accent-soft); color: var(--accent-ink); }
+.step[aria-selected="true"] .dot { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.step[aria-selected="true"] .name { color: var(--accent-ink); }
+.step[aria-selected="true"]::after { content: ""; position: absolute; left: 0; right: 8px; bottom: 0; height: 2px; background: var(--accent); }
+@media (max-width: 860px) {
+  .rail { grid-template-columns: 1fr; gap: 0; }
+  .rail::before { left: 19px; right: auto; top: 0; bottom: 0; width: 1px; height: auto; }
+  .step { grid-template-columns: 38px 1fr; column-gap: 14px; row-gap: 2px; padding: 8px 0; align-items: center; }
+  .step .dot { grid-row: span 2; }
+  .step[aria-selected="true"]::after { display: none; }
+}
+
+/* Painel */
+.panel { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 32px; align-items: start; }
+@media (max-width: 960px) { .panel { grid-template-columns: 1fr; } }
+.detail { display: grid; gap: 22px; min-width: 0; }
+.detail .kicker { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.detail h3 { font-size: clamp(22px, 2.3vw, 28px); font-weight: 400; line-height: 1.25; letter-spacing: -.01em; }
+.facts { display: grid; grid-template-columns: 120px minmax(0, 1fr); border-top: 1px solid var(--line); }
+.facts > dt, .facts > dd { padding: 11px 0; border-bottom: 1px solid var(--line); margin: 0; }
+.facts > dt { font-size: 10.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding-top: 14px; }
+.facts > dd { font-size: 14px; }
+.facts ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 12px; padding: 2px 8px; border-radius: var(--r); background: var(--accent-tint); color: var(--accent-ink); white-space: nowrap; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.gate { border: 1px solid var(--accent-soft); background: var(--accent-tint); padding: 14px 16px; border-radius: var(--r); display: grid; gap: 4px; }
+.gate .label { color: var(--accent-ink); }
+.warn { border-left: 2px solid var(--fg); padding: 2px 0 2px 14px; display: grid; gap: 4px; }
+.nav-steps { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.preview { min-width: 0; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
+.preview-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.preview-head .file { font-family: var(--f-mono); font-size: 12.5px; color: var(--fg); }
+.fict { font-size: 10.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border: 1px dashed var(--muted); padding: 2px 7px; border-radius: var(--r); }
+.preview-body { padding: 20px; display: grid; gap: 16px; overflow-x: auto; }
+.doc { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 20px; display: grid; gap: 12px; min-width: 0; }
+.doc h4 { margin: 0; font-size: 16px; font-weight: 600; }
+.doc .sub { font-size: 12px; color: var(--muted); }
+pre.code { margin: 0; background: var(--code-bg); color: var(--code-fg); font-family: var(--f-mono); font-size: 12.5px; line-height: 1.6; padding: 16px 18px; border-radius: var(--r); overflow-x: auto; white-space: pre; }
+pre.code .k { color: var(--code-key); }
+pre.code .d { color: var(--code-dim); }
+table.t { width: 100%; border-collapse: collapse; font-size: 13px; }
+table.t th { text-align: left; font-size: 10.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 8px 10px 8px 0; border-bottom: 1px solid var(--fg); }
+table.t td { padding: 9px 10px 9px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.tabwrap { overflow-x: auto; }
+.st { font-family: var(--f-mono); font-size: 12px; white-space: nowrap; }
+.st.ok { color: var(--ok-ink); }
+.st.pend { color: var(--muted); }
+.quote { font-size: 14px; border-left: 2px solid var(--accent); padding-left: 12px; }
+.quote cite { display: block; font-style: normal; font-family: var(--f-mono); font-size: 11px; color: var(--muted); margin-top: 4px; }
+.scale { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.scale div { border: 1px solid var(--line); padding: 8px; font-size: 12px; border-radius: var(--r); display: grid; gap: 2px; background: var(--bg); }
+.scale b { font-family: var(--f-mono); font-size: 15px; color: var(--accent-ink); }
+@media (max-width: 520px) { .scale { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.kpis > div { padding: 12px 12px 12px 0; display: grid; gap: 2px; }
+.kpis > div + div { padding-left: 12px; border-left: 1px solid var(--line); }
+.kpis b { font-size: 22px; font-weight: 400; font-variant-numeric: tabular-nums; }
+.kpis span { font-size: 11px; color: var(--muted); line-height: 1.35; }
+@media (max-width: 520px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } .kpis > div:nth-child(3) { padding-left: 0; border-left: 0; } }
+.headline { font-size: 17px; font-weight: 600; line-height: 1.35; }
+.tri { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); }
+.tri > div { padding: 12px; display: grid; gap: 4px; font-size: 13px; }
+.tri > div + div { border-left: 1px solid var(--line); }
+.tri .label { color: var(--accent-ink); }
+.decision { background: var(--accent); color: var(--on-accent); padding: 10px 12px; font-size: 13px; border-radius: var(--r); }
+@media (max-width: 520px) { .tri { grid-template-columns: 1fr; } .tri > div + div { border-left: 0; border-top: 1px solid var(--line); } }
+.checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.checks li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; }
+.checks .box { width: 18px; height: 18px; border-radius: 2px; border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent); display: grid; place-items: center; font-size: 12px; margin-top: 2px; }
+.verdict { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.verdict > div { border: 1px solid var(--line); padding: 12px; border-radius: var(--r); display: grid; gap: 4px; font-size: 12.5px; color: var(--muted); background: var(--bg); }
+.verdict b { color: var(--fg); font-size: 14px; }
+.verdict .on { border-color: var(--ok); box-shadow: inset 0 0 0 1px var(--ok); }
+.verdict .on b::before { content: "● "; color: var(--ok); }
+@media (max-width: 520px) { .verdict { grid-template-columns: 1fr; } }
+
+/* Fontes */
+.flow-box { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
+.flow-box svg { display: block; width: 100%; min-width: 680px; height: auto; }
+.flow-legend { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 24px; }
+.flow-legend > div { display: grid; gap: 4px; align-content: start; }
+.flow-legend h3 { font-size: 15px; font-weight: 600; }
+.flow-legend p { font-size: 13px; color: var(--muted); }
+@media (max-width: 860px) { .flow-legend { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .flow-legend { grid-template-columns: 1fr; } }
+
+/* Agentes */
+.agents { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.agent { border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px; display: grid; gap: 8px; align-content: start; background: var(--bg); }
+.agent .top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.agent .nm { font-family: var(--f-mono); font-size: 13.5px; font-weight: 500; }
+.agent .ps { font-family: var(--f-mono); font-size: 11px; color: var(--muted); white-space: nowrap; }
+.agent p { font-size: 13px; color: var(--muted); }
+.agent .out { font-size: 12.5px; }
+.agent .out b { font-weight: 600; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.agent.center { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.agent.center p, .agent.center .ps, .agent.center .out b { color: var(--on-accent); opacity: .85; }
+.agent.center .nm { font-size: 16px; }
+@media (max-width: 860px) { .agents { grid-template-columns: repeat(2, minmax(0, 1fr)); } .agent.center { grid-column: 1 / -1; order: -1; } }
+@media (max-width: 520px) { .agents { grid-template-columns: 1fr; } }
+
+/* Rodapé */
+.foot { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; }
+@media (max-width: 860px) { .foot { grid-template-columns: 1fr; } }
+.install { display: grid; gap: 0; counter-reset: i; list-style: none; padding: 0; margin: 0; }
+.install li { counter-increment: i; display: grid; grid-template-columns: 34px 1fr; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.install li::before { content: counter(i); font-family: var(--f-mono); color: var(--accent-ink); font-size: 14px; }
+.install b { display: block; font-weight: 600; }
+.install span { color: var(--muted); font-size: 13.5px; }
+.rules { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; counter-reset: r; }
+.rules li { counter-increment: r; padding: 14px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 26px 1fr; gap: 8px; font-size: 13.5px; }
+.rules li::before { content: counter(r); font-family: var(--f-mono); color: var(--muted); }
+.rules b { font-weight: 600; }
+@media (max-width: 600px) { .rules { grid-template-columns: 1fr; } }
+footer.end { padding-block: 32px 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+footer.end .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+/* Modo apresentação */
+.pres-bar { display: none; }
+html.presenting .hide-pres { display: none; }
+html.presenting #jornada { border-top: 0; padding-block: 24px 40px; }
+html.presenting #jornada .section-head { display: none; }
+html.presenting .pres-bar { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+html.presenting .pres-bar .progress { flex: 1; height: 2px; background: var(--line); position: relative; }
+html.presenting .pres-bar .progress i { position: absolute; inset: 0 auto 0 0; background: var(--accent); transition: width .3s; }
+html.presenting .pres-bar .count { font-family: var(--f-mono); font-size: 13px; color: var(--muted); white-space: nowrap; }
+html.presenting .detail h3 { font-size: clamp(26px, 2.8vw, 36px); }
+html.presenting .facts > dd { font-size: 15.5px; }
+html.presenting .panel { animation: rise .35s ease-out; }
+@keyframes rise { from { transform: translateY(8px); opacity: .6; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="mark">SCIENT<span>Certificação GTM Engineer</span></div>
+    <button class="btn btn-primary" id="presBtn" type="button" aria-pressed="false">Modo apresentação <kbd>P</kbd></button>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero hide-pres">
+    <div style="display:grid;gap:18px">
+      <div class="eyebrow">Aula · Building GTM Handbooks &amp; Skills</div>
+      <h1>Building GTM Handbooks &amp; Skills</h1>
+      <p class="thesis">O handbook é o <strong>espelho do processo que funciona</strong>, não do processo ideal. Ele nasce do cruzamento de três visões, lidas pela lente da metodologia. Depois vira skill, e o time executa com o Claude.</p>
+    </div>
+    <div class="triad" aria-label="As três visões">
+      <div><span class="tag">[DECLARADO]</span><h3>O que a empresa diz</h3><p>Processos documentados, playbooks, PPT de proposta, PPT de produto, análises de ganho e perda.</p></div>
+      <div><span class="tag">[OBSERVADO]</span><h3>O que o time faz</h3><p>Transcrições de reuniões por etapa, de negócios ganhos, perdidos e em aberto.</p></div>
+      <div><span class="tag">[MEDIDO]</span><h3>O que dá resultado</h3><p>Funil do CRM: conversão por etapa, tempo de ciclo, motivos de perda.</p></div>
+    </div>
+  </div>
+
+  <section class="block" id="jornada" aria-labelledby="jornada-t">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">A jornada</div>
+        <h2 id="jornada-t">Sete passos, cada um com um gate de sim ou não</h2>
+        <p>Clique num passo para ver quem trabalha, o que entra, o que sai e como fica o artefato. Use as setas do teclado para avançar e <kbd>P</kbd> para o modo apresentação.</p>
+      </div>
+      <div class="pres-bar" aria-hidden="true">
+        <span class="count" id="presCount">Passo 0 de 6</span>
+        <div class="progress"><i id="presProg" style="width:0%"></i></div>
+        <button class="btn btn-ghost" type="button" id="presExit">Sair <kbd>Esc</kbd></button>
+      </div>
+      <div class="rail" role="tablist" aria-label="Passos da jornada" id="rail"></div>
+      <div class="panel" id="panel" role="tabpanel" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="block hide-pres" id="fontes" aria-labelledby="fontes-t">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Passo 1 · Coleta</div>
+        <h2 id="fontes-t">Quatro fontes de evidência entram numa lente só</h2>
+        <p>Transcrição sozinha não basta. O que faltava nas outras turmas era o lado declarado: processos escritos, conclusões de análises e os PPTs que o time realmente usa.</p>
+      </div>
+      <div class="flow-box">
+        <svg viewBox="0 0 980 380" role="img" aria-label="As fontes A Números, B Conversas, C Documentos e D Pessoas convergem na lente da metodologia, que gera o handbook, que gera as skills.">
+          <g font-family="Sora, sans-serif">
+            <g fill="none" stroke="var(--accent-soft)" stroke-width="1.5">
+              <path d="M262 58 C 360 58, 360 190, 430 190"/>
+              <path d="M262 146 C 350 146, 360 190, 430 190"/>
+              <path d="M262 234 C 350 234, 360 190, 430 190"/>
+              <path d="M262 322 C 360 322, 360 190, 430 190"/>
+            </g>
+            <g stroke="var(--accent)" stroke-width="1.5" fill="none">
+              <path d="M610 190 L 668 190"/><path d="M660 184 L 668 190 L 660 196"/>
+              <path d="M820 190 L 846 190"/><path d="M838 184 L 846 190 L 838 196"/>
+            </g>
+            <g>
+              <rect x="30" y="28" width="232" height="60" rx="2" fill="var(--bg)" stroke="var(--line)"/>
+              <text x="48" y="54" font-size="11" font-weight="600" letter-spacing="1.4" fill="var(--accent-ink)">A · NÚMEROS</text>
+              <text x="48" y="74" font-size="13.5" fill="var(--fg)">Export do funil do CRM</text>
+              <rect x="30" y="116" width="232" height="60" rx="2" fill="var(--bg)" stroke="var(--line)"/>
+              <text x="48" y="142" font-size="11" font-weight="600" letter-spacing="1.4" fill="var(--accent-ink)">B · CONVERSAS</text>
+              <text x="48" y="162" font-size="13.5" fill="var(--fg)">Transcrições por etapa</text>
+              <rect x="30" y="204" width="232" height="60" rx="2" fill="var(--bg)" stroke="var(--line)"/>
+              <text x="48" y="230" font-size="11" font-weight="600" letter-spacing="1.4" fill="var(--accent-ink)">C · DOCUMENTOS</text>
+              <text x="48" y="250" font-size="13.5" fill="var(--fg)">Processos, PPTs, win/loss</text>
+              <rect x="30" y="292" width="232" height="60" rx="2" fill="var(--bg)" stroke="var(--line)"/>
+              <text x="48" y="318" font-size="11" font-weight="600" letter-spacing="1.4" fill="var(--accent-ink)">D · PESSOAS</text>
+              <text x="48" y="338" font-size="13.5" fill="var(--fg)">3 entrevistas de 30 min</text>
+            </g>
+            <g>
+              <rect x="430" y="132" width="180" height="116" rx="2" fill="var(--fg)"/>
+              <text x="520" y="168" text-anchor="middle" font-size="11" font-weight="600" letter-spacing="1.4" fill="var(--bg)">LENTE DA</text>
+              <text x="520" y="186" text-anchor="middle" font-size="11" font-weight="600" letter-spacing="1.4" fill="var(--bg)">METODOLOGIA</text>
+              <text x="520" y="212" text-anchor="middle" font-size="12" fill="var(--bg)">Challenger, MEDDPICC,</text>
+              <text x="520" y="230" text-anchor="middle" font-size="12" fill="var(--bg)">SPIN ou a sua</text>
+            </g>
+            <g>
+              <rect x="668" y="150" width="152" height="80" rx="2" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.5"/>
+              <text x="744" y="184" text-anchor="middle" font-size="15" font-weight="600" fill="var(--fg)">Handbook</text>
+              <text x="744" y="206" text-anchor="middle" font-size="11.5" fill="var(--muted)">um por processo</text>
+              <rect x="846" y="150" width="112" height="80" rx="2" fill="var(--accent)"/>
+              <text x="902" y="184" text-anchor="middle" font-size="15" font-weight="600" fill="#FFFFFF">Skills</text>
+              <text x="902" y="206" text-anchor="middle" font-size="11.5" fill="#FFFFFF">o time executa</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="flow-legend">
+        <div><h3>A · Números</h3><p>Negócios com etapa, data de entrada em cada etapa, valor, dono, status e motivo de perda. Mostra onde o funil quebra.</p></div>
+        <div><h3>B · Conversas</h3><p>2 a 4 transcrições por etapa, de ganhos, perdidos e em aberto, com metadados. Mostra o comportamento que gera avanço.</p></div>
+        <div><h3>C · Documentos</h3><p>Processos escritos, playbooks, conclusões de win/loss, PPT de proposta, PPT de produto, preço, battlecards, ICP.</p></div>
+        <div><h3>D · Pessoas</h3><p>Top performer, gestor comercial e CS. Preenche o que não está escrito e explica divergências.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block hide-pres" id="agentes" aria-labelledby="agentes-t">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">O plugin</div>
+        <h2 id="agentes-t">Nove agentes, um maestro no centro</h2>
+        <p>Cada agente tem um papel e uma entrega. O maestro não escreve nada: ele lê o estado, aplica o gate e chama o próximo.</p>
+      </div>
+      <div class="agents" id="agents"></div>
+    </div>
+  </section>
+
+  <section class="block hide-pres" id="instalar" aria-labelledby="instalar-t">
+    <div class="wrap foot">
+      <div>
+        <div class="section-head" style="margin-bottom:16px">
+          <div class="eyebrow">Na sua empresa</div>
+          <h2 id="instalar-t">Como começar</h2>
+        </div>
+        <ol class="install">
+          <li><div><b>Baixe o plugin</b><span>Em <span class="mono">skills.scient.cc</span>, faça login e baixe o <span class="mono">.zip</span> do GTM Handbooks &amp; Skills Kit.</span></div></li>
+          <li><div><b>Instale no Claude</b><span>Configurações → Plugins → Adicionar, e envie o arquivo. No Claude Code: <span class="mono">/plugin install gtm-handbooks</span>.</span></div></li>
+          <li><div><b>Digite <span class="mono">/handbooks</span></b><span>O maestro abre o projeto, pergunta processos e metodologia e gera o data request.</span></div></li>
+          <li><div><b>Treine com o exemplo</b><span><span class="mono">/demo</span> roda a jornada inteira com a Consultoria Vektor, um caso fictício em Challenger.</span></div></li>
+        </ol>
+      </div>
+      <div>
+        <div class="section-head" style="margin-bottom:16px">
+          <div class="eyebrow">Regras de ouro</div>
+          <h2>Sete regras que o plugin segue</h2>
+        </div>
+        <ol class="rules">
+          <li><span><b>Nada inventado.</b> Toda afirmação leva tag de evidência.</span></li>
+          <li><span><b>O observado ganha do declarado.</b> Divergência fica registrada.</span></li>
+          <li><span><b>Frase real do cliente.</b> Pergunta, sinal e objeção vêm da transcrição, com fonte.</span></li>
+          <li><span><b>Critério de saída binário.</b> Toda etapa termina num sim ou não.</span></li>
+          <li><span><b>Faltou dado, para.</b> Lista o que falta e quem fornece.</span></li>
+          <li><span><b>Um handbook por processo.</b> De 3 a 5 etapas, checklist de até 15 itens.</span></li>
+          <li><span><b>Skill boa é skill usada.</b> Gatilho claro e teste com caso real.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="end hide-pres">
+  <div class="wrap"><span>SCIENT · Building GTM Handbooks &amp; Skills</span><span>Exemplos: Consultoria Vektor × TechScale, caso fictício para treinamento</span></div>
+</footer>
+
+<script>
+const FICT = '<span class="fict">Exemplo fictício</span>';
+const STEPS = [
+  {
+    n: 0, name: 'Escopo', short: 'Quais processos e qual metodologia?',
+    q: 'Quais processos vamos documentar, com qual metodologia, e quem aprova?',
+    inputs: ['Etapas do funil, com os nomes exatos do CRM', 'Metodologia adotada ou candidata', 'Dono do handbook e aprovador'],
+    agents: ['maestro'], cmd: '/iniciar', out: 'handbooks/<empresa>/ESTADO.md',
+    gate: 'Processos, metodologia e aprovador definidos por escrito.',
+    err: 'Escolher uma área ("handbook de vendas") em vez de um processo ("Diagnóstico").',
+    file: 'handbooks/vektor/ESTADO.md',
+    preview: `<pre class="code"><span class="k"># ESTADO</span> · Consultoria Vektor
+
+<span class="k">Metodologia</span>   Challenger (Dixon &amp; Adamson)
+<span class="k">Processos</span>     Qualificação · Diagnóstico · Proposta
+              Negociação/Contrato · Handoff CS
+<span class="k">Dono</span>          Head de Vendas
+<span class="k">Aprovador</span>     CRO
+
+<span class="k">Passo atual</span>   1 · Coleta
+<span class="d">Gate 0  ✅ escopo aprovado</span>
+<span class="d">Gate 1  ⏳ aguardando export do CRM</span></pre>
+<div class="doc"><div class="label">Por que um arquivo de estado</div><p style="font-size:13.5px">O maestro lê o ESTADO antes de agir e atualiza depois. Qualquer pessoa retoma o projeto de onde parou.</p></div>`
+  },
+  {
+    n: 1, name: 'Coleta', short: 'As 4 fontes chegaram?',
+    q: 'Temos evidência suficiente das quatro fontes para cada etapa?',
+    inputs: ['A · Export do funil do CRM', 'B · Transcrições por etapa (ganhos, perdidos, abertos)', 'C · Processos escritos, PPT de proposta, PPT de produto, win/loss', 'D · Entrevistas com top performer, gestor e CS'],
+    agents: ['coletor'], cmd: '/coleta', out: '01-coleta/inventario.md',
+    gate: 'Cada etapa tem 2 ou mais transcrições, o funil tem data por etapa e os documentos-chave chegaram.',
+    err: 'Pedir só transcrição e esquecer o que já está documentado: processos, conclusões e PPTs.',
+    file: '01-coleta/inventario.md',
+    preview: `<div class="doc"><h4>Inventário de evidências</h4><div class="sub">Validado pelo coletor</div>
+<div class="tabwrap"><table class="t"><thead><tr><th>Fonte</th><th>Item</th><th>Status</th><th>Observação</th></tr></thead><tbody>
+<tr><td>A</td><td>Export de negócios, 12 meses, data por etapa</td><td class="st ok">✓ ok</td><td>Motivo de perda preenchido</td></tr>
+<tr><td>B</td><td>Transcrições: 6 de um negócio ganho, 2 de perdidos</td><td class="st ok">✓ ok</td><td>Etapas com ≥ 2 reuniões</td></tr>
+<tr><td>C</td><td>Manual de vendas, PPT de proposta, PPT de produto, win/loss</td><td class="st ok">✓ ok</td><td>Manual parece desatualizado</td></tr>
+<tr><td>D</td><td>Entrevistas: top performer e gestor</td><td class="st pend">… 2 de 3</td><td>Falta CS</td></tr>
+</tbody></table></div></div>
+<div class="gate"><span class="label">Gate 1</span><span style="font-size:13.5px">Verde com ressalva: a entrevista de CS entra antes do handbook de Handoff.</span></div>`
+  },
+  {
+    n: 2, name: 'Lente', short: 'Como a metodologia vira critério?',
+    q: 'Como a metodologia escolhida vira critério de análise?',
+    inputs: ['Fonte oficial da metodologia: livro, site ou documento interno', 'Etapas do CRM (do Escopo)'],
+    agents: ['metodologista'], cmd: '/lente', out: '02-lente/lente.md',
+    gate: 'Todo elemento tem definição, evidência observável, escala 0 a 3 e etapa onde precisa aparecer.',
+    err: 'Copiar a teoria sem dizer o que conta como evidência numa conversa real.',
+    file: '02-lente/lente.md',
+    preview: `<div class="doc"><div class="label">Elemento · Teach</div><h4>Reframe</h4>
+<p style="font-size:13.5px">Uma perspectiva nova que liga os desafios do cliente a um problema maior que ele não via.</p>
+<div style="display:grid;gap:4px"><span class="label">Conta como evidência</span><span style="font-size:13.5px">O vendedor apresenta uma hipótese antes de perguntar, e o cliente hesita ou reformula a própria visão.</span></div>
+<div class="scale"><div><b>0</b>Ausente</div><div><b>1</b>Hipótese genérica, sem reação</div><div><b>2</b>Cliente reconhece o problema</div><div><b>3</b>Cliente muda o critério de decisão</div></div>
+<div class="quote">"Não tinha pensado assim."<cite>sinal de avanço · aparece na reunião de Qualificação</cite></div>
+<div style="display:grid;gap:4px"><span class="label">Erro comum</span><span style="font-size:13.5px">Cliente concorda na hora. Se ele concorda de cara, você não ensinou nada novo.</span></div></div>`
+  },
+  {
+    n: 3, name: 'Análise', short: 'Diz, faz, dá resultado?',
+    q: 'O que o time diz que faz, o que faz de fato e o que dá resultado?',
+    inputs: ['Inventário validado', 'Lente da metodologia'],
+    agents: ['analista-conversas', 'analista-funil', 'analista-documentos'], cmd: '/analise', out: '03-analise/ fichas, funil.md, declarado.md, sintese.md',
+    gate: 'Toda ficha tem citação com fonte e a síntese lista as divergências entre as três visões.',
+    err: 'Resumir a reunião em vez de extrair comportamento, pergunta e frase literal.',
+    file: '03-analise/fichas/techscale-diagnostico.md',
+    preview: `<div class="doc"><h4>TechScale · Diagnóstico · ganho</h4><div class="sub">Ficha de reunião pela lente Challenger</div>
+<div class="tabwrap"><table class="t"><thead><tr><th>Elemento</th><th>Nota</th><th>Evidência</th></tr></thead><tbody>
+<tr><td>Rational Drowning</td><td class="st">3</td><td>Custo do problema calculado com os dados do próprio cliente</td></tr>
+<tr><td>Tailor</td><td class="st">3</td><td>Perguntas separadas para o CTO e para o Head de Engenharia</td></tr>
+<tr><td>Take Control</td><td class="st">3</td><td>Cliente define o critério de sucesso; vendedor marca a proposta</td></tr>
+</tbody></table></div>
+<div class="quote">"É literalmente a minha vida."<cite>Head de Engenharia · sinal de Emotional Impact</cite></div></div>
+<div class="doc"><div class="label">Triangulação</div>
+<div class="tri"><div><span class="label">Declarado</span>Manual: proposta logo depois da qualificação</div><div><span class="label">Observado</span>Negócio ganho: diagnóstico antes da proposta</div><div><span class="label">Medido</span>Maior queda do funil entre Diagnóstico e Proposta</div></div>
+<div class="decision">Decisão: diagnóstico com custo quantificado passa a ser obrigatório.</div></div>`
+  },
+  {
+    n: 4, name: 'Handbook', short: 'Qual processo funciona?',
+    q: 'Qual é o processo que funciona, etapa por etapa?',
+    inputs: ['Síntese da análise', 'Lente', 'Modelo padrão de handbook (13 seções)'],
+    agents: ['redator-handbook'], cmd: '/handbook', out: '04-handbooks/<processo>.md e .html',
+    gate: 'De 3 a 5 passos, critério de saída binário e tag de evidência em toda afirmação.',
+    err: 'Documentar o ideal do livro em vez do que as conversas mostram.',
+    file: '04-handbooks/diagnostico.md',
+    preview: `<div class="doc"><div class="label">Handbook · Diagnóstico · Vektor</div>
+<p class="headline">Diagnóstico que termina com o custo do problema em reais leva 81% dos negócios para a proposta. Sem esse número, 28%.</p>
+<div class="kpis"><div><b>54%</b><span>Diagnóstico → Proposta</span></div><div><b>11 d</b><span>Tempo na etapa (mediana)</span></div><div><b>65%</b><span>Win rate com custo quantificado (15% sem)</span></div><div><b>18%</b><span>Perdas por preço/hora</span></div></div>
+<div class="sub">Os quatro números vêm do funil <span class="mono">[MEDIDO: funil.md]</span>, calculados pelo funil.py sobre os 122 negócios do kit. Exemplo fictício.</div></div>
+<div class="doc"><div class="label">4.3 · Passo</div><h4>Rational Drowning com o CTO</h4>
+<ul style="margin:0;padding-left:18px;font-size:13.5px;display:grid;gap:3px"><li>Montar o custo do problema com os números do Head de Engenharia</li><li>Registrar o valor no CRM, campo <span class="mono">custo_do_problema</span></li></ul>
+<div class="tabwrap"><table class="t"><thead><tr><th>DRI</th><th>SLA</th><th>Critério de saída</th></tr></thead><tbody><tr><td>AE</td><td>Na reunião</td><td>Cliente confirmou o custo em R$? sim / não</td></tr></tbody></table></div></div>`
+  },
+  {
+    n: 5, name: 'Skills', short: 'Como o time executa?',
+    q: 'Como o time executa o handbook com o Claude no dia a dia?',
+    inputs: ['Handbooks aprovados', 'Lente', 'Contexto da empresa'],
+    agents: ['arquiteto-skills'], cmd: '/gerar-skills', out: '05-skills/<skill>/SKILL.md e .skill',
+    gate: 'Toda skill tem gatilho claro, passos executáveis e passa no validador.',
+    err: 'Skill enciclopédia: copiar o handbook inteiro em vez de guiar a próxima ação.',
+    file: '05-skills/',
+    preview: `<pre class="code">05-skills/
+├── vektor-como-usar/     <span class="d">mestre: qual skill para cada tarefa</span>
+├── vektor-contexto/      <span class="d">empresa, ICP, personas, portfólio</span>
+├── vektor-challenger/    <span class="d">a lente da metodologia</span>
+├── vektor-qualificacao/
+├── vektor-diagnostico/   <span class="d">uma skill por etapa</span>
+├── vektor-proposta/
+├── vektor-negociacao/
+└── vektor-handoff-cs/</pre>
+<pre class="code"><span class="d">---</span>
+<span class="k">name:</span> vektor-diagnostico
+<span class="k">description:</span> Conduz a reunião de Diagnóstico da Vektor
+  no padrão Challenger: prepara hipóteses por stakeholder,
+  guia o Rational Drowning e registra o custo no CRM. Use
+  quando o AE disser "vou fazer o diagnóstico da conta X".
+<span class="d">---</span>
+<span class="k"># Diagnóstico · Vektor</span>
+1. Ler o hand-off da Qualificação no CRM
+2. Montar 3 hipóteses de causa, uma por papel
+3. ...</pre>`
+  },
+  {
+    n: 6, name: 'Validação', short: 'Um AE novo consegue usar?',
+    q: 'Um vendedor novo consegue usar sem precisar de coaching?',
+    inputs: ['Handbooks e skills', '1 caso real com 1 usuário do time'],
+    agents: ['revisor'], cmd: '/validar', out: '06-validacao/relatorio.md',
+    gate: 'Checklist todo em sim e teste com 1 usuário real registrado.',
+    err: 'Publicar sem testar com quem vai usar no dia a dia.',
+    file: '06-validacao/relatorio.md',
+    preview: `<div class="doc"><h4>Checklist do handbook</h4>
+<ul class="checks">
+<li><span class="box">✓</span>Toda etapa tem critério de entrada e de saída</li>
+<li><span class="box">✓</span>Todo passo tem DRI e onde registrar</li>
+<li><span class="box">✓</span>Perguntas vieram das transcrições, com fonte</li>
+<li><span class="box">✓</span>Toda objeção tem princípio e resposta real</li>
+<li><span class="box">✓</span>Sinais são frases reais do cliente</li>
+<li><span class="box">✓</span>Revisado por um AE sênior, com versão e dono</li>
+</ul></div>
+<div class="verdict"><div class="on"><b>Pronto</b>AE novo conduz a reunião só com o handbook</div><div><b>Ajustar</b>Entende, mas precisa adaptar muito</div><div><b>Refazer</b>Documentou teoria, não prática</div></div>`
+  }
+];
+
+const AGENTS = [
+  { nm: 'coletor', ps: 'passo 1', p: 'Gera o data request e valida o que chegou.', out: 'inventário de evidências' },
+  { nm: 'metodologista', ps: 'passo 2', p: 'Converte qualquer metodologia numa lente com escala 0 a 3.', out: 'lente.md' },
+  { nm: 'analista-conversas', ps: 'passo 3', p: 'Lê transcrições em lotes e gera uma ficha por reunião.', out: 'fichas com citação' },
+  { nm: 'revisor', ps: 'passo 6', p: 'Aplica os checklists e testa gatilho e execução das skills.', out: 'relatório de validação' },
+  { nm: 'maestro', ps: 'passos 0 a 6', p: 'Orquestra a jornada, mantém o ESTADO, aplica os gates e chama o próximo agente. Não escreve artefato.', out: 'ESTADO.md e o próximo passo', center: true },
+  { nm: 'analista-funil', ps: 'passo 3', p: 'Roda o script de funil e lê conversão, ciclo e perdas.', out: 'funil.md' },
+  { nm: 'arquiteto-skills', ps: 'passo 5', p: 'Transforma o handbook em skills e empacota.', out: 'SKILL.md e .skill' },
+  { nm: 'redator-handbook', ps: 'passo 4', p: 'Triangula as três visões e escreve no modelo padrão.', out: 'handbook por processo' },
+  { nm: 'analista-documentos', ps: 'passo 3', p: 'Extrai processo declarado, mensagem e provas dos docs e PPTs.', out: 'declarado.md' }
+];
+
+const rail = document.getElementById('rail');
+const panel = document.getElementById('panel');
+let current = 0;
+
+STEPS.forEach((s, i) => {
+  const b = document.createElement('button');
+  b.className = 'step'; b.type = 'button'; b.id = 'tab-' + i;
+  b.setAttribute('role', 'tab');
+  b.setAttribute('aria-controls', 'panel');
+  b.innerHTML = `<span class="dot">${s.n}</span><span class="name">${s.name}</span><span class="q">${s.short}</span>`;
+  b.addEventListener('click', () => go(i, true));
+  rail.appendChild(b);
+});
+
+function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+function render(i) {
+  const s = STEPS[i];
+  panel.innerHTML = `
+    <div class="detail">
+      <div class="kicker"><span class="eyebrow">Passo ${s.n} · ${s.name}</span></div>
+      <h3>${s.q}</h3>
+      <dl class="facts">
+        <dt>Entra</dt><dd><ul>${s.inputs.map(x => `<li>${esc(x)}</li>`).join('')}</ul></dd>
+        <dt>Quem faz</dt><dd><div class="chips">${s.agents.map(a => `<span class="chip">${a}</span>`).join('')}</div></dd>
+        <dt>Comando</dt><dd><span class="chip">${s.cmd}</span></dd>
+        <dt>Sai</dt><dd><span class="mono">${esc(s.out)}</span></dd>
+      </dl>
+      <div class="gate"><span class="label">Gate ${s.n} · sim ou não</span><span>${esc(s.gate)}</span></div>
+      <div class="warn"><span class="label">Erro comum</span><span>${esc(s.err)}</span></div>
+      <div class="nav-steps">
+        <button class="btn btn-ghost" type="button" id="prevBtn" ${i === 0 ? 'disabled' : ''}>← Anterior</button>
+        <button class="btn btn-ghost" type="button" id="nextBtn" ${i === STEPS.length - 1 ? 'disabled' : ''}>Próximo →</button>
+      </div>
+    </div>
+    <div class="preview">
+      <div class="preview-head"><span class="file">${esc(s.file)}</span>${FICT}</div>
+      <div class="preview-body">${s.preview}</div>
+    </div>`;
+  document.getElementById('prevBtn').addEventListener('click', () => go(i - 1, true));
+  document.getElementById('nextBtn').addEventListener('click', () => go(i + 1, true));
+}
+
+function go(i, fromUser) {
+  if (i < 0 || i >= STEPS.length) return;
+  current = i;
+  [...rail.children].forEach((b, k) => {
+    b.setAttribute('aria-selected', k === i ? 'true' : 'false');
+    b.tabIndex = k === i ? 0 : -1;
+    b.classList.toggle('done', k < i);
+  });
+  render(i);
+  document.getElementById('presCount').textContent = `Passo ${i} de ${STEPS.length - 1} · ${STEPS[i].name}`;
+  document.getElementById('presProg').style.width = (i / (STEPS.length - 1) * 100) + '%';
+  if (fromUser) { try { history.replaceState(null, '', '#passo-' + i); } catch (e) {} }
+}
+
+const agentsEl = document.getElementById('agents');
+AGENTS.forEach(a => {
+  const d = document.createElement('div');
+  d.className = 'agent' + (a.center ? ' center' : '');
+  d.innerHTML = `<div class="top"><span class="nm">${a.nm}</span><span class="ps">${a.ps}</span></div><p>${a.p}</p><div class="out"><b>Entrega</b>${a.out}</div>`;
+  agentsEl.appendChild(d);
+});
+
+const root = document.documentElement;
+const presBtn = document.getElementById('presBtn');
+function setPres(on) {
+  root.classList.toggle('presenting', on);
+  presBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  presBtn.innerHTML = on ? 'Sair da apresentação <kbd>Esc</kbd>' : 'Modo apresentação <kbd>P</kbd>';
+  if (on) {
+    document.getElementById('jornada').scrollIntoView({ block: 'start' });
+    if (root.requestFullscreen && !document.fullscreenElement) { root.requestFullscreen().catch(() => {}); }
+  } else if (document.fullscreenElement && document.exitFullscreen) {
+    document.exitFullscreen().catch(() => {});
+  }
+}
+presBtn.addEventListener('click', () => setPres(!root.classList.contains('presenting')));
+document.getElementById('presExit').addEventListener('click', () => setPres(false));
+document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && root.classList.contains('presenting')) setPres(false); });
+
+document.addEventListener('keydown', e => {
+  const t = e.target;
+  if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); go(current + 1, true); if (rail.contains(document.activeElement)) rail.children[current].focus(); }
+  else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(current - 1, true); if (rail.contains(document.activeElement)) rail.children[current].focus(); }
+  else if (e.key === 'p' || e.key === 'P') { setPres(!root.classList.contains('presenting')); }
+  else if (e.key === 'Escape' && root.classList.contains('presenting')) { setPres(false); }
+  else if (/^[0-6]$/.test(e.key)) { go(+e.key, true); }
+});
+
+function fromHash() {
+  const m = /^#passo-([0-6])$/.exec(location.hash);
+  go(m ? +m[1] : 0, false);
+}
+window.addEventListener('hashchange', fromHash);
+fromHash();
+</script>
