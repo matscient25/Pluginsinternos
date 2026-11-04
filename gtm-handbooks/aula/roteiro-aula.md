@@ -12,7 +12,7 @@ Certificação GTM Engineer · SCIENT · aula ao vivo de 2 horas.
 ## Antes da aula (checklist do professor)
 
 - [ ] Deck aberto no modo apresentação (34 telas com cara de interface; a barra lateral mostra o passo da jornada).
-- [ ] Confirmar se pode citar o nome do cliente do case da tela 30 (educação). Se não, falar só "cliente de educação".
+- [ ] Confirmar se pode citar o nome do cliente do case da tela 27 (educação). Se não, falar só "cliente de educação".
 - [ ] Card do kit publicado no skills.scient.cc e download testado com um login de aluno (citado na tela 33).
 - [ ] Opcional: plugin instalado e `exemplo/vektor/saida-esperada/` aberto, para a demo extra.
 - [ ] Não citar nenhum cliente com pessoa presente na turma.
