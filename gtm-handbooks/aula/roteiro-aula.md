@@ -19,7 +19,29 @@ Certificação GTM Engineer · SCIENT · aula ao vivo de 2 horas.
 
 ---
 
-## Agenda (120 min) · o deck é o racional, não o manual do plugin
+## Versão curta (35–40 min) · a que vai para a aula
+
+O deck principal mostra 18 telas; as outras 16 ficam ocultas (puladas na apresentação, marcadas como "extra"). A versão completa, com as 34 telas visíveis, está num deck à parte: "Building GTM Handbooks & Skills (versão completa)".
+
+| Passo | Telas (versão curta) | Min |
+|---|---|---|
+| Abertura | 1 Capa | 1 |
+| 1 · Por quê | 2 Por que ninguém usa o playbook · 3 Como a empresa vende de verdade (GPS) · 4 O que muda quando vira skill · 5 Os 7 passos | 9 |
+| 2 · Coletar | 6 O que pedir (4 fontes) · 7 Peça também o que já está escrito | 5 |
+| 3 · Metodologia | 8 A metodologia diz o que procurar | 2 |
+| 4 · Analisar | 9 Manual × prática · 10 Perdas por preço | 5 |
+| 5 · Documentar | 11 As 14 partes · 12 A rubrica | 5 |
+| 6 · Executar | 13 Os 5 tipos de skill · 14 Cliente real, 25 skills | 4 |
+| 7 · Melhoria contínua | 15 Duas reuniões, uma rubrica · 16 O que o vendedor recebe | 4 |
+| Fechamento | 17 Por onde começar · 18 Regras de ouro | 2 |
+
+Total ≈ 37 min. Para 30 min, corte 10 (perdas por preço) e 14 (case). Nunca corte 12, 15 e 16 (rubrica e coaching).
+
+Para mudar o que aparece na versão curta: editar `CURTA` em `aula/deck/_gerador/gen_deck.py` e rodar `python3 aula/deck/_gerador/gen_deck.py`. Para a completa: `DECK_COMPLETO=1 DECK_ROOT=aula/deck-completo python3 aula/deck/_gerador/gen_deck.py`.
+
+---
+
+## Agenda da versão completa (120 min) · o deck é o racional, não o manual do plugin
 
 | Tempo | Bloco | Telas | O que a turma precisa sair entendendo |
 |---|---|---|---|

@@ -2,7 +2,8 @@
 """Gera o deck 'Building GTM Handbooks & Skills' (racional da aula) com cara de interface."""
 import json, os, html, datetime
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # aula/deck
+ROOT = os.environ.get("DECK_ROOT") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # aula/deck
+COMPLETO = os.environ.get("DECK_COMPLETO") == "1"
 SL = os.path.join(ROOT, "slides")
 
 # paleta SCIENT
@@ -66,15 +67,34 @@ def topbar(crumb, idx, total):
             f'<p style="font-family:\'Lexend\', Arial, sans-serif;font-size:26px;font-weight:600;letter-spacing:3px;color:{INK}">SCIENT</p>'
             f'<p style="font-size:24px;color:{INK2}">Handbooks &amp; Skills&#160;&#160;›&#160;&#160;{crumb}</p>'
             f'<div style="flex:1"></div>'
-            f'<p style="font-size:24px;color:{INK2};font-variant-numeric:tabular-nums">{idx} / {total}</p></div>')
+            f'<p style="font-size:24px;color:{INK2};font-variant-numeric:tabular-nums">{idx if idx == 'extra' else f'{idx} / {total}'}</p></div>')
 
 SLIDES = []
 
 def screen(sid, active, crumb, eyebrow, title, body, notes):
     SLIDES.append(dict(id=sid, kind="screen", active=active, crumb=crumb, eyebrow=eyebrow, title=title, body=body, notes=notes))
 
+# Versão curta (35-40 min): telas visíveis e minutos de cada uma. As demais ficam ocultas (puladas na apresentação).
+CURTA = {"r-cover": 1, "r-gaveta": 2, "r-tese": 3, "r-ia": 2, "r-jornada": 2, "r-fontes": 2, "r-documentos": 3,
+         "r-lente": 2, "r-triangulacao": 3, "r-hipotese": 2, "r-anatomia": 2, "r-rubrica": 3, "r-skills": 2,
+         "r-case": 2, "r-coaching": 2, "r-coaching2": 2, "r-amanha": 1, "r-regras": 1}
+import re as _re
+if COMPLETO:
+    CURTA = None
+def visivel(sid):
+    return CURTA is None or sid in CURTA
+
+def notas(sid, txt):
+    if CURTA is None:
+        return txt
+    corpo = _re.sub(r"^[^.]*?\d+ min\.\s*", "", txt, count=1)
+    if sid not in CURTA:
+        return "[Tela extra, oculta na versão curta] " + corpo
+    return f"{CURTA[sid]} min. " + corpo
+
 def render_screen(s, idx, total):
-    return (f'<section id="{s["id"]}" data-transition="fade" style="background:{BG};color:{INK};{FONT};padding:48px;display:flex">'
+    hid = "" if visivel(s["id"]) else " hidden"
+    return (f'<section id="{s["id"]}" data-transition="fade"{hid} style="background:{BG};color:{INK};{FONT};padding:48px;display:flex">'
             f'<div style="flex:1;display:flex;flex-direction:column;background:{WIN};border:1px solid #D5D9E2;border-radius:4px;'
             f'box-shadow:0px 12px 40px rgba(17,17,17,0.08);overflow:hidden">'
             f'{topbar(s["crumb"], idx, total)}'
@@ -84,7 +104,7 @@ def render_screen(s, idx, total):
             f'<p style="font-size:24px;font-weight:600;color:{BLUE};letter-spacing:2px;text-transform:uppercase">{s["eyebrow"]}</p>'
             f'<h2 style="font-size:52px;font-weight:400;line-height:1.15;color:{INK}">{s["title"]}</h2></div>'
             f'{s["body"]}</div></div></div>'
-            f'<aside>{e(s["notes"])}</aside></section>')
+            f'<aside>{e(notas(s["id"], s["notes"]))}</aside></section>')
 
 # ─────────────────────────── CONTEÚDO ───────────────────────────
 
@@ -101,7 +121,7 @@ def render_cover(idx, total):
             f'<p style="font-size:36px;font-weight:300;line-height:1.4;color:#D9D9D9;width:1300px">Como documentar o processo comercial que funciona e transformar esse documento em skills que o time usa no dia a dia.</p>'
             f'<div style="flex:1"></div>'
             f'<div style="display:flex;gap:12px;flex-wrap:wrap">{steps}</div>'
-            f'<aside>{e("Abertura, 3 min. A aula é sobre racional: o que coletar, o que documentar e por quê. A ferramenta (o kit no skills.scient.cc) aparece só no fim. Pergunta para abrir: quem aqui tem um playbook que o time abre toda semana?")}</aside></section>')
+            f'<aside>{e(notas("r-cover", "Abertura, 3 min. A aula é sobre racional: o que coletar, o que documentar e por quê. A ferramenta (o kit no skills.scient.cc) aparece só no fim. Pergunta para abrir: quem aqui tem um playbook que o time abre toda semana?"))}</aside></section>')
 
 # 2 · visão geral
 screen("r-promessa", "0", "Visão geral", "Hoje", "O que vocês vão aprender hoje",
@@ -562,7 +582,7 @@ def render_regras(idx, total):
             f'<p style="font-size:24px;font-weight:600;letter-spacing:3px;color:{BLUE_L}">PARA LEVAR</p>'
             f'<h2 style="font-size:64px;font-weight:300;color:#FFFFFF">Sete regras de ouro</h2>'
             f'<div style="display:flex;flex-direction:column">{rows}</div>'
-            f'<aside>{e("Encerramento, 3 min. Leia as sete em voz alta. Abra para perguntas. Lembre: mandar o data request esta semana.")}</aside></section>')
+            f'<aside>{e(notas("r-regras", "Encerramento, 3 min. Leia as sete em voz alta. Abra para perguntas. Lembre: mandar o data request esta semana."))}</aside></section>')
 
 # ─────────────────────────── ESCRITA ───────────────────────────
 ORDER = ["r-cover", "r-promessa", "r-gaveta", "r-tese", "r-ia", "r-jornada", "r-fontes", "r-numeros", "r-conversas",
@@ -573,8 +593,14 @@ ORDER = ["r-cover", "r-promessa", "r-gaveta", "r-tese", "r-ia", "r-jornada", "r-
 def main():
     SLIDES.sort(key=lambda x: ORDER.index(x["id"]))
     os.makedirs(SL, exist_ok=True)
-    total = len(SLIDES)
-    for i, s in enumerate(SLIDES, 1):
+    total = sum(1 for x in SLIDES if visivel(x["id"]))
+    vis = 0
+    for s in SLIDES:
+        if visivel(s["id"]):
+            vis += 1
+            i = vis
+        else:
+            i = "extra"
         if s["kind"] == "cover":
             h = render_cover(i, total)
         elif s["kind"] == "regras":
@@ -597,6 +623,8 @@ def main():
         "s8": {"description": "Fechamento: por onde começar e regras de ouro", "start": "r-amanha"},
     }
     deck["cover"] = "r-cover"
+    if COMPLETO:
+        deck["title"] = "Building GTM Handbooks & Skills (versão completa)"
     deck.setdefault("faces", {})["ibm-plex-mono"] = {"family": "IBM Plex Mono", "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"}
     json.dump(deck, open(os.path.join(ROOT, "deck.json"), "w", encoding="utf-8"), ensure_ascii=False)
     print(total, "slides")
