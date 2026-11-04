@@ -8,7 +8,8 @@ SL = os.path.join(ROOT, "slides")
 # paleta SCIENT
 BG = "#EEF0F5"; WIN = "#FFFFFF"; RAIL = "#F7F8FC"; INK = "#111111"; INK2 = "#585858"
 LINE = "#E1E4EC"; BLUE = "#0030E8"; BLUE_S = "#E8ECFD"; BLUE_L = "#A0B0E8"; DARK = "#282828"; DARK2 = "#303030"
-GREEN = "#40E0A8"; WARN_BG = "#FFF1D6"; WARN = "#7A4F00"; CRIT_BG = "#FDE8E8"; CRIT = "#A3221A"
+GREEN = "#40E0A8"; WARN_BG = "#F1F2F5"; WARN = "#111111"; CRIT_BG = "#ECEDF1"; CRIT = "#111111"
+POS_BG = "#E8ECFD"; POS = "#0030E8"
 FONT = "font-family:'Sora', Arial, sans-serif"
 
 RAIL_ITEMS = [("0", "Visão geral"), ("1", "Por quê"), ("2", "Coletar"), ("3", "Metodologia"),
@@ -128,10 +129,10 @@ screen("r-gaveta", "1", "Por quê", "O problema", "Por que quase ninguém usa o 
                     + (chip("nunca aberto", CRIT_BG, CRIT) if alerta else ""),
                     18, f"align-items:center;padding:16px 22px;border-bottom:1px solid {LINE}")
                 for ext, cor, nome, meta, alerta in [
-                    ("PDF", "#B23A2E", "Playbook Comercial v3 FINAL", "editado há 14 meses · aberto 2 vezes", False),
-                    ("DOCX", "#2B5BBF", "Processo de vendas NOVO", "editado há 9 meses", True),
-                    ("PPTX", "#C2581C", "Treinamento de metodologia", "editado há 2 anos · aberto 1 vez", False),
-                    ("PPTX", "#C2581C", "Pitch institucional 2024", "editado há 18 meses · aberto 5 vezes", False)]),
+                    ("PDF", "#585858", "Playbook Comercial v3 FINAL", "editado há 14 meses · aberto 2 vezes", False),
+                    ("DOCX", "#585858", "Processo de vendas NOVO", "editado há 9 meses", True),
+                    ("PPTX", "#585858", "Treinamento de metodologia", "editado há 2 anos · aberto 1 vez", False),
+                    ("PPTX", "#585858", "Pitch institucional 2024", "editado há 18 meses · aberto 5 vezes", False)]),
             pad=0, gap=0, extra="overflow:hidden")
             + p("Cena comum na pasta de vendas de qualquer empresa (ilustrativo).", 24, INK2), 12, "flex:1.25")
         + col(
@@ -222,7 +223,7 @@ screen("r-numeros", "2", "Coletar › A. Números do CRM", "Fonte A · Números 
     "Bloco 2, 3 min. Linhas do exemplo fictício. A Ponto Pay pulou o diagnóstico e perdeu por preço: um caso é anedota, mas o CRM mostra se isso acontece com muitos negócios. O campo que mais falta nos CRMs é a data de entrada em cada etapa. Sem ela, só dá para ver se o negócio foi ganho ou perdido, e não onde ele parou.")
 
 # 9 · conversas
-G = chip("Ganho", "#DDF8EE", "#0B6B4A", grid=True); L = chip("Perdido", CRIT_BG, CRIT, grid=True)
+G = chip("Ganho", POS_BG, POS, grid=True); L = chip("Perdido", CRIT_BG, CRIT, grid=True)
 screen("r-conversas", "2", "Coletar › B. Gravações", "Fonte B · Gravações", "As gravações mostram o que os melhores vendedores fazem",
     card(f'<div style="display:grid;grid-template-columns:1.1fr 0.9fr 0.6fr 1.6fr;gap:14px;align-items:center">'
          + "".join(p(h, 24, INK2, 600) for h in ["Reunião", "Etapa", "Resultado", "Por que entra na amostra"])
@@ -260,7 +261,7 @@ screen("r-pessoas", "2", "Coletar › D. Entrevistas", "Fonte D · Entrevistas",
 
 # 12 · quanto basta
 def ingrediente(icon, nome, regra, status, ok=True):
-    st = chip(status, "#DDF8EE" if ok else WARN_BG, "#0B6B4A" if ok else WARN, 24)
+    st = chip(status, POS_BG if ok else WARN_BG, POS if ok else WARN, 24)
     return row(f'<div style="width:64px;height:64px;background:{BLUE_S};display:flex;align-items:center;justify-content:center;border-radius:4px"><x-icon name="{icon}" style="color:{BLUE};width:36px;height:36px"></x-icon></div>'
                + col(p(f"<b>{nome}</b>", 28) + p(regra, 24, INK2), 2, "flex:1") + st,
                20, f"align-items:center;padding:14px 20px;border-bottom:1px solid {LINE}")
@@ -380,12 +381,12 @@ screen("r-anatomia", "5", "Documentar", "O modelo de handbook", "As 14 partes de
 # 21 · topo
 screen("r-topo", "5", "Documentar", "Parte 0 · Em uma frase", "Comece o handbook pela conclusão",
     row(card(chip("TÍTULO QUE NÃO AJUDA", CRIT_BG, CRIT) + p("Handbook de Diagnóstico: visão geral do processo", 28, INK2), pad=24, gap=12, extra="flex:1")
-        + card(chip("TÍTULO QUE AJUDA", "#DDF8EE", "#0B6B4A") + p("Diagnóstico que termina com o custo do problema em reais leva 81% dos negócios para a proposta. Sem esse número, 28%.", 28, INK, 600), pad=24, gap=12, extra=f"flex:2;border-left:6px solid {BLUE}"), 20)
+        + card(chip("TÍTULO QUE AJUDA", POS_BG, POS) + p("Diagnóstico que termina com o custo do problema em reais leva 81% dos negócios para a proposta. Sem esse número, 28%.", 28, INK, 600), pad=24, gap=12, extra=f"flex:2;border-left:6px solid {BLUE}"), 20)
     + f'<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:16px">'
     + "".join(col(p(v, 48, BLUE, 300, "line-height:1") + p(l, 24, INK2), 8, f"background:{RAIL};padding:20px 22px")
               for v, l in [("54%", "passam do Diagnóstico para a Proposta"), ("81% × 28%", "avançam com e sem o custo calculado"), ("12 de 15", "perdas por preço vieram de quem pulou o Diagnóstico")])
     + '</div>'
-    + p(f'<span style="color:{CRIT}"><b>Falta informação:</b></span> o CRM não tem um campo para o custo do problema. Quem resolve: RevOps.', 26, INK),
+    + p('<b>Falta informação:</b> o CRM não tem um campo para o custo do problema. Quem resolve: RevOps.', 26, INK2),
     "Bloco 5, 4 min. O título que não ajuda só diz o tema. O título que ajuda já diz o que fazer e por quê. Embaixo, no máximo quatro números, todos do CRM. E o que falta aparece logo no topo, com quem vai resolver. Pergunta para a turma: qual seria a frase de abertura do processo de vocês hoje?")
 
 # 22 · passo
@@ -397,7 +398,7 @@ screen("r-passo", "5", "Documentar", "Parte 4 · Passo a passo", "Como escrever 
                + col(p("PERGUNTA QUE FUNCIONOU", 24, INK2, 600)
                      + p("“Qual é o custo mensal de manter um squad de oito pessoas, com encargos?”", 26, INK, 600)
                      + p("Reunião ganha com a TechScale, minuto 43:22", 24, BLUE), 8, "flex:1"), 32)
-         + p("⚠&#160;&#160;Cuidado: aceitar “custa, né” como resposta. Sem um número, só 28% dos negócios avançam.", 26, WARN, 400, f"background:{WARN_BG};padding:14px 18px")
+         + p("<b>Cuidado:</b> aceitar “custa, né” como resposta. Sem um número, só 28% dos negócios avançam.", 26, INK, 400, f"background:{RAIL};border-left:4px solid {BLUE};padding:14px 18px")
          + row(chip("Quem faz: o vendedor", RAIL, INK) + chip("Quando: na própria reunião", RAIL, INK)
                + chip("Pronto quando: o cliente confirmou o custo em R$", BLUE, "#FFFFFF"), 12, "flex-wrap:wrap"),
          pad=28, gap=20),
@@ -427,19 +428,24 @@ screen("r-tags", "5", "Documentar", "Fontes", "Mostre de onde vem cada informaç
            + tag("FALTA INFORMAÇÃO", "Propostas enviadas · o gestor comercial vai trazer", CRIT_BG, CRIT), pad=20, gap=0),
     "Bloco 5, 3 min. As etiquetas separam o que é fato do que é opinião. Quando alguém discordar de um passo, a etiqueta mostra de onde ele veio. No plugin, as etiquetas aparecem como OBSERVADO, DECLARADO, MEDIDO, HIPÓTESE e PRECISA DE DADO.")
 
+# componente: lista de arquivos de skill
+MONO = "font-family:'IBM Plex Mono', monospace"
+def arquivo(nome, desc, direita):
+    return row(f'<div style="width:52px;height:52px;background:{BLUE_S};display:flex;align-items:center;justify-content:center;border-radius:4px"><x-icon name="Book" style="color:{BLUE_L};width:28px;height:28px"></x-icon></div>'
+               + col(p(nome, 26, INK, 600, MONO) + p(desc, 24, INK2), 2, "flex:1") + direita,
+               20, f"align-items:center;padding:14px 24px;border-bottom:1px solid {LINE}")
+
 # 24 · tipos de skill
-def sk(name, desc, ask):
-    return card(p(name, 28, INK, 600) + p(desc, 24, INK2) + p(f"“{ask}”", 24, BLUE), pad=22, gap=8)
 screen("r-skills", "6", "Executar", "Passo 6 · Executar", "Os cinco tipos de skill que saem do handbook",
-    f'<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:18px">'
-    + sk("Como usar", "Mapa: qual skill para qual tarefa", "Por onde eu começo?")
-    + sk("Contexto", "Produto, ICP, personas, provas", "Como falo com um CFO de varejo?")
-    + sk("Metodologia", "O que procurar e quando avançar", "Esse negócio pode avançar?")
-    + sk("Uma por etapa", "O passo a passo do handbook", "Me prepara o diagnóstico de amanhã.")
-    + sk("Coaching da reunião", "Transcrição × rubrica da etapa", "Como foi minha call de hoje?")
-    + card(p("Comece com quatro: como usar, contexto, metodologia e a etapa que mais perde negócios.", 26, INK), bg=BLUE_S, border=BLUE_S, pad=22)
-    + '</div>',
-    "Bloco 6, 4 min. A divisão segue o handbook: o que é estável (contexto, metodologia) fica separado do que é de cada etapa. A descrição de cada skill precisa usar as palavras do time; é ela que decide quando o Claude usa a skill.")
+    card("".join(arquivo(n, d, p(f"“{q}”", 24, BLUE, 400, "width:430px;text-align:right")) for n, d, q in [
+            ("acme-como-usar.md", "Mapa: qual skill usar para cada tarefa", "Por onde eu começo?"),
+            ("acme-contexto.md", "Produto, cliente ideal, personas e provas", "Como falo com um CFO de varejo?"),
+            ("acme-metodologia.md", "O que procurar e quando avançar de etapa", "Esse negócio pode avançar?"),
+            ("acme-diagnostico.md", "O passo a passo de uma etapa (uma skill por etapa)", "Me prepara o diagnóstico de amanhã."),
+            ("acme-coaching.md", "Avalia a reunião com a rubrica da etapa", "Como foi minha reunião de hoje?")]),
+         pad=8, gap=0)
+    + p("Comece com quatro: como usar, contexto, metodologia e a etapa que mais perde negócios.", 26, INK2),
+    "Bloco 6, 4 min. Cada skill é um arquivo de texto que o Claude lê quando o assunto aparece. A coluna da direita é o que o vendedor diria para acionar cada uma. O que é estável (contexto, metodologia) fica separado do que é de cada etapa. A descrição de cada skill precisa usar as palavras do time: é ela que decide quando o Claude usa a skill.")
 
 # 25 · antes durante depois
 def fase(n, t, items):
@@ -464,7 +470,7 @@ screen("r-coaching", "7", "Melhoria contínua", "Passo 7 · Coaching com a rubri
          + p("Critério", 24, INK2, 600) + p("TechScale", 24, INK2, 600) + p("Orbita Pay", 24, INK2, 600) + p("Evidência na Orbita Pay", 24, INK2, 600)
          + "".join(p(c, 26) + dots(a) + dots(b) + p(ev, 24, INK2) for c, a, b, ev in CRIT_ROWS)
          + '</div>', pad=24)
-    + row(card(p("<b>TechScale · ganho</b>", 26) + p("14 de 15 · avança para a proposta", 26, "#0B6B4A"), pad=20, gap=4, extra="flex:1")
+    + row(card(p("<b>TechScale · ganho</b>", 26) + p("14 de 15 · avança para a proposta", 26, POS), pad=20, gap=4, extra="flex:1")
           + card(p("<b>Orbita Pay · perdido</b>", 26) + p("1 de 15 · não avança: custo do problema ausente", 26, CRIT), pad=20, gap=4, extra="flex:1"), 20),
     "Bloco 6, 4 min. A ideia que o Gio sempre repete: cada transcrição é processada contra a rubrica da etapa em que o negócio está. Mesma etapa (Diagnóstico), duas reuniões do exemplo fictício: a que ganhou tira 14 de 15; a que perdeu tira 1. A nota sai com a evidência e o minuto, então o vendedor vê exatamente onde a reunião se perdeu. E o veredito de avanço é o mesmo critério do CRM.")
 
@@ -496,24 +502,23 @@ screen("r-ciclo", "7", "Melhoria contínua", "Passo 7 · Coaching", "Quem usa o 
     "Bloco 6, 3 min. O mesmo processamento serve a três pessoas. Para o vendedor, é coaching. Para o gestor, é o mapa de treinamento do time, sem precisar ouvir todas as gravações. Para o dono do handbook, é o sinal de revisão: se um critério ninguém cumpre, o passo talvez esteja errado; se a nota é alta e o negócio não converte, o critério não mede o que importa. Calibração: antes de soltar a rubrica, aplique em ganhos e perdidos; ela tem que separar os dois.")
 
 # 26 · case
-def grp(t, items):
-    return card(p(t, 26, INK, 600) + row("".join(chip(i, RAIL, INK, 24, 400) for i in items), 10, "flex-wrap:wrap"), pad=22, gap=12)
-screen("r-case", "6", "Executar", "Case de cliente SCIENT · educação", "Um exemplo real: o comercial de um cliente em 25 skills",
-    f'<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:18px">'
-    + grp("Ponto de partida", ["como usar as skills"])
-    + grp("Negócio e método", ["metodologia", "processo de vendas", "ICP e qualificação", "padrões de ganho", "produto"])
-    + grp("Sistemas e dados", ["CRM", "propriedades de negócio", "dados de funil"])
-    + grp("Execução diária", ["preparação de reunião", "briefing da manhã", "atualização do CRM", "assistente"])
-    + '</div>'
-    + p("Mostramos só a estrutura, sem dados do cliente. Cada skill atende a uma tarefa do time.", 26, INK2),
-    "Bloco 6, 4 min. Cliente de educação da SCIENT (o LIV). Confirme antes da aula se pode citar o nome; se não, fale só 'cliente de educação'. Mostre a lógica: uma skill mestre roteia; as de negócio e método vêm dos handbooks; as de sistema ensinam onde ler e gravar; as de execução entregam no WhatsApp e no CRM.")
+screen("r-case", "6", "Executar", "Case de cliente SCIENT · educação", "Um cliente real, 25 skills",
+    card("".join(arquivo(n, d, chip(c, RAIL, INK2, 24, 400)) for n, d, c in [
+            ("como-usar-as-skills.md", "Qual skill ler para cada tarefa, e em que ordem", "Início"),
+            ("metodologia-comercial.md", "Perguntas e critérios de cada etapa do funil", "Método"),
+            ("padroes-de-ganho.md", "O que os negócios ganhos têm em comum", "Método"),
+            ("hubspot-funil-e-campos.md", "Funil e campos do CRM", "CRM"),
+            ("meeting-prep.md", "Briefing antes de cada reunião", "Execução")]),
+         pad=8, gap=0)
+    + p("E mais 20: processo de vendas, cliente ideal, produto, briefing da manhã, atualização do CRM, avaliação de qualidade… Só a estrutura, sem dados do cliente.", 24, INK2),
+    "Bloco 6, 4 min. Cliente de educação da SCIENT (o LIV). Confirme antes da aula se pode citar o nome; se não, fale só 'cliente de educação'. Mostre a lógica: uma skill de início que roteia; as de método nascem dos handbooks; as de CRM ensinam onde ler e gravar; as de execução entregam o trabalho no dia a dia.")
 
 # 27 · validar
 def verdict(t, bg, fg, cond, acao):
     return card(chip(t, bg, fg, 26) + p(cond, 28, INK, 600) + p(acao, 24, INK2), pad=26, gap=12, extra="flex:1")
 screen("r-validar", "7", "Melhoria contínua", "Passo 7 · Melhoria contínua", "Como saber se o handbook está pronto",
     p("Teste simples: entregue o handbook a um vendedor que não participou do projeto e peça para ele preparar uma reunião.", 28, INK)
-    + row(verdict("PRONTO", "#DDF8EE", "#0B6B4A", "Prepara a reunião sem precisar perguntar nada.", "Pode publicar e treinar o time.")
+    + row(verdict("PRONTO", BLUE, "#FFFFFF", "Prepara a reunião sem precisar perguntar nada.", "Pode publicar e treinar o time.")
           + verdict("AJUSTAR", WARN_BG, WARN, "Entende, mas diz que precisa “adaptar ao seu estilo”.", "Algum passo está genérico. Volte às gravações e traga perguntas reais.")
           + verdict("REFAZER", CRIT_BG, CRIT, "Não consegue usar sem alguém explicar.", "O handbook ficou teórico. Refaça a partir das gravações."), 20),
     "Bloco 7, 4 min. É o teste que mais revela. Antes dele, um checklist binário: manchete é conclusão? critérios são sim ou não? toda pergunta tem fonte? toda red flag tem ação e dono?")
@@ -592,6 +597,7 @@ def main():
         "s8": {"description": "Fechamento: por onde começar e regras de ouro", "start": "r-amanha"},
     }
     deck["cover"] = "r-cover"
+    deck.setdefault("faces", {})["ibm-plex-mono"] = {"family": "IBM Plex Mono", "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"}
     json.dump(deck, open(os.path.join(ROOT, "deck.json"), "w", encoding="utf-8"), ensure_ascii=False)
     print(total, "slides")
     print(json.dumps(order))
