@@ -119,13 +119,21 @@ screen("r-promessa", "0", "Visão geral", "Hoje", "O que vocês vão aprender ho
 screen("r-gaveta", "1", "Por quê", "O problema", "Por que quase ninguém usa o playbook da empresa",
     row(
         col(card(
-            table(["Arquivo", "Editado", "Acessos"],
-                  [["Playbook Comercial v3 FINAL.pdf", "há 14 meses", "2"],
-                   ["Processo de vendas NOVO.docx", "há 9 meses", "0"],
-                   ["Treinamento metodologia.pptx", "há 2 anos", "1"],
-                   ["Pitch institucional 2024.pptx", "há 18 meses", "5"]],
-                  [58, 26, 16], 24), pad=20)
-            + p("Cena comum: pasta de vendas de qualquer empresa (ilustrativo).", 24, INK2), 12, "flex:1.25")
+            row(f'<x-icon name="Search" style="color:{INK2};width:28px;height:28px"></x-icon>'
+                + p("Drive&#160;&#160;›&#160;&#160;Vendas&#160;&#160;›&#160;&#160;Playbooks", 24, INK2) + '<div style="flex:1"></div>'
+                + chip("4 arquivos", RAIL, INK2), 14, f"align-items:center;padding:16px 22px;border-bottom:1px solid {LINE};background:{RAIL}")
+            + "".join(
+                row(p(ext, 22, "#FFFFFF", 600, f"background:{cor};padding:6px 0;width:84px;text-align:center;border-radius:4px")
+                    + col(p(nome, 26, INK, 600) + p(meta, 24, INK2), 2, "flex:1")
+                    + (chip("nunca aberto", CRIT_BG, CRIT) if alerta else ""),
+                    18, f"align-items:center;padding:16px 22px;border-bottom:1px solid {LINE}")
+                for ext, cor, nome, meta, alerta in [
+                    ("PDF", "#B23A2E", "Playbook Comercial v3 FINAL", "editado há 14 meses · aberto 2 vezes", False),
+                    ("DOCX", "#2B5BBF", "Processo de vendas NOVO", "editado há 9 meses", True),
+                    ("PPTX", "#C2581C", "Treinamento de metodologia", "editado há 2 anos · aberto 1 vez", False),
+                    ("PPTX", "#C2581C", "Pitch institucional 2024", "editado há 18 meses · aberto 5 vezes", False)]),
+            pad=0, gap=0, extra="overflow:hidden")
+            + p("Cena comum na pasta de vendas de qualquer empresa (ilustrativo).", 24, INK2), 12, "flex:1.25")
         + col(
             card('<h3 style="font-size:30px;font-weight:600">Descreve o ideal</h3>' + p("Foi escrito a partir de um livro ou do que a gestão gostaria, e não do que acontece nas reuniões.", 26, INK2), pad=24, gap=8)
             + card('<h3 style="font-size:30px;font-weight:600">Ninguém mede</h3>' + p("Ninguém sabe se quem segue o playbook vende mais.", 26, INK2), pad=24, gap=8)
