@@ -25,7 +25,7 @@ Certificação GTM Engineer · SCIENT · aula ao vivo de 2 horas.
 |---|---|---|---|
 | 0–18 | Abertura e Por quê | 1–6 | Handbook morre na gaveta; a tese declarado × observado × medido; com IA o handbook vira execução; a jornada em 7 passos |
 | 18–40 | Coletar | 7–12 | As 4 fontes, o que cada uma revela, o que pedir e quanto basta. Ênfase na fonte C (documentos), a que mais falta |
-| 40–47 | Lente | 13–14 | A metodologia é a lente; ela vira critério de passagem entre etapas |
+| 40–47 | Metodologia | 13–14 | Qualquer metodologia serve: ela diz o que procurar em cada reunião e quando o negócio pode mudar de etapa |
 | 47–62 | Analisar | 15–18 | Cruzar as três visões; hipótese da gestão desmentida pelo funil; o que só aparece nos ganhos |
 | 62–82 | Documentar | 19–24 | O que documentar, anatomia em 3 camadas, manchete-conclusão, um passo bem feito, **a rubrica da etapa**, tags de evidência |
 | 82–100 | Executar e coaching | 25–30 | Tipos de skill; antes, durante e depois; **transcrição × rubrica da etapa: coaching individual, painel do gestor e sinal de revisão do handbook**; case de 25 skills |
@@ -71,7 +71,7 @@ Se o plugin travar, a conexão cair ou a geração demorar mais de 3 min num pas
 - Abertura (tela 3): no último playbook que vocês escreveram, quanto veio do livro e quanto veio das reuniões?
 - Coletar (tela 7): das 4 fontes, qual vocês conseguiriam pedir amanhã? Qual é a mais difícil?
 - Coletar (tela 10): que documento da empresa de vocês contradiz o que o time faz?
-- Lente (tela 13): qual metodologia o time realmente fala no dia a dia?
+- Metodologia (tela 13): qual metodologia o time realmente fala no dia a dia?
 - Analisar (tela 16): qual hipótese da gestão de vocês nunca foi testada no funil?
 - Documentar (tela 21): qual seria a manchete do processo comercial de vocês hoje, em uma frase?
 - Coaching (tela 27): quantas gravações do time o gestor de vocês consegue ouvir por semana? E se todas fossem avaliadas pela rubrica?
