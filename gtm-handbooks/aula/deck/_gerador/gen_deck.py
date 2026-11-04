@@ -109,8 +109,8 @@ screen("r-promessa", "0", "Visão geral", "A aula em uma tela", "Vocês saem daq
              + p("As quatro fontes de evidência, o que cada uma revela e quanto basta para começar.", 28, INK2), extra="flex:1")
         + card(chip("02") + '<h3 style="font-size:36px;font-weight:600">O que documentar</h3>'
              + p("Um handbook por processo, num modelo que começa pela conclusão e termina em critério binário.", 28, INK2), extra="flex:1")
-        + card(chip("03") + '<h3 style="font-size:36px;font-weight:600">Como vira execução</h3>'
-             + p("O handbook vira skill: o vendedor usa antes, durante e depois da reunião.", 28, INK2), extra="flex:1"),
+        + card(chip("03") + '<h3 style="font-size:36px;font-weight:600">Como vira execução e coaching</h3>'
+             + p("O handbook vira skill e rubrica: o time executa, e cada reunião vira coaching.", 28, INK2), extra="flex:1"),
         28)
     + card(p("<b>Fio da aula:</b> um exemplo fictício do começo ao fim. A Consultoria Vektor vende squads de engenharia para scale-ups e usa Challenger.", 28, INK), bg=BLUE_S, border=BLUE_S),
     "Abertura, 2 min. Três promessas. O exemplo Vektor é fictício e atravessa a aula inteira: os números que aparecem são de dados sintéticos de treinamento. A metodologia do exemplo é Challenger, mas o método vale para qualquer uma.")
@@ -178,7 +178,7 @@ screen("r-jornada", "0", "Visão geral", "O caminho", "Sete passos, do dado ao t
     + step("3", "Lente", "Como a metodologia vira critério?")
     + step("4", "Analisar", "O que se diz, se faz e dá resultado?")
     + step("5", "Documentar", "Qual o processo que funciona, passo a passo?")
-    + step("6", "Executar", "Como o time usa isso no dia a dia?")
+    + step("6", "Executar", "Como o time usa e é treinado com isso?")
     + step("7", "Validar", "Um vendedor novo consegue usar sozinho?")
     + card(p("Cada passo termina num <b>sim ou não</b>. Sem sim, não avança.", 28, INK, 400), bg=BLUE_S, border=BLUE_S, pad=22)
     + '</div>',
@@ -357,11 +357,11 @@ screen("r-oque", "5", "Documentar", "O que documentar", "Um handbook por process
 # 20 · anatomia
 def camada(name, desc, items):
     return card(chip(name) + p(desc, 24, INK2) + "".join(p(i, 26) for i in items), pad=26, gap=10, extra="flex:1")
-screen("r-anatomia", "5", "Documentar", "O modelo padrão", "Treze seções, em três camadas de leitura",
+screen("r-anatomia", "5", "Documentar", "O modelo padrão", "Catorze seções, em três camadas de leitura",
     row(camada("DECIDIR", "Quem abre entende em 10 segundos", ["0 · Em uma frase", "1 · Identificação", "2 · Por que existe"])
         + camada("EXECUTAR", "O que o vendedor faz", ["3 · Hand-off de entrada", "4 · Passo a passo", "5 · Sinais", "6 · Objeções", "7 · Hand-off de saída"])
-        + camada("GERIR", "O que o gestor acompanha", ["8 · Métricas", "9 · Red flags", "10 · Declarado × observado × medido", "11 · Skills", "12 · Aprovação"]), 20),
-    "Bloco 5, 4 min. O modelo foi inspirado em boas práticas de produtos de RevOps: manchete que é a conclusão, poucos números no topo, lacunas declaradas, severidade nos alertas. A seção 10 é a assinatura do método: mostra por que o handbook diz o que diz.")
+        + camada("GERIR", "O que o gestor acompanha", ["8 · Métricas", "9 · Red flags", "10 · Declarado × observado × medido", "11 · Rubrica da etapa", "12 · Skills", "13 · Aprovação"]), 20),
+    "Bloco 5, 4 min. O modelo foi inspirado em boas práticas de produtos de RevOps: manchete que é a conclusão, poucos números no topo, lacunas declaradas, severidade nos alertas. A seção 10 é a assinatura do método: mostra por que o handbook diz o que diz. A seção 11, a rubrica, é o que transforma o handbook em coaching.")
 
 # 21 · topo
 screen("r-topo", "5", "Documentar", "Seção 0 · Em uma frase", "A manchete é a conclusão, não o tema",
@@ -391,6 +391,18 @@ screen("r-passo", "5", "Documentar", "Seção 4 · Um passo", "Um passo bem docu
          pad=28, gap=20),
     "Bloco 5, 4 min. Os cinco ingredientes de um passo: ação com verbo e com onde registrar; pergunta real com fonte (nunca inventada pelo analista); o cuidado, que vem dos perdidos; o dono e o prazo; e o critério de saída binário, o mesmo que move o negócio no CRM.")
 
+# 22b · rubrica
+screen("r-rubrica", "5", "Documentar", "Seção 11 · Rubrica da etapa", "Cada handbook gera a rubrica da sua etapa",
+    card(table(["Critério (passo do handbook)", "Nota 3 quando", "Nota 0 quando"],
+               [["1 · Abrir pelo impacto", "Hipótese sobre o negócio do cliente, sem deck", "Abre com “quem somos”"],
+                ["2 · Medir a operação", "Tempo, volume e frequência com números do cliente", "Só stack, equipe e metodologia"],
+                ["3 · Custo em reais", "Custo do problema em R$ confirmado pelo cliente", "Aceita “a gente dá um jeito”"],
+                ["4 · Reenquadrar", "Cliente reformula o problema com o reframe", "Aceita a premissa “falta gente”"],
+                ["5 · Fechar o próximo passo", "Data, decisor e critério de sucesso do cliente", "“A gente olha e retorna”"]],
+               [28, 38, 34], 24, hl_col0=True), pad=16)
+    + row(chip("Avança se: critérios 3 e 5 com nota 3", BLUE, "#FFFFFF", 26) + p("Exemplo: Diagnóstico da Vektor (fictício)", 24, INK2), 20, "align-items:center"),
+    "Bloco 5, 4 min. Ponto central do método: o handbook não serve só para ler; ele vira régua. Cada passo do handbook vira um critério da rubrica, com a descrição de nota 3 (como os ganhos fazem) e de nota 0 (como os perdidos fazem); as notas 1 e 2 ficam descritas no handbook. O critério de avanço da rubrica é o mesmo critério de saída da etapa no CRM. Assim, o mesmo documento ensina, avalia e governa a passagem de etapa.")
+
 # 23 · tags
 def tag(t, ex, bg=BLUE_S, fg=BLUE):
     return row(f'<div style="width:300px;display:flex">{chip(t, bg, fg)}</div>' + p(ex, 26, INK, 400, "flex:1"), 20, f"align-items:center;padding:12px 0;border-bottom:1px solid {LINE}")
@@ -412,7 +424,7 @@ screen("r-skills", "6", "Executar", "De documento a execução", "O handbook vir
     + sk("Contexto", "Produto, ICP, personas, provas", "Como falo com um CFO de varejo?")
     + sk("Metodologia", "A lente e o critério de cada etapa", "Esse negócio pode avançar?")
     + sk("Uma por etapa", "O passo a passo do handbook", "Me prepara o diagnóstico de amanhã.")
-    + sk("Avaliar reunião", "Nota por elemento e coaching", "Como foi minha call de hoje?")
+    + sk("Coaching da reunião", "Transcrição × rubrica da etapa", "Como foi minha call de hoje?")
     + card(p("Comece com quatro: como usar, contexto, metodologia e a etapa de maior vazamento.", 26, INK), bg=BLUE_S, border=BLUE_S, pad=22)
     + '</div>',
     "Bloco 6, 4 min. A divisão segue o handbook: o que é estável (contexto, metodologia) fica separado do que é de cada etapa. A descrição de cada skill precisa usar as palavras do time; é ela que decide quando o Claude usa a skill.")
@@ -423,9 +435,53 @@ def fase(n, t, items):
 screen("r-uso", "6", "Executar", "Na rotina do vendedor", "Antes, durante e depois da reunião",
     row(fase("ANTES", "Preparar", ["Plano de uma página: objetivo e critério de saída", "Hipóteses por pessoa da reunião", "5 a 8 perguntas do handbook"])
         + fase("DURANTE", "Conduzir", ["Perguntas na ordem", "Sinais de avanço e de risco", "Respostas a objeções que funcionaram"])
-        + fase("DEPOIS", "Registrar e revisar", ["Nota por elemento da lente", "CRM atualizado, com confirmação", "O negócio pode avançar? sim / não"]), 20)
+        + fase("DEPOIS", "Registrar e treinar", ["Nota por critério da rubrica da etapa", "CRM atualizado, com confirmação", "Coaching com o momento e a próxima pergunta"]), 20)
     + p("O critério da skill é o mesmo do handbook e do CRM. Uma régua só.", 28, INK, 600),
     "Bloco 6, 3 min. O ganho para o gestor: o registro no CRM passa a seguir o critério do handbook, e o forecast fica mais confiável. Toda escrita em sistema é mostrada antes e só grava com confirmação do vendedor.")
+
+# 25b · coaching: scorecard
+def dots(n):
+    return row("".join(f'<div style="width:28px;height:28px;background:{BLUE if i < n else "#DDE2EE"}"></div>' for i in range(3)), 6, "align-items:center")
+CRIT_ROWS = [("1 · Abrir pelo impacto", 2, 0, "[01:12] “A Vektor tem doze anos de mercado…”"),
+             ("2 · Medir a operação", 3, 0, "[11:40] “Quantos engenheiros vocês têm hoje?”"),
+             ("3 · Custo em reais", 3, 0, "[14:08] cliente: “Mas a gente vai dar um jeito.”"),
+             ("4 · Reenquadrar", 3, 0, "[14:20] “Quantas pessoas vocês imaginam precisar?”"),
+             ("5 · Fechar o próximo passo", 3, 1, "[22:20] “A gente olha e retorna.”")]
+screen("r-coaching", "6", "Executar", "Coaching · transcrição × rubrica", "A mesma etapa, duas reuniões, uma régua",
+    card(f'<div style="display:grid;grid-template-columns:330px 170px 170px 1fr;gap:16px;align-items:center">'
+         + p("Critério", 24, INK2, 600) + p("TechScale", 24, INK2, 600) + p("Orbita Pay", 24, INK2, 600) + p("Evidência na Orbita Pay", 24, INK2, 600)
+         + "".join(p(c, 26) + dots(a) + dots(b) + p(ev, 24, INK2) for c, a, b, ev in CRIT_ROWS)
+         + '</div>', pad=24)
+    + row(card(p("<b>TechScale · ganho</b>", 26) + p("14 de 15 · avança para a proposta", 26, "#0B6B4A"), pad=20, gap=4, extra="flex:1")
+          + card(p("<b>Orbita Pay · perdido</b>", 26) + p("1 de 15 · não avança: custo do problema ausente", 26, CRIT), pad=20, gap=4, extra="flex:1"), 20),
+    "Bloco 6, 4 min. A ideia que o Gio sempre repete: cada transcrição é processada contra a rubrica da etapa em que o negócio está. Mesma etapa (Diagnóstico), duas reuniões do exemplo fictício: a que ganhou tira 14 de 15; a que perdeu tira 1. A nota sai com a evidência e o minuto, então o vendedor vê exatamente onde a reunião se perdeu. E o veredito de avanço é o mesmo critério do CRM.")
+
+# 25c · coaching: do momento à próxima pergunta
+def momento(mm, crit, aconteceu, proxima, fonte):
+    return card(row(col(chip(mm, RAIL, INK) + p(crit, 26, INK, 600), 8, "width:300px")
+                    + col(p("O QUE ACONTECEU", 24, INK2, 600) + p(aconteceu, 26), 6, "flex:1")
+                    + col(p("NA PRÓXIMA REUNIÃO", 24, BLUE, 600) + p(proxima, 26, INK, 600) + p(fonte, 24, INK2), 6, "flex:1"), 28),
+                pad=22)
+screen("r-coaching2", "6", "Executar", "Coaching · Orbita Pay, Diagnóstico", "Do momento da reunião à próxima pergunta",
+    momento("01:12", "1 · Abrir pelo impacto", "Dez minutos de apresentação institucional, até a cliente pedir para parar.",
+            "“Meu objetivo aqui é entender o impacto de negócio.”", "Handbook 4.1 · TechScale 01:00")
+    + momento("14:08", "3 · Custo em reais", "Perguntou o impacto do atraso e aceitou “a gente vai dar um jeito”.",
+              "“Qual era o valor daquele contrato?”", "Handbook 4.3 · TechScale 18:25")
+    + momento("22:20", "5 · Próximo passo", "Descobriu que o CFO aprova, mas saiu sem data: “a gente olha e retorna”.",
+              "Propor a data da proposta e convidar o CFO.", "Handbook 4.5 · TechScale 86:49"),
+    "Bloco 6, 3 min. Coaching útil não é nota: é o momento exato, o que a rubrica pedia e a frase que funcionou em outra reunião. A pergunta da coluna da direita vem do próprio handbook, que por sua vez veio de uma reunião ganha. O vendedor aprende com o melhor vendedor da casa, não com um livro.")
+
+# 25d · ciclo da rubrica
+def nivel(t, d):
+    return card(chip(t) + p(d, 26, INK), pad=26, gap=14, extra="flex:1")
+screen("r-ciclo", "6", "Executar", "Coaching em três níveis", "A rubrica fecha o ciclo: vendedor, gestor e handbook",
+    row(nivel("VENDEDOR", "Coaching de cada reunião: nota por critério, o momento e a próxima pergunta.")
+        + nivel("GESTOR", "Nota média por critério e por vendedor: onde treinar cada um e se o time está melhorando.")
+        + nivel("HANDBOOK", "Critério que ninguém cumpre, ou nota alta que não converte: revisar o passo ou o processo."), 20)
+    + row(f'<x-icon name="Verified" style="color:#FFFFFF;width:44px;height:44px"></x-icon>'
+          + p("<b>Rubrica boa separa ganhos de perdidos.</b> Antes de usar, pontue reuniões ganhas e perdidas: se as notas não diferem, a rubrica está errada.", 28, "#FFFFFF"),
+          20, f"align-items:center;background:{BLUE};padding:26px 32px;border-radius:4px"),
+    "Bloco 6, 3 min. O mesmo processamento serve a três pessoas. Para o vendedor, é coaching. Para o gestor, é o mapa de treinamento do time, sem precisar ouvir todas as gravações. Para o dono do handbook, é o sinal de revisão: se um critério ninguém cumpre, o passo talvez esteja errado; se a nota é alta e o negócio não converte, o critério não mede o que importa. Calibração: antes de soltar a rubrica, aplique em ganhos e perdidos; ela tem que separar os dois.")
 
 # 26 · case
 def grp(t, items):
@@ -455,7 +511,7 @@ def ciclo(t, d):
     return card(f'<h3 style="font-size:30px;font-weight:600">{t}</h3>' + p(d, 24, INK2), pad=22, gap=8, extra="flex:1")
 arrow = f'<x-shape kind="arrow-right" style="width:44px;height:24px;background:{BLUE_L}"></x-shape>'
 screen("r-manter", "7", "Validar", "Depois da entrega", "Handbook é produto: tem dono, métrica e versão",
-    row(ciclo("Medir", "As métricas da seção 8, no ritmo combinado.") + arrow
+    row(ciclo("Medir", "As métricas da seção 8 e as notas da rubrica.") + arrow
         + ciclo("Revisar", "A cada 6 meses ou quando ICP, produto ou processo mudar.") + arrow
         + ciclo("Regenerar", "Nova coleta, mesma lente, mesmo modelo.") + arrow
         + ciclo("Versionar", "1.0 inicial · 1.x ajuste · 2.0 mudança de processo."), 12, "align-items:center")

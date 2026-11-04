@@ -49,7 +49,7 @@ A partir da transcrição ou do relato do AE:
 4. **Mostre o registro e peça confirmação antes de gravar.** Nunca grave número que o cliente não disse.
 
 ## Modo Revisar
-Responda: **o negócio pode ir para Proposta?**
+Com a transcrição: aplique a rubrica de `references/rubrica.md` (seção 11 do handbook). Nota 0–3 por critério com a frase e o minuto, três momentos de coaching com a pergunta do handbook para a próxima reunião (modelo do kit: `templates/coaching.md`). Depois responda: **o negócio pode ir para Proposta?**
 - Sim, só se: custo do problema (R$/ano) registrado e confirmado pelo cliente **e** critério de sucesso registrado **e** proposta agendada com decisor + ≥ 1 influenciador.
 - Se não: diga exatamente o que falta e a próxima ação (ex.: "voltar ao CTO para o custo mensal do squad").
 
@@ -70,3 +70,4 @@ Custo do problema (R$/ano) e critério de sucesso registrados no CRM **e** propo
 ## Referências
 - `references/perguntas.md` — perguntas literais por passo e por papel, com fonte.
 - `references/objecoes.md` — objeções do diagnóstico e respostas que funcionaram.
+- `references/rubrica.md` — rubrica da etapa (5 critérios, nota 0–3, regra de avanço) para o coaching.

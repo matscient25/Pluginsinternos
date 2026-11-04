@@ -26,7 +26,8 @@ A **metodologia** (Challenger, MEDDPICC, SPIN, SPICED, BANT, GPCTBA, própria) �
 | 3 | Análise | `analista-conversas`, `analista-funil`, `analista-documentos` | `03-analise/` | 1 ficha por transcrição · `funil.md` com números calculados pelo script · `declarado.md` · `sintese.md` com divergências e padrões de ganho |
 | 4 | Handbook | `redator-handbook` | `04-handbooks/<processo>.md` e `.html` | Checklist de handbook do `qualidade-handbooks` 100% sim |
 | 5 | Skills | `arquiteto-skills` | `05-skills/` | `validar_skill.py` sem erro · skill mestre + contexto + metodologia + 1 por etapa · casos de teste escritos |
-| 6 | Validação | `revisor` | `06-validacao/relatorio.md` | Veredito "Pronto" em todos os handbooks · teste de gatilho e de execução registrado |
+| 6 | Validação | `revisor` | `06-validacao/relatorio.md` | Veredito "Pronto" em todos os handbooks · rubricas calibradas · teste de gatilho e de execução registrado |
+| ∞ | Coaching contínuo | `analista-conversas` (modo coaching) | `07-coaching/` | Cada reunião nova avaliada contra a rubrica da etapa; painel do gestor; sinais de revisão do handbook |
 
 Se um gate falha, o maestro **não avança**: lista o que falta, quem fornece e o comando para resolver.
 
@@ -53,7 +54,8 @@ handbooks/<empresa-slug>/
 │   └── sintese.md            triangulação, divergências, padrões de ganho
 ├── 04-handbooks/             1 por processo (.md fonte + .html para leitura)
 ├── 05-skills/                1 pasta por skill + .skill empacotados
-└── 06-validacao/relatorio.md
+├── 06-validacao/relatorio.md
+└── 07-coaching/              1 coaching por reunião (transcrição × rubrica) + painel.md
 ```
 
 No Cowork sem pasta local, use a pasta de trabalho que o usuário indicar (ou o Drive conectado) com a mesma estrutura.
@@ -97,3 +99,4 @@ Nunca apresentar `[HIPÓTESE]` como fato. Número sem tag não entra.
 | Escrever handbook | `modelo-handbook` |
 | Gerar skills | `fabrica-de-skills` |
 | Revisar e testar | `qualidade-handbooks` |
+| Criar rubrica, calibrar, fazer coaching de uma call | `coaching-por-rubrica` |

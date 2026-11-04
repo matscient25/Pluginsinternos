@@ -34,7 +34,7 @@ Com a transcrição ou o relato do vendedor:
 4. **Mostre o que será gravado e peça confirmação antes de gravar.**
 
 ## Modo Revisar
-Responda: o critério de saída foi cumprido? (sim / não e o que falta). Aponte red flags.
+Com a transcrição: aplique a rubrica da etapa (`references/rubrica.md`, copiada da seção 11 do handbook). Nota 0–3 por critério com a frase e o minuto, veredito de avanço pela regra da rubrica (sim / não e o que falta), três momentos de coaching com a pergunta do handbook para a próxima reunião. Aponte red flags.
 
 ## Critério de saída
 ✅ {{condição binária}}

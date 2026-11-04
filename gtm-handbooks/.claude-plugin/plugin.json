@@ -1,10 +1,22 @@
 {
   "name": "gtm-handbooks",
-  "version": "1.0.0",
-  "description": "GTM Handbooks & Skills Kit: transforma o processo comercial real da sua empresa (funil do CRM, transcrições de reuniões, documentos de processo, PPTs de proposta e de produto) em handbooks operacionais por etapa e em skills que o time executa com o Claude. Funciona com qualquer metodologia (Challenger, MEDDPICC, SPIN, SPICED, BANT, GPCTBA ou a sua própria). Nove agentes especializados, conduzidos pelo maestro. Comece com /handbooks.",
+  "version": "1.1.0",
+  "description": "GTM Handbooks & Skills Kit: transforma o processo comercial real da sua empresa (funil do CRM, transcrições de reuniões, documentos de processo, PPTs de proposta e de produto) em handbooks operacionais por etapa, em rubricas que avaliam cada reunião para coaching e em skills que o time executa com o Claude. Funciona com qualquer metodologia (Challenger, MEDDPICC, SPIN, SPICED, BANT, GPCTBA ou a sua própria). Nove agentes especializados, conduzidos pelo maestro. Comece com /handbooks.",
   "author": {
     "name": "SCIENT",
     "url": "https://skills.scient.cc"
   },
-  "keywords": ["gtm", "handbook", "playbook", "skills", "sales process", "challenger", "meddpicc", "spin", "revops", "enablement", "scient"]
+  "keywords": [
+    "gtm",
+    "handbook",
+    "playbook",
+    "skills",
+    "sales process",
+    "challenger",
+    "meddpicc",
+    "spin",
+    "revops",
+    "enablement",
+    "scient"
+  ]
 }

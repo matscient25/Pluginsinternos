@@ -1,6 +1,6 @@
 ---
 name: arquiteto-skills
-description: Transforma handbooks de GTM aprovados em skills do Claude para o time comercial - skill mestre roteadora, contexto da empresa, metodologia, uma skill por etapa com modos preparar/conduzir/registrar/revisar, CRM e avaliação de reunião - com references, testes de gatilho e de execução, validação de formato e empacotamento em .skill. Use para criar, atualizar ou empacotar skills a partir de handbooks.
+description: Transforma handbooks de GTM aprovados em skills do Claude para o time comercial - skill mestre roteadora, contexto da empresa, metodologia, uma skill por etapa com modos preparar/conduzir/registrar/revisar, CRM e coaching por rubrica - com references, testes de gatilho e de execução, validação de formato e empacotamento em .skill. Use para criar, atualizar ou empacotar skills a partir de handbooks.
 ---
 
 Você é o **arquiteto de skills**. Entrega: `05-skills/<skill>/` (uma pasta por skill), `testes.md` em cada uma e os arquivos `.skill`.
@@ -12,7 +12,7 @@ Leia antes: `${CLAUDE_PLUGIN_ROOT}/skills/fabrica-de-skills/SKILL.md`, os handbo
    - `<empresa>-contexto` (de `templates/skill-contexto.md` + `declarado.md` + padrões de ganho)
    - `<empresa>-metodologia` (da lente: elementos, escala, perguntas, critério por etapa)
    - `<empresa>-<etapa>` para cada handbook aprovado (de `templates/skill-etapa.md`), com `references/perguntas.md`, `references/objecoes.md`, `references/exemplos.md` copiados das seções 4 a 6 do handbook
-   - `<empresa>-avaliar-reuniao` (lente + modelo de ficha, devolve nota e coaching)
+   - `<empresa>-coaching` (rubricas da seção 11 de cada handbook + `coaching-por-rubrica`; devolve nota por critério, veredito de avanço e coaching), com `references/rubrica-<etapa>.md` por etapa
    - `<empresa>-como-usar` por último (de `templates/skill-mestre.md`), listando todas
 3. Em cada skill, escreva `testes.md`: 3 frases que acionam, 2 que não acionam, 2 casos de execução.
 4. Rode `python3 ${CLAUDE_PLUGIN_ROOT}/scripts/validar_skill.py 05-skills/` e corrija até zerar erros.

@@ -2,7 +2,7 @@
 
 Certificação GTM Engineer · SCIENT · aula ao vivo de 2 horas.
 
-- **Deck:** artifact de slides "Building GTM Handbooks & Skills" (30 telas com cara de interface, racional da aula, com notas do apresentador). Fonte em `aula/deck/` (um HTML por slide + `deck.json`; gerador em `aula/deck/_gerador/`).
+- **Deck:** artifact de slides "Building GTM Handbooks & Skills" (34 telas com cara de interface, racional da aula, com notas do apresentador). Fonte em `aula/deck/` (um HTML por slide + `deck.json`; gerador em `aula/deck/_gerador/`).
 - **Interface visual da jornada:** `aula/jornada.html` (apoio para tirar dúvidas sobre o fluxo).
 - **Plugin:** `gtm-handbooks` instalado no Claude que vai para o telão.
 - **Kit da demo:** `exemplo/vektor/` (Consultoria Vektor × TechScale, Challenger, tudo fictício).
@@ -11,9 +11,9 @@ Certificação GTM Engineer · SCIENT · aula ao vivo de 2 horas.
 
 ## Antes da aula (checklist do professor)
 
-- [ ] Deck aberto no modo apresentação (30 telas com cara de interface; a barra lateral mostra o passo da jornada).
-- [ ] Confirmar se pode citar o nome do cliente do case da tela 26 (educação). Se não, falar só "cliente de educação".
-- [ ] Card do kit publicado no skills.scient.cc e download testado com um login de aluno (citado na tela 29).
+- [ ] Deck aberto no modo apresentação (34 telas com cara de interface; a barra lateral mostra o passo da jornada).
+- [ ] Confirmar se pode citar o nome do cliente do case da tela 30 (educação). Se não, falar só "cliente de educação".
+- [ ] Card do kit publicado no skills.scient.cc e download testado com um login de aluno (citado na tela 33).
 - [ ] Opcional: plugin instalado e `exemplo/vektor/saida-esperada/` aberto, para a demo extra.
 - [ ] Não citar nenhum cliente com pessoa presente na turma.
 
@@ -23,16 +23,16 @@ Certificação GTM Engineer · SCIENT · aula ao vivo de 2 horas.
 
 | Tempo | Bloco | Telas | O que a turma precisa sair entendendo |
 |---|---|---|---|
-| 0–20 | Abertura e Por quê | 1–6 | Handbook morre na gaveta; a tese declarado × observado × medido; com IA o handbook vira execução; a jornada em 7 passos |
-| 20–45 | Coletar | 7–12 | As 4 fontes, o que cada uma revela, o que pedir em cada uma e quanto basta. Ênfase na fonte C (documentos), a que mais falta |
-| 45–53 | Lente | 13–14 | A metodologia é a lente; ela vira critério de passagem entre etapas |
-| 53–70 | Analisar | 15–18 | Cruzar as três visões; hipótese da gestão desmentida pelo funil; o que só aparece nos ganhos |
-| 70–90 | Documentar | 19–23 | O que documentar (um handbook por processo), anatomia em 3 camadas, manchete-conclusão, um passo bem feito, tags de evidência |
-| 90–101 | Executar | 24–26 | Cinco tipos de skill; antes, durante e depois da reunião; case de 25 skills |
-| 101–110 | Validar e fechar | 27–30 | Pronto/ajustar/refazer; handbook é produto; como começar amanhã; regras de ouro |
+| 0–18 | Abertura e Por quê | 1–6 | Handbook morre na gaveta; a tese declarado × observado × medido; com IA o handbook vira execução; a jornada em 7 passos |
+| 18–40 | Coletar | 7–12 | As 4 fontes, o que cada uma revela, o que pedir e quanto basta. Ênfase na fonte C (documentos), a que mais falta |
+| 40–47 | Lente | 13–14 | A metodologia é a lente; ela vira critério de passagem entre etapas |
+| 47–62 | Analisar | 15–18 | Cruzar as três visões; hipótese da gestão desmentida pelo funil; o que só aparece nos ganhos |
+| 62–82 | Documentar | 19–24 | O que documentar, anatomia em 3 camadas, manchete-conclusão, um passo bem feito, **a rubrica da etapa**, tags de evidência |
+| 82–100 | Executar e coaching | 25–30 | Tipos de skill; antes, durante e depois; **transcrição × rubrica da etapa: coaching individual, painel do gestor e sinal de revisão do handbook**; case de 25 skills |
+| 100–110 | Validar e fechar | 31–34 | Pronto/ajustar/refazer; handbook é produto; como começar amanhã; regras de ouro |
 | 110–120 | Perguntas (ou demo extra) | — | Ver abaixo |
 
-Cortes se atrasar: telas 11 (pessoas) e 23 (tags) viram fala de 30 segundos.
+Cortes se atrasar: telas 11 (pessoas) e 24 (tags) viram fala de 30 segundos. Nunca corte as telas 23 e 27–29 (rubrica e coaching): são o ponto central do método.
 
 ---
 
@@ -74,7 +74,8 @@ Se o plugin travar, a conexão cair ou a geração demorar mais de 3 min num pas
 - Lente (tela 13): qual metodologia o time realmente fala no dia a dia?
 - Analisar (tela 16): qual hipótese da gestão de vocês nunca foi testada no funil?
 - Documentar (tela 21): qual seria a manchete do processo comercial de vocês hoje, em uma frase?
-- Validar (tela 27): quem de fora do projeto poderia fazer o teste do vendedor novo?
+- Coaching (tela 27): quantas gravações do time o gestor de vocês consegue ouvir por semana? E se todas fossem avaliadas pela rubrica?
+- Validar (tela 31): quem de fora do projeto poderia fazer o teste do vendedor novo?
 
 ---
 

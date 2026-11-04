@@ -31,7 +31,7 @@ Analogia: conectores (MCP) são a cozinha (acesso ao CRM, ao gravador, ao Drive)
 | `<empresa>-metodologia` | A lente aplicada: elementos, escala 0–3, perguntas, critério por etapa | `02-lente/lente.md` |
 | `<empresa>-<etapa>` | Uma por handbook: preparar, conduzir, registrar a etapa | Seções 3 a 9 do handbook |
 | `<empresa>-crm` | Etapas, campos, onde registrar cada coisa, regras de passagem | Definições do CRM, seção 7 do handbook |
-| `<empresa>-avaliar-reuniao` | Lê uma transcrição e devolve nota por elemento da lente e coaching | Lente + ficha de reunião |
+| `<empresa>-coaching` | Lê a transcrição, aplica a rubrica da etapa e devolve nota, veredito de avanço e coaching com a pergunta do handbook | Seção 11 (rubrica) de cada handbook + `coaching-por-rubrica` |
 
 Comece com mestre + contexto + metodologia + 1 etapa (a de maior vazamento). Acrescente as outras depois de testar.
 
@@ -55,7 +55,7 @@ Regras:
    - **Preparar:** monta o plano da reunião (objetivo, hipóteses por papel, 5 a 8 perguntas do handbook, material a levar, próximo passo a propor).
    - **Conduzir:** cola de bolso (perguntas na ordem, sinais de avanço e de risco, respostas a objeções).
    - **Registrar:** a partir da transcrição ou do relato, preenche os campos do CRM, nota por elemento da lente e o próximo passo com data. **Mostra antes de gravar e pede confirmação.**
-   - **Revisar:** avalia a reunião contra o critério de saída e diz se o negócio pode avançar.
+   - **Revisar:** avalia a transcrição contra a rubrica da etapa (seção 11 do handbook), diz se o negócio pode avançar e devolve os momentos de coaching.
 4. **Critério de saída** da etapa (copiado do handbook).
 5. **Red flags** que a skill deve apontar.
 6. **Referências:** `<skill>/references/perguntas.md`, `<skill>/references/objecoes.md`, `<skill>/references/exemplos.md` (trechos reais).

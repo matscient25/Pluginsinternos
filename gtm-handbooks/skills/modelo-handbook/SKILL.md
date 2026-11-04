@@ -1,6 +1,6 @@
 ---
 name: modelo-handbook
-description: Modelo padrão de handbook operacional de processo de GTM (13 seções - manchete-conclusão com até 4 KPIs e lacunas no topo, identificação, porquê, hand-off de entrada, passo a passo com critério binário, sinais, objeções, hand-off de saída, métricas, red flags com severidade, declarado x observado x medido, skills e aprovação) e as regras para escrevê-lo a partir da análise triangulada. Use ao escrever, revisar ou converter para HTML um handbook, playbook ou manual de processo comercial (qualificação, discovery, diagnóstico, proposta, negociação, contrato, handoff, onboarding, expansão).
+description: Modelo padrão de handbook operacional de processo de GTM (14 seções - manchete-conclusão com até 4 KPIs e lacunas no topo, identificação, porquê, hand-off de entrada, passo a passo com critério binário, sinais, objeções, hand-off de saída, métricas, red flags com severidade, declarado x observado x medido, rubrica da etapa para coaching, skills e aprovação) e as regras para escrevê-lo a partir da análise triangulada. Use ao escrever, revisar ou converter para HTML um handbook, playbook ou manual de processo comercial (qualificação, discovery, diagnóstico, proposta, negociação, contrato, handoff, onboarding, expansão).
 ---
 
 # Modelo padrão de handbook
@@ -23,8 +23,9 @@ Exemplo preenchido: `${CLAUDE_PLUGIN_ROOT}/exemplo/vektor/saida-esperada/04-hand
 | 8 | Métricas | Linha de base medida, meta, fórmula, fonte, frequência, dono | Torna o handbook gerenciável |
 | 9 | Red flags | Como detectar, severidade (🔴 Crítico, 🟡 Atenção, 🟢 Acompanhar), ação, dono + escalação | Só entra red flag com ação |
 | 10 | Declarado × Observado × Medido | Divergências e a decisão tomada | Mostra por que o handbook diz o que diz |
-| 11 | Skills | Quais skills executam o handbook | Liga documento a execução |
-| 12 | Aprovação | Quem preencheu, revisou, aprovou; versão; próxima revisão | Dono e validade |
+| 11 | **Rubrica da etapa** | Um critério por passo, nota 0–3 (0 = como os perdidos fazem, 3 = como os ganhos fazem), regra de avanço igual ao critério de saída, calibração | Transforma o handbook em régua de coaching de cada reunião (skill `coaching-por-rubrica`) |
+| 12 | Skills | Quais skills executam o handbook | Liga documento a execução |
+| 13 | Aprovação | Quem preencheu, revisou, aprovou; versão; próxima revisão | Dono e validade |
 
 ## Como escrever
 1. Ler `03-analise/sintese.md`, as fichas das etapas cobertas, `funil.md`, `declarado.md` e `02-lente/lente.md`.
@@ -33,8 +34,9 @@ Exemplo preenchido: `${CLAUDE_PLUGIN_ROOT}/exemplo/vektor/saida-esperada/04-hand
 4. Critério de saída: use o mapa elemento × etapa da lente (elementos com nota ≥ 2). Escreva como pergunta de sim ou não.
 5. KPIs e linha de base: só do `funil.md`. Meta: proposta pelo gestor ou marcada `[HIPÓTESE]`.
 6. Red flags: derive de padrões dos perdidos e dos motivos de perda do funil.
-7. Seção 10: copie da síntese as divergências que afetam esta etapa e diga qual versão o handbook adotou.
-8. Gerar o `.html`: copiar `templates/handbook.html`, substituir o conteúdo do `<main>` pelas seções convertidas (tabelas como `<table>`, critérios em `.criterio`, cuidados em `.cuidado`, tags em `<span class="tag">`). Manter o `.md` como fonte.
+7. Seção 11 (rubrica): siga `${CLAUDE_PLUGIN_ROOT}/skills/coaching-por-rubrica/SKILL.md` §1. Calibre com as fichas de ganhos e perdidos da etapa.
+8. Seção 10: copie da síntese as divergências que afetam esta etapa e diga qual versão o handbook adotou.
+9. Gerar o `.html`: copiar `templates/handbook.html`, substituir o conteúdo do `<main>` pelas seções convertidas (tabelas como `<table>`, critérios em `.criterio`, cuidados em `.cuidado`, tags em `<span class="tag">`). Manter o `.md` como fonte.
 
 ## Regras de escrita
 - Frases curtas. Verbo no início das ações ("Registrar", "Perguntar", "Enviar").

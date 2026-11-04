@@ -24,6 +24,8 @@ Veredito final por handbook: **Pronto**, **Ajustar** ou **Refazer**. Registrar e
 - [ ] Toda ação começa com verbo e diz onde acontece ou fica registrada
 - [ ] Todo passo tem DRI e SLA
 - [ ] Toda red flag tem como detectar, severidade, ação e dono
+- [ ] Rubrica (seção 11) com um critério por passo, descrições de 0 e 3 observáveis e regra de avanço igual ao critério de saída
+- [ ] Rubrica calibrada: separa reuniões ganhas de perdidas da etapa
 
 **Uso**
 - [ ] Nomes de etapas e campos iguais aos do CRM

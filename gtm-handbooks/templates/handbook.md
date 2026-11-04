@@ -126,13 +126,25 @@ Entre 3 e 5 passos. Cada passo segue o bloco abaixo.
 |---|---|---|---|---|
 | {{tema}} | {{doc}} | {{transcrições}} | {{número}} | {{o que vale e por quê}} |
 
-## 11. Skills que executam este handbook
+## 11. Rubrica da etapa
+
+A régua para avaliar cada reunião desta etapa. Um critério por passo da seção 4 (4 a 6 critérios). Nota 3 = como os ganhos fazem; nota 0 = como os perdidos fazem `[OBSERVADO]`.
+
+| # | Critério (passo) | 0 | 1 | 2 | 3 | Peso |
+|---|---|---|---|---|---|---|
+| 1 | {{passo 4.1}} | {{como os perdidos fazem}} | {{...}} | {{...}} | {{como os ganhos fazem}} | {{1}} |
+
+> ✅ **Avança se:** {{regra sobre as notas, igual ao critério de saída da seção 7. Ex.: critério 3 = 3 e critério 5 ≥ 2}}
+
+**Calibração:** {{n}} reuniões ganhas com média {{x}} e {{n}} perdidas com média {{y}} `[OBSERVADO]`. Se não separar ganhos de perdidos, a rubrica volta para revisão.
+
+## 12. Skills que executam este handbook
 
 | Skill | Quando usar | Comando |
 |---|---|---|
 | {{empresa}}-{{etapa}} | {{gatilho}} | `/{{nome}}` |
 
-## 12. Aprovação
+## 13. Aprovação
 
 | Preenchido por | Revisado por | Aprovado por | Versão | Próxima revisão |
 |---|---|---|---|---|

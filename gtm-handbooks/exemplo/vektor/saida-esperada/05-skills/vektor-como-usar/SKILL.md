@@ -21,7 +21,7 @@ Funil: Qualificação → **Diagnóstico** → Proposta → Follow-up → Contra
 | `vektor-proposta` | Montar e apresentar a proposta a partir do custo do problema | ⏳ handbook pendente |
 | `vektor-negociacao` | Objeções de preço, piloto, concessões planejadas, contrato | ⏳ handbook pendente |
 | `vektor-handoff-cs` | Passar contexto, critério de sucesso e riscos ao CS | ⏳ aguarda entrevista de CS |
-| `vektor-avaliar-reuniao` | Nota de uma call pela lente e coaching do AE | ⏳ |
+| `vektor-coaching` | Coaching de uma call: transcrição × rubrica da etapa | ⏳ |
 
 ## Qual ler para cada tarefa
 | Tarefa | Leia, nesta ordem |
@@ -30,7 +30,7 @@ Funil: Qualificação → **Diagnóstico** → Proposta → Follow-up → Contra
 | Registrar um diagnóstico no CRM | `vektor-diagnostico` (Registrar) |
 | Decidir se o negócio pode ir para Proposta | `vektor-diagnostico` (Revisar) |
 | Cliente pediu preço por hora | `vektor-diagnostico` (objeções) → `vektor-negociacao` |
-| Avaliar uma call para coaching | `vektor-avaliar-reuniao` → `vektor-metodologia` |
+| Coaching de uma call | `vektor-diagnostico` (modo Revisar) → `vektor-coaching` quando existir |
 | Dúvida de portfólio ou ICP | `vektor-contexto` |
 
 ## Regras para todas as skills

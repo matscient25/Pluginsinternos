@@ -40,6 +40,9 @@ Funciona com **qualquer metodologia**: Challenger, MEDDPICC, SPIN, SPICED, BANT,
 | 4 | **Handbook** | Qual é o processo que funciona, etapa por etapa? | `redator-handbook` | `04-handbooks/*.md` e `.html` |
 | 5 | **Skills** | Como o time executa o handbook com o Claude? | `arquiteto-skills` | `05-skills/<skill>/SKILL.md` e `.skill` |
 | 6 | **Validação** | Um vendedor novo consegue usar sem coaching? | `revisor` | `06-validacao/relatorio.md` |
+| ∞ | **Coaching** | Cada reunião seguiu o processo que funciona? | `analista-conversas` (modo coaching) | `07-coaching/` |
+
+Depois da entrega, cada handbook vira uma **rubrica da etapa** (seção 11): cada passo é um critério com nota 0–3. Toda reunião nova é processada contra a rubrica da etapa do negócio e vira coaching (nota, veredito de avanço e a pergunta do handbook para a próxima reunião), painel do gestor e sinal de revisão do handbook.
 
 Cada passo tem um **gate binário** (passa ou não passa). Sem gate verde, o maestro não avança. Detalhes em `skills/metodo-handbooks/SKILL.md`.
 
@@ -61,7 +64,7 @@ Cada passo tem um **gate binário** (passa ou não passa). Sem gate verde, o mae
 | `maestro` | Orquestra a jornada, mantém o `ESTADO.md`, aplica os gates e decide o próximo passo. Não escreve artefato. |
 | `coletor` | Gera o data request, valida o que chegou e monta o inventário de evidências. |
 | `metodologista` | Converte qualquer metodologia (livro, site, documento interno) numa lente de análise com escala 0–3. |
-| `analista-conversas` | Lê transcrições e gera uma ficha de evidência por reunião, na lente da metodologia. Roda em lotes paralelos. |
+| `analista-conversas` | Lê transcrições: na análise, gera uma ficha de evidência por reunião na lente da metodologia; no coaching, avalia a reunião contra a rubrica da etapa. Roda em lotes paralelos. |
 | `analista-funil` | Roda o script de funil sobre o export do CRM e interpreta conversão, ciclo e perdas por etapa. |
 | `analista-documentos` | Extrai dos documentos e PPTs o processo declarado, a mensagem oficial, as provas e as regras. |
 | `redator-handbook` | Triangula declarado × observado × medido e escreve o handbook no modelo padrão. |
@@ -80,6 +83,7 @@ Cada passo tem um **gate binário** (passa ou não passa). Sem gate verde, o mae
 | `/handbook` | Escreve o handbook de um processo |
 | `/gerar-skills` | Gera as skills a partir dos handbooks |
 | `/validar` | Roda os checklists e testes |
+| `/coaching` | Processa transcrições contra a rubrica da etapa e devolve coaching e o painel do gestor |
 | `/demo` | Roda a jornada inteira com o kit de exemplo (Challenger, empresa fictícia) |
 
 ## Estrutura do plugin
@@ -88,14 +92,15 @@ Cada passo tem um **gate binário** (passa ou não passa). Sem gate verde, o mae
 gtm-handbooks/
 ├── .claude-plugin/plugin.json
 ├── agents/        9 agentes
-├── commands/      9 comandos
-├── skills/        conhecimento do método (7 skills)
+├── commands/      10 comandos
+├── skills/        conhecimento do método (8 skills)
 │   ├── metodo-handbooks/      skill mestre: jornada, gates, regras de ouro
 │   ├── data-request/          o que pedir, como validar
 │   ├── lentes-metodologia/    formato da lente + lentes prontas
 │   ├── analise-triangulada/   fichas, tags de evidência, síntese
 │   ├── modelo-handbook/       o modelo padrão de handbook
 │   ├── fabrica-de-skills/     como transformar handbook em skill
+│   ├── coaching-por-rubrica/  rubrica por etapa e coaching de cada reunião
 │   └── qualidade-handbooks/   checklists e testes
 ├── templates/     modelos em branco (ESTADO, data request, ficha, lente, handbook, skills)
 ├── scripts/       funil.py, validar_skill.py, empacotar_skill.py

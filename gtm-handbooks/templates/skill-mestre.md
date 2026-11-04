@@ -16,14 +16,14 @@ description: Ponto de partida das skills comerciais da {{Empresa}}. Lista todas 
 | `{{empresa}}-metodologia` | Elementos da {{metodologia}}, escala, critério de cada etapa |
 | `{{empresa}}-{{etapa}}` | {{gatilho}} |
 | `{{empresa}}-crm` | Onde registrar cada coisa e regras de passagem de etapa |
-| `{{empresa}}-avaliar-reuniao` | Nota de uma call pela metodologia e coaching |
+| `{{empresa}}-coaching` | Coaching de uma call: transcrição × rubrica da etapa |
 
 ## Qual ler para cada tarefa
 | Tarefa | Leia, nesta ordem |
 |---|---|
 | Preparar uma reunião de {{etapa}} | `{{empresa}}-{{etapa}}` → `{{empresa}}-contexto` → `{{empresa}}-metodologia` |
 | Registrar uma reunião no CRM | `{{empresa}}-{{etapa}}` (Registrar) → `{{empresa}}-crm` |
-| Avaliar uma call para coaching | `{{empresa}}-avaliar-reuniao` → `{{empresa}}-metodologia` |
+| Coaching de uma call | `{{empresa}}-coaching` → handbook da etapa (rubrica) |
 | Responder dúvida de produto | `{{empresa}}-contexto` |
 
 ## Regras para todas as skills

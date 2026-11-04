@@ -12,7 +12,7 @@ Siga a estrutura da skill: manchete, processo real por etapa, padrões ganho × 
 
 ## Handbook
 1. Copie `${CLAUDE_PLUGIN_ROOT}/templates/handbook.md` para `04-handbooks/<processo>.md`.
-2. Preencha as seções 1 a 12 com o que aparece nos ganhos; use os perdidos para red flags e cuidados.
+2. Preencha as seções 1 a 13 (a seção 11, rubrica, segue `${CLAUDE_PLUGIN_ROOT}/skills/coaching-por-rubrica/SKILL.md`) com o que aparece nos ganhos; use os perdidos para red flags e cuidados.
 3. Cada passo: ao menos uma pergunta literal com fonte. Sem fonte, `[PRECISA DE DADO]`.
 4. Critério de entrada e saída: do mapa elemento × etapa da lente, em forma de sim ou não.
 5. KPIs e linha de base: só de `funil.md`.
