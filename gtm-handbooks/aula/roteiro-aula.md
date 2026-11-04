@@ -27,12 +27,13 @@ Certificação GTM Engineer · SCIENT · aula ao vivo de 2 horas.
 | 18–40 | Coletar | 7–12 | As 4 fontes, o que cada uma revela, o que pedir e quanto basta. Ênfase na fonte C (documentos), a que mais falta |
 | 40–47 | Metodologia | 13–14 | Qualquer metodologia serve: ela diz o que procurar em cada reunião e quando o negócio pode mudar de etapa |
 | 47–62 | Analisar | 15–18 | Cruzar as três visões; hipótese da gestão desmentida pelo funil; o que só aparece nos ganhos |
-| 62–82 | Documentar | 19–24 | O que documentar, anatomia em 3 camadas, manchete-conclusão, um passo bem feito, **a rubrica da etapa**, tags de evidência |
-| 82–100 | Executar e coaching | 25–30 | Tipos de skill; antes, durante e depois; **transcrição × rubrica da etapa: coaching individual, painel do gestor e sinal de revisão do handbook**; case de 25 skills |
-| 100–110 | Validar e fechar | 31–34 | Pronto/ajustar/refazer; handbook é produto; como começar amanhã; regras de ouro |
+| 62–82 | Documentar | 19–24 | O que documentar, as 14 partes do handbook, começar pela conclusão, como escrever um passo, **a rubrica da etapa**, de onde vem cada informação |
+| 82–92 | Executar | 25–27 | Tipos de skill; como o vendedor usa no dia a dia; case de 25 skills |
+| 92–107 | Melhoria contínua | 28–32 | Como saber se está pronto; **coaching de cada reunião com a rubrica** (ganha × perdida, o que o vendedor recebe, quem usa o resultado); como manter atualizado |
+| 107–110 | Fechamento | 33–34 | Por onde começar; regras de ouro |
 | 110–120 | Perguntas (ou demo extra) | — | Ver abaixo |
 
-Cortes se atrasar: telas 11 (pessoas) e 24 (tags) viram fala de 30 segundos. Nunca corte as telas 23 e 27–29 (rubrica e coaching): são o ponto central do método.
+Cortes se atrasar: telas 11 (pessoas) e 24 (tags) viram fala de 30 segundos. Nunca corte as telas 23 e 29–31 (rubrica e coaching): são o ponto central do método.
 
 ---
 
@@ -74,8 +75,8 @@ Se o plugin travar, a conexão cair ou a geração demorar mais de 3 min num pas
 - Metodologia (tela 13): qual metodologia o time realmente fala no dia a dia?
 - Analisar (tela 16): qual hipótese da gestão de vocês nunca foi testada no funil?
 - Documentar (tela 21): qual seria a manchete do processo comercial de vocês hoje, em uma frase?
-- Coaching (tela 27): quantas gravações do time o gestor de vocês consegue ouvir por semana? E se todas fossem avaliadas pela rubrica?
-- Validar (tela 31): quem de fora do projeto poderia fazer o teste do vendedor novo?
+- Coaching (tela 29): quantas gravações do time o gestor de vocês consegue ouvir por semana? E se todas fossem avaliadas pela rubrica?
+- Melhoria contínua (tela 28): quem de fora do projeto poderia fazer o teste do vendedor novo?
 
 ---
 
