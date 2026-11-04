@@ -5,12 +5,12 @@ description: Como analisar as evidências de um projeto de handbook de GTM em tr
 
 # Análise triangulada
 
-Três análises independentes, depois uma síntese. Cada análise usa a lente (`02-lente/lente.md`) como eixo.
+Três análises independentes, depois uma síntese. Cada análise usa a metodologia (`02-metodologia/metodologia.md`) como eixo.
 
 ## 1. Observado · fichas de reunião (agente `analista-conversas`)
 - Uma ficha por transcrição, no modelo `${CLAUDE_PLUGIN_ROOT}/templates/ficha-reuniao.md`, salva em `03-analise/fichas/<mesmo-nome-do-arquivo>.md`.
 - Ler o arquivo inteiro. Inferir falantes pelo contexto quando a ferramenta não identifica, sem inventar nomes.
-- Nota 0–3 por elemento da lente, com citação literal curta (≤ 30 palavras) e `[mm:ss]`.
+- Nota 0–3 por item da metodologia, com citação literal curta (≤ 30 palavras) e `[mm:ss]`.
 - Registrar perguntas literais do vendedor e a reação do cliente: elas viram as "perguntas que funcionam" do handbook.
 - Mais de 8 transcrições: dividir em lotes de 4 a 6 e rodar agentes em paralelo. Cada agente devolve, além das fichas, um JSON por reunião: `{"arquivo","conta","etapa","resultado","notas":{"<elemento>":n},"proximo_passo_com_data":bool,"elo_mais_fraco":"...","melhor_momento":"[mm:ss] ..."}` e 5 a 8 padrões do lote.
 
@@ -42,7 +42,7 @@ Cada item com `[DECLARADO: arquivo, página/slide]`. Marcar o que parece desatua
 Estrutura:
 1. **Manchete:** a principal conclusão em 1 frase.
 2. **Processo real por etapa:** o que os ganhos fazem em cada etapa, com fontes.
-3. **Padrões de ganho × perda:** notas médias da lente em ganhos vs. perdidos (tabela), comportamentos que só aparecem nos ganhos.
+3. **Padrões de ganho × perda:** notas médias da metodologia em ganhos vs. perdidos (tabela), comportamentos que só aparecem nos ganhos.
 4. **Divergências declarado × observado × medido:** tabela tema · declarado · observado · medido · decisão. Regra: observado e medido ganham do declarado; quando observado e medido discordam, investigar na entrevista.
 5. **Hipóteses da gestão:** confirmadas, desmentidas ou sem dado.
 6. **Lacunas:** o que falta para escrever cada handbook, quem fornece.

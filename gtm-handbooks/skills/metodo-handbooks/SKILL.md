@@ -1,6 +1,6 @@
 ---
 name: metodo-handbooks
-description: Skill mestre do GTM Handbooks & Skills Kit. Explica o método de 7 passos (Escopo, Coleta, Lente, Análise, Handbook, Skills, Validação) para transformar o processo comercial real de uma empresa em handbooks operacionais e skills, com qualquer metodologia de vendas. Define pastas, ESTADO.md, gates binários, tags de evidência e regras de ouro. Use sempre primeiro, antes de qualquer trabalho de handbook, playbook, documentação de processo comercial ou criação de skills de GTM, e quando alguém perguntar "por onde começo" ou "qual o próximo passo".
+description: Skill mestre do GTM Handbooks & Skills Kit. Explica o método de 7 passos (Escopo, Coleta, Metodologia, Análise, Handbook, Skills, Validação) para transformar o processo comercial real de uma empresa em handbooks operacionais e skills, com qualquer metodologia de vendas. Define pastas, ESTADO.md, gates binários, tags de evidência e regras de ouro. Use sempre primeiro, antes de qualquer trabalho de handbook, playbook, documentação de processo comercial ou criação de skills de GTM, e quando alguém perguntar "por onde começo" ou "qual o próximo passo".
 ---
 
 # Método GTM Handbooks & Skills
@@ -14,7 +14,7 @@ O handbook é o espelho do processo que **funciona**. Ele nasce do cruzamento de
 | **Observado** | Transcrições de reuniões por etapa (ganhos, perdidos, abertos) | O que o time faz de verdade? |
 | **Medido** | Export do funil do CRM | O que dá resultado e onde o funil quebra? |
 
-A **metodologia** (Challenger, MEDDPICC, SPIN, SPICED, BANT, GPCTBA, própria) é a **lente** que organiza a leitura das três visões. O método não muda com a metodologia.
+A **metodologia** (Challenger, MEDDPICC, SPIN, SPICED, BANT, GPCTBA, própria) é a **metodologia** que organiza a leitura das três visões. O método não muda com a metodologia.
 
 ## Os 7 passos e os gates
 
@@ -22,7 +22,7 @@ A **metodologia** (Challenger, MEDDPICC, SPIN, SPICED, BANT, GPCTBA, própria) �
 |---|---|---|---|---|
 | 0 | Escopo | `maestro` | `ESTADO.md` | Empresa, processos (1 a 5), etapas do CRM, metodologia e aprovador definidos |
 | 1 | Coleta | `coletor` | `01-coleta/inventario.md` | Fonte A com ≥ 6 meses de negócios · fonte B com ≥ 2 transcrições por etapa escolhida, incluindo ≥ 1 ganho · fonte C com ≥ 1 documento de processo ou PPT · lacunas registradas com dono |
-| 2 | Lente | `metodologista` | `02-lente/lente.md` | Todo elemento com definição, evidência observável, escala 0–3 e perguntas · mapa elemento × etapa preenchido · validada por alguém da empresa |
+| 2 | Metodologia | `metodologista` | `02-metodologia/metodologia.md` | Todo elemento com definição, evidência observável, escala 0–3 e perguntas · mapa elemento × etapa preenchido · validada por alguém da empresa |
 | 3 | Análise | `analista-conversas`, `analista-funil`, `analista-documentos` | `03-analise/` | 1 ficha por transcrição · `funil.md` com números calculados pelo script · `declarado.md` · `sintese.md` com divergências e padrões de ganho |
 | 4 | Handbook | `redator-handbook` | `04-handbooks/<processo>.md` e `.html` | Checklist de handbook do `qualidade-handbooks` 100% sim |
 | 5 | Skills | `arquiteto-skills` | `05-skills/` | `validar_skill.py` sem erro · skill mestre + contexto + metodologia + 1 por etapa · casos de teste escritos |
@@ -46,7 +46,7 @@ handbooks/<empresa-slug>/
 │   ├── D-pessoas/            notas das entrevistas
 │   ├── data-request.md       o pedido enviado
 │   └── inventario.md         o que chegou e a qualidade
-├── 02-lente/lente.md
+├── 02-metodologia/metodologia.md
 ├── 03-analise/
 │   ├── fichas/               1 ficha por reunião
 │   ├── funil.md              saída do funil.py + leitura
@@ -60,7 +60,7 @@ handbooks/<empresa-slug>/
 
 No Cowork sem pasta local, use a pasta de trabalho que o usuário indicar (ou o Drive conectado) com a mesma estrutura.
 
-## Tags de evidência (obrigatórias em handbook, síntese e lente)
+## Tags de evidência (obrigatórias em handbook, síntese e metodologia)
 
 | Tag | Quando usar |
 |---|---|
@@ -94,7 +94,7 @@ Nunca apresentar `[HIPÓTESE]` como fato. Número sem tag não entra.
 | Tarefa | Leia |
 |---|---|
 | Montar ou validar o pedido de dados | `data-request` |
-| Escolher ou montar a metodologia | `lentes-metodologia` |
+| Escolher ou montar a metodologia | `metodologias` |
 | Ler transcrições, funil, documentos | `analise-triangulada` |
 | Escrever handbook | `modelo-handbook` |
 | Gerar skills | `fabrica-de-skills` |

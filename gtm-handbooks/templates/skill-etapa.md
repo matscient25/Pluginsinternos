@@ -28,7 +28,7 @@ Cola de bolso: perguntas na ordem, sinais de avanço e de risco (`references/exe
 
 ## Modo Registrar
 Com a transcrição ou o relato do vendedor:
-1. Nota 0–3 por elemento da lente que esta etapa trabalha, com a frase que justifica.
+1. Nota 0–3 por item da metodologia que esta etapa trabalha, com a frase que justifica.
 2. Campos do CRM a atualizar: {{campo: valor}}.
 3. Próximo passo com data, dono e participantes.
 4. **Mostre o que será gravado e peça confirmação antes de gravar.**

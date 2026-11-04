@@ -46,7 +46,7 @@ No máximo 4 KPIs, todos `[MEDIDO]` ou marcados `[PRECISA DE DADO]`.
 
 - **Para o cliente:** {{o que ele ganha saindo desta etapa}}
 - **Para a empresa:** {{o que a empresa precisa saber ou conquistar}}
-- **Princípio da metodologia:** {{elemento(s) da lente que esta etapa executa, em 2 a 3 linhas}}
+- **Princípio da metodologia:** {{elemento(s) da metodologia que esta etapa executa, em 2 a 3 linhas}}
 
 ## 3. Hand-off de entrada
 

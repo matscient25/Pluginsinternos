@@ -18,7 +18,7 @@ Atualizado em {{data}} por {{agente/pessoa}}. Fonte da verdade do projeto: ler a
 |---|---|---|---|---|
 | 0 | Escopo | ⬜ | ⬜ | ESTADO.md |
 | 1 | Coleta | ⬜ | ⬜ | 01-coleta/inventario.md |
-| 2 | Lente | ⬜ | ⬜ | 02-lente/lente.md |
+| 2 | Metodologia | ⬜ | ⬜ | 02-metodologia/metodologia.md |
 | 3 | Análise | ⬜ | ⬜ | 03-analise/sintese.md |
 | 4 | Handbook | ⬜ | ⬜ | 04-handbooks/ |
 | 5 | Skills | ⬜ | ⬜ | 05-skills/ |
@@ -35,4 +35,4 @@ Legenda: ⬜ não iniciado · 🟨 em andamento · ✅ concluído · ⛔ bloquea
 |---|---|---|
 
 ## Próximo comando
-`{{/coleta | /lente | /analise | /handbook <processo> | /gerar-skills | /validar}}`
+`{{/coleta | /metodologia | /analise | /handbook <processo> | /gerar-skills | /validar}}`

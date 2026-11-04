@@ -248,7 +248,7 @@ html.presenting .panel { animation: rise .35s ease-out; }
     <div style="display:grid;gap:18px">
       <div class="eyebrow">Aula · Building GTM Handbooks &amp; Skills</div>
       <h1>Building GTM Handbooks &amp; Skills</h1>
-      <p class="thesis">O handbook é o <strong>espelho do processo que funciona</strong>, não do processo ideal. Ele nasce do cruzamento de três visões, lidas pela lente da metodologia. Depois vira skill, e o time executa com o Claude.</p>
+      <p class="thesis">O handbook é o <strong>espelho do processo que funciona</strong>, não do processo ideal. Ele nasce do cruzamento de três visões, lidas pela metodologia. Depois vira skill, e o time executa com o Claude.</p>
     </div>
     <div class="triad" aria-label="As três visões">
       <div><span class="tag">[DECLARADO]</span><h3>O que a empresa diz</h3><p>Processos documentados, playbooks, PPT de proposta, PPT de produto, análises de ganho e perda.</p></div>
@@ -278,11 +278,11 @@ html.presenting .panel { animation: rise .35s ease-out; }
     <div class="wrap">
       <div class="section-head">
         <div class="eyebrow">Passo 1 · Coleta</div>
-        <h2 id="fontes-t">Quatro fontes de evidência entram numa lente só</h2>
+        <h2 id="fontes-t">Quatro fontes de evidência entram num roteiro só</h2>
         <p>Transcrição sozinha não basta. O que faltava nas outras turmas era o lado declarado: processos escritos, conclusões de análises e os PPTs que o time realmente usa.</p>
       </div>
       <div class="flow-box">
-        <svg viewBox="0 0 980 380" role="img" aria-label="As fontes A Números, B Conversas, C Documentos e D Pessoas convergem na lente da metodologia, que gera o handbook, que gera as skills.">
+        <svg viewBox="0 0 980 380" role="img" aria-label="As fontes A Números, B Conversas, C Documentos e D Pessoas convergem na metodologia, que gera o handbook, que gera as skills.">
           <g font-family="Sora, sans-serif">
             <g fill="none" stroke="var(--accent-soft)" stroke-width="1.5">
               <path d="M262 58 C 360 58, 360 190, 430 190"/>
@@ -310,8 +310,8 @@ html.presenting .panel { animation: rise .35s ease-out; }
             </g>
             <g>
               <rect x="430" y="132" width="180" height="116" rx="2" fill="var(--fg)"/>
-              <text x="520" y="168" text-anchor="middle" font-size="11" font-weight="600" letter-spacing="1.4" fill="var(--bg)">LENTE DA</text>
-              <text x="520" y="186" text-anchor="middle" font-size="11" font-weight="600" letter-spacing="1.4" fill="var(--bg)">METODOLOGIA</text>
+              <text x="520" y="168" text-anchor="middle" font-size="11" font-weight="600" letter-spacing="1.4" fill="var(--bg)">METODOLOGIA</text>
+              <text x="520" y="186" text-anchor="middle" font-size="11" font-weight="600" letter-spacing="1.4" fill="var(--bg)">O QUE PROCURAR</text>
               <text x="520" y="212" text-anchor="middle" font-size="12" fill="var(--bg)">Challenger, MEDDPICC,</text>
               <text x="520" y="230" text-anchor="middle" font-size="12" fill="var(--bg)">SPIN ou a sua</text>
             </g>
@@ -357,7 +357,7 @@ html.presenting .panel { animation: rise .35s ease-out; }
           <li><div><b>Baixe o plugin</b><span>Em <span class="mono">skills.scient.cc</span>, faça login e baixe o <span class="mono">.zip</span> do GTM Handbooks &amp; Skills Kit.</span></div></li>
           <li><div><b>Instale no Claude</b><span>Configurações → Plugins → Adicionar, e envie o arquivo. No Claude Code: <span class="mono">/plugin install gtm-handbooks</span>.</span></div></li>
           <li><div><b>Digite <span class="mono">/handbooks</span></b><span>O maestro abre o projeto, pergunta processos e metodologia e gera o data request.</span></div></li>
-          <li><div><b>Treine com o exemplo</b><span><span class="mono">/demo</span> roda a jornada inteira com a Consultoria Vektor, um caso fictício em Challenger.</span></div></li>
+          <li><div><b>Treine com o exemplo</b><span><span class="mono">/demo</span> roda a jornada inteira com a ACME, um caso fictício em Challenger.</span></div></li>
         </ol>
       </div>
       <div>
@@ -380,7 +380,7 @@ html.presenting .panel { animation: rise .35s ease-out; }
 </main>
 
 <footer class="end hide-pres">
-  <div class="wrap"><span>SCIENT · Building GTM Handbooks &amp; Skills</span><span>Exemplos: Consultoria Vektor × TechScale, caso fictício para treinamento</span></div>
+  <div class="wrap"><span>SCIENT · Building GTM Handbooks &amp; Skills</span><span>Exemplos: ACME × TechScale, caso fictício para treinamento</span></div>
 </footer>
 
 <script>
@@ -393,8 +393,8 @@ const STEPS = [
     agents: ['maestro'], cmd: '/iniciar', out: 'handbooks/<empresa>/ESTADO.md',
     gate: 'Processos, metodologia e aprovador definidos por escrito.',
     err: 'Escolher uma área ("handbook de vendas") em vez de um processo ("Diagnóstico").',
-    file: 'handbooks/vektor/ESTADO.md',
-    preview: `<pre class="code"><span class="k"># ESTADO</span> · Consultoria Vektor
+    file: 'handbooks/acme/ESTADO.md',
+    preview: `<pre class="code"><span class="k"># ESTADO</span> · ACME
 
 <span class="k">Metodologia</span>   Challenger (Dixon &amp; Adamson)
 <span class="k">Processos</span>     Qualificação · Diagnóstico · Proposta
@@ -425,13 +425,13 @@ const STEPS = [
 <div class="gate"><span class="label">Gate 1</span><span style="font-size:13.5px">Verde com ressalva: a entrevista de CS entra antes do handbook de Handoff.</span></div>`
   },
   {
-    n: 2, name: 'Lente', short: 'Como a metodologia vira critério?',
+    n: 2, name: 'Metodologia', short: 'Como a metodologia vira critério?',
     q: 'Como a metodologia escolhida vira critério de análise?',
     inputs: ['Fonte oficial da metodologia: livro, site ou documento interno', 'Etapas do CRM (do Escopo)'],
-    agents: ['metodologista'], cmd: '/lente', out: '02-lente/lente.md',
+    agents: ['metodologista'], cmd: '/metodologia', out: '02-metodologia/metodologia.md',
     gate: 'Todo elemento tem definição, evidência observável, escala 0 a 3 e etapa onde precisa aparecer.',
     err: 'Copiar a teoria sem dizer o que conta como evidência numa conversa real.',
-    file: '02-lente/lente.md',
+    file: '02-metodologia/metodologia.md',
     preview: `<div class="doc"><div class="label">Elemento · Teach</div><h4>Reframe</h4>
 <p style="font-size:13.5px">Uma perspectiva nova que liga os desafios do cliente a um problema maior que ele não via.</p>
 <div style="display:grid;gap:4px"><span class="label">Conta como evidência</span><span style="font-size:13.5px">O vendedor apresenta uma hipótese antes de perguntar, e o cliente hesita ou reformula a própria visão.</span></div>
@@ -442,12 +442,12 @@ const STEPS = [
   {
     n: 3, name: 'Análise', short: 'Diz, faz, dá resultado?',
     q: 'O que o time diz que faz, o que faz de fato e o que dá resultado?',
-    inputs: ['Inventário validado', 'Lente da metodologia'],
+    inputs: ['Inventário validado', 'Metodologia'],
     agents: ['analista-conversas', 'analista-funil', 'analista-documentos'], cmd: '/analise', out: '03-analise/ fichas, funil.md, declarado.md, sintese.md',
     gate: 'Toda ficha tem citação com fonte e a síntese lista as divergências entre as três visões.',
     err: 'Resumir a reunião em vez de extrair comportamento, pergunta e frase literal.',
     file: '03-analise/fichas/techscale-diagnostico.md',
-    preview: `<div class="doc"><h4>TechScale · Diagnóstico · ganho</h4><div class="sub">Ficha de reunião pela lente Challenger</div>
+    preview: `<div class="doc"><h4>TechScale · Diagnóstico · ganho</h4><div class="sub">Ficha de reunião pela metodologia Challenger</div>
 <div class="tabwrap"><table class="t"><thead><tr><th>Elemento</th><th>Nota</th><th>Evidência</th></tr></thead><tbody>
 <tr><td>Rational Drowning</td><td class="st">3</td><td>Custo do problema calculado com os dados do próprio cliente</td></tr>
 <tr><td>Tailor</td><td class="st">3</td><td>Perguntas separadas para o CTO e para o Head de Engenharia</td></tr>
@@ -461,12 +461,12 @@ const STEPS = [
   {
     n: 4, name: 'Handbook', short: 'Qual processo funciona?',
     q: 'Qual é o processo que funciona, etapa por etapa?',
-    inputs: ['Síntese da análise', 'Lente', 'Modelo padrão de handbook (14 seções, com rubrica da etapa)'],
+    inputs: ['Síntese da análise', 'Metodologia', 'Modelo padrão de handbook (14 seções, com rubrica da etapa)'],
     agents: ['redator-handbook'], cmd: '/handbook', out: '04-handbooks/<processo>.md e .html',
     gate: 'De 3 a 5 passos, critério de saída binário e tag de evidência em toda afirmação.',
     err: 'Documentar o ideal do livro em vez do que as conversas mostram.',
     file: '04-handbooks/diagnostico.md',
-    preview: `<div class="doc"><div class="label">Handbook · Diagnóstico · Vektor</div>
+    preview: `<div class="doc"><div class="label">Handbook · Diagnóstico · ACME</div>
 <p class="headline">Diagnóstico que termina com o custo do problema em reais leva 81% dos negócios para a proposta. Sem esse número, 28%.</p>
 <div class="kpis"><div><b>54%</b><span>Diagnóstico → Proposta</span></div><div><b>11 d</b><span>Tempo na etapa (mediana)</span></div><div><b>65%</b><span>Win rate com custo quantificado (15% sem)</span></div><div><b>18%</b><span>Perdas por preço/hora</span></div></div>
 <div class="sub">Os quatro números vêm do funil <span class="mono">[MEDIDO: funil.md]</span>, calculados pelo funil.py sobre os 122 negócios do kit. Exemplo fictício.</div></div>
@@ -477,28 +477,28 @@ const STEPS = [
   {
     n: 5, name: 'Skills', short: 'Como o time executa?',
     q: 'Como o time executa o handbook com o Claude no dia a dia?',
-    inputs: ['Handbooks aprovados', 'Lente', 'Contexto da empresa'],
+    inputs: ['Handbooks aprovados', 'Metodologia', 'Contexto da empresa'],
     agents: ['arquiteto-skills'], cmd: '/gerar-skills', out: '05-skills/<skill>/SKILL.md e .skill',
     gate: 'Toda skill tem gatilho claro, passos executáveis e passa no validador.',
     err: 'Skill enciclopédia: copiar o handbook inteiro em vez de guiar a próxima ação.',
     file: '05-skills/',
     preview: `<pre class="code">05-skills/
-├── vektor-como-usar/     <span class="d">mestre: qual skill para cada tarefa</span>
-├── vektor-contexto/      <span class="d">empresa, ICP, personas, portfólio</span>
-├── vektor-challenger/    <span class="d">a lente da metodologia</span>
-├── vektor-qualificacao/
-├── vektor-diagnostico/   <span class="d">uma skill por etapa</span>
-├── vektor-proposta/
-├── vektor-negociacao/
-└── vektor-handoff-cs/</pre>
+├── acme-como-usar/     <span class="d">mestre: qual skill para cada tarefa</span>
+├── acme-contexto/      <span class="d">empresa, ICP, personas, portfólio</span>
+├── acme-challenger/    <span class="d">a metodologia</span>
+├── acme-qualificacao/
+├── acme-diagnostico/   <span class="d">uma skill por etapa</span>
+├── acme-proposta/
+├── acme-negociacao/
+└── acme-handoff-cs/</pre>
 <pre class="code"><span class="d">---</span>
-<span class="k">name:</span> vektor-diagnostico
-<span class="k">description:</span> Conduz a reunião de Diagnóstico da Vektor
+<span class="k">name:</span> acme-diagnostico
+<span class="k">description:</span> Conduz a reunião de Diagnóstico da ACME
   no padrão Challenger: prepara hipóteses por stakeholder,
   guia o Rational Drowning e registra o custo no CRM. Use
   quando o AE disser "vou fazer o diagnóstico da conta X".
 <span class="d">---</span>
-<span class="k"># Diagnóstico · Vektor</span>
+<span class="k"># Diagnóstico · ACME</span>
 1. Ler o hand-off da Qualificação no CRM
 2. Montar 3 hipóteses de causa, uma por papel
 3. ...</pre>`
@@ -526,7 +526,7 @@ const STEPS = [
 
 const AGENTS = [
   { nm: 'coletor', ps: 'passo 1', p: 'Gera o data request e valida o que chegou.', out: 'inventário de evidências' },
-  { nm: 'metodologista', ps: 'passo 2', p: 'Converte qualquer metodologia numa lente com escala 0 a 3.', out: 'lente.md' },
+  { nm: 'metodologista', ps: 'passo 2', p: 'Converte qualquer metodologia num roteiro com escala 0 a 3.', out: 'metodologia.md' },
   { nm: 'analista-conversas', ps: 'passo 3', p: 'Lê transcrições em lotes e gera uma ficha por reunião.', out: 'fichas com citação' },
   { nm: 'revisor', ps: 'passo 6', p: 'Aplica os checklists e testa gatilho e execução das skills.', out: 'relatório de validação' },
   { nm: 'maestro', ps: 'passos 0 a 6', p: 'Orquestra a jornada, mantém o ESTADO, aplica os gates e chama o próximo agente. Não escreve artefato.', out: 'ESTADO.md e o próximo passo', center: true },

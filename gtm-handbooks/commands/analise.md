@@ -5,7 +5,7 @@ argument-hint: "[conversas | funil | documentos | sintese] (opcional, padrão: t
 
 Escopo: `$ARGUMENTS`
 
-Requer gate da Coleta e da Lente ✅ no `ESTADO.md`. Siga `${CLAUDE_PLUGIN_ROOT}/skills/analise-triangulada/SKILL.md`.
+Requer gate da Coleta e da Metodologia ✅ no `ESTADO.md`. Siga `${CLAUDE_PLUGIN_ROOT}/skills/analise-triangulada/SKILL.md`.
 
 Dispare **em paralelo**:
 - **analista-conversas**: um agente por lote de 4 a 6 transcrições de `01-coleta/B-conversas/` → `03-analise/fichas/`

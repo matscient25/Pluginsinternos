@@ -11,7 +11,7 @@ Pergunte de forma objetiva (pode ser numa única mensagem com as 6 perguntas):
 1. O que a empresa vende e para quem (1 a 2 linhas)?
 2. Quais etapas do funil existem no CRM (nomes exatos) e qual CRM?
 3. Quais processos entram nos handbooks (1 a 5)? Sugira começar pela etapa com maior vazamento, se o usuário souber.
-4. Qual metodologia o time usa ou treinou (Challenger, MEDDPICC, SPIN, SPICED, BANT, GPCTBA, própria, nenhuma)? Se nenhuma, recomende com a tabela de `lentes-metodologia`.
+4. Qual metodologia o time usa ou treinou (Challenger, MEDDPICC, SPIN, SPICED, BANT, GPCTBA, própria, nenhuma)? Se nenhuma, recomende com a tabela de `metodologias`.
 5. Quem aprova os handbooks?
 6. Que conectores estão disponíveis (CRM, gravador de reuniões, Drive)?
 

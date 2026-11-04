@@ -5,7 +5,7 @@ Plugin do Claude (Cowork e Claude Code) que transforma o processo comercial **re
 1. **Handbooks operacionais** por processo ou etapa do funil, num modelo padrão (o que fazer, quem faz, quando passa de etapa, o que medir, o que dá errado).
 2. **Skills** que o time executa com o Claude no dia a dia ("vou fazer uma discovery com a conta X" → a skill guia perguntas, checklist e registro no CRM).
 
-Funciona com **qualquer metodologia**: Challenger, MEDDPICC, SPIN, SPICED, BANT, GPCTBA/C&I ou uma metodologia própria da empresa. A metodologia entra como uma **lente**; o método é sempre o mesmo.
+Funciona com **qualquer metodologia**: Challenger, MEDDPICC, SPIN, SPICED, BANT, GPCTBA/C&I ou uma metodologia própria da empresa. A metodologia entra como uma **metodologia**; o método é sempre o mesmo.
 
 > Material da certificação **Building GTM Handbooks & Skills** (SCIENT). Distribuído em [skills.scient.cc](https://skills.scient.cc).
 
@@ -20,7 +20,7 @@ Funciona com **qualquer metodologia**: Challenger, MEDDPICC, SPIN, SPICED, BANT,
    documentos, PPTs,        transcrições de           funil do CRM:
    processos, propostas     reuniões por etapa        conversão, ciclo, perdas
         \                        |                        /
-         \_______________  LENTE DA METODOLOGIA  _______/
+         \_______________    METODOLOGIA        _______/
                                  |
                           HANDBOOK por etapa
                                  |
@@ -35,7 +35,7 @@ Funciona com **qualquer metodologia**: Challenger, MEDDPICC, SPIN, SPICED, BANT,
 |---|---|---|---|---|
 | 0 | **Escopo** | Quais processos, qual metodologia, quem aprova? | `maestro` | `ESTADO.md` |
 | 1 | **Coleta** | Temos evidência suficiente das 4 fontes? | `coletor` | `01-coleta/inventario.md` |
-| 2 | **Lente** | Como a metodologia escolhida vira critério de análise? | `metodologista` | `02-lente/lente.md` |
+| 2 | **Metodologia** | Como a metodologia escolhida vira critério de análise? | `metodologista` | `02-metodologia/metodologia.md` |
 | 3 | **Análise** | O que o time diz, faz e o que dá resultado? | `analista-conversas`, `analista-funil`, `analista-documentos` | `03-analise/` (fichas, funil, declarado, síntese) |
 | 4 | **Handbook** | Qual é o processo que funciona, etapa por etapa? | `redator-handbook` | `04-handbooks/*.md` e `.html` |
 | 5 | **Skills** | Como o time executa o handbook com o Claude? | `arquiteto-skills` | `05-skills/<skill>/SKILL.md` e `.skill` |
@@ -63,8 +63,8 @@ Cada passo tem um **gate binário** (passa ou não passa). Sem gate verde, o mae
 |---|---|
 | `maestro` | Orquestra a jornada, mantém o `ESTADO.md`, aplica os gates e decide o próximo passo. Não escreve artefato. |
 | `coletor` | Gera o data request, valida o que chegou e monta o inventário de evidências. |
-| `metodologista` | Converte qualquer metodologia (livro, site, documento interno) numa lente de análise com escala 0–3. |
-| `analista-conversas` | Lê transcrições: na análise, gera uma ficha de evidência por reunião na lente da metodologia; no coaching, avalia a reunião contra a rubrica da etapa. Roda em lotes paralelos. |
+| `metodologista` | Converte qualquer metodologia (livro, site, documento interno) num roteiro de análise com escala 0–3. |
+| `analista-conversas` | Lê transcrições: na análise, gera uma ficha de evidência por reunião pela metodologia; no coaching, avalia a reunião contra a rubrica da etapa. Roda em lotes paralelos. |
 | `analista-funil` | Roda o script de funil sobre o export do CRM e interpreta conversão, ciclo e perdas por etapa. |
 | `analista-documentos` | Extrai dos documentos e PPTs o processo declarado, a mensagem oficial, as provas e as regras. |
 | `redator-handbook` | Triangula declarado × observado × medido e escreve o handbook no modelo padrão. |
@@ -78,7 +78,7 @@ Cada passo tem um **gate binário** (passa ou não passa). Sem gate verde, o mae
 | `/handbooks` | Porta de entrada: mostra o estado do projeto e roda o próximo passo |
 | `/iniciar` | Cria o projeto de uma empresa (escopo, processos, metodologia) |
 | `/coleta` | Gera o data request e valida o que já chegou |
-| `/lente` | Monta a lente da metodologia |
+| `/metodologia` | Monta a metodologia |
 | `/analise` | Roda as três análises e a síntese |
 | `/handbook` | Escreve o handbook de um processo |
 | `/gerar-skills` | Gera as skills a partir dos handbooks |
@@ -96,15 +96,15 @@ gtm-handbooks/
 ├── skills/        conhecimento do método (8 skills)
 │   ├── metodo-handbooks/      skill mestre: jornada, gates, regras de ouro
 │   ├── data-request/          o que pedir, como validar
-│   ├── lentes-metodologia/    formato da lente + lentes prontas
+│   ├── metodologias/    formato da metodologia + metodologias prontas
 │   ├── analise-triangulada/   fichas, tags de evidência, síntese
 │   ├── modelo-handbook/       o modelo padrão de handbook
 │   ├── fabrica-de-skills/     como transformar handbook em skill
 │   ├── coaching-por-rubrica/  rubrica por etapa e coaching de cada reunião
 │   └── qualidade-handbooks/   checklists e testes
-├── templates/     modelos em branco (ESTADO, data request, ficha, lente, handbook, skills)
+├── templates/     modelos em branco (ESTADO, data request, ficha, metodologia, handbook, skills)
 ├── scripts/       funil.py, validar_skill.py, empacotar_skill.py
-├── exemplo/       kit de demonstração (Consultoria Vektor × TechScale, Challenger, fictício)
+├── exemplo/       kit de demonstração (ACME × TechScale, Challenger, fictício)
 └── aula/          material da aula
 ```
 

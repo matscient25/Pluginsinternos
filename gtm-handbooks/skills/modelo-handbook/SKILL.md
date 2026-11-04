@@ -6,7 +6,7 @@ description: Modelo padrão de handbook operacional de processo de GTM (14 seç�
 # Modelo padrão de handbook
 
 Modelo em branco: `${CLAUDE_PLUGIN_ROOT}/templates/handbook.md`. Versão para leitura: `${CLAUDE_PLUGIN_ROOT}/templates/handbook.html`.
-Exemplo preenchido: `${CLAUDE_PLUGIN_ROOT}/exemplo/vektor/saida-esperada/04-handbooks/diagnostico.md`.
+Exemplo preenchido: `${CLAUDE_PLUGIN_ROOT}/exemplo/acme/saida-esperada/04-handbooks/diagnostico.md`.
 
 ## Anatomia (e por quê)
 
@@ -28,10 +28,10 @@ Exemplo preenchido: `${CLAUDE_PLUGIN_ROOT}/exemplo/vektor/saida-esperada/04-hand
 | 13 | Aprovação | Quem preencheu, revisou, aprovou; versão; próxima revisão | Dono e validade |
 
 ## Como escrever
-1. Ler `03-analise/sintese.md`, as fichas das etapas cobertas, `funil.md`, `declarado.md` e `02-lente/lente.md`.
+1. Ler `03-analise/sintese.md`, as fichas das etapas cobertas, `funil.md`, `declarado.md` e `02-metodologia/metodologia.md`.
 2. Escrever a seção 0 **por último**, depois de ter o conteúdo.
 3. Passo a passo: comece pelos comportamentos que aparecem nos **ganhos** e não nos perdidos. Cada passo precisa de pelo menos uma pergunta literal com fonte; se não houver, `[PRECISA DE DADO]`.
-4. Critério de saída: use o mapa elemento × etapa da lente (elementos com nota ≥ 2). Escreva como pergunta de sim ou não.
+4. Critério de saída: use o mapa elemento × etapa da metodologia (elementos com nota ≥ 2). Escreva como pergunta de sim ou não.
 5. KPIs e linha de base: só do `funil.md`. Meta: proposta pelo gestor ou marcada `[HIPÓTESE]`.
 6. Red flags: derive de padrões dos perdidos e dos motivos de perda do funil.
 7. Seção 11 (rubrica): siga `${CLAUDE_PLUGIN_ROOT}/skills/coaching-por-rubrica/SKILL.md` §1. Calibre com as fichas de ganhos e perdidos da etapa.
