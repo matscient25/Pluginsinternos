@@ -112,8 +112,8 @@ screen("r-promessa", "0", "Visão geral", "Hoje", "O que vocês vão aprender ho
         + card(chip("03") + '<h3 style="font-size:36px;font-weight:600">Como vira execução e coaching</h3>'
              + p("Como o handbook vira skill para o dia a dia e rubrica para avaliar cada reunião.", 28, INK2), extra="flex:1"),
         28)
-    + card(p("Vamos usar um exemplo do começo ao fim: a Consultoria Vektor, uma empresa fictícia que vende squads de engenharia e usa Challenger.", 28, INK), bg=BLUE_S, border=BLUE_S),
-    "Abertura, 2 min. Três promessas. O exemplo Vektor é fictício e atravessa a aula inteira: os números que aparecem são de dados sintéticos de treinamento. A metodologia do exemplo é Challenger, mas o método vale para qualquer uma.")
+    + card(p("Vamos usar um exemplo do começo ao fim: a ACME, uma empresa fictícia que vende squads de engenharia e usa Challenger.", 28, INK), bg=BLUE_S, border=BLUE_S),
+    "Abertura, 2 min. Três promessas. O exemplo ACME é fictício e atravessa a aula inteira: os números que aparecem são de dados sintéticos de treinamento. A metodologia do exemplo é Challenger, mas o método vale para qualquer uma.")
 
 # 3 · gaveta
 screen("r-gaveta", "1", "Por quê", "O problema", "Por que quase ninguém usa o playbook da empresa",
@@ -253,12 +253,12 @@ def check(ok, item, detail):
     icon = f'<x-icon name="CheckCircle" style="color:#0B8A5F;width:36px;height:36px"></x-icon>' if ok else f'<x-icon name="Warning" style="color:{WARN};width:36px;height:36px"></x-icon>'
     return row(icon + col(p(f"<b>{item}</b>", 28) + p(detail, 24, INK2), 2, "flex:1"), 20, f"align-items:center;padding:16px 24px;border-bottom:1px solid {LINE}")
 screen("r-basta", "2", "Coletar", "Antes de seguir", "Quanto você precisa para começar",
-    card(check(True, "Números", "≥ 6 meses e ≥ 30 fechados · Vektor: 122 negócios em 12 meses")
-         + check(True, "Conversas", "≥ 2 por etapa, ≥ 1 ganho · Vektor: ganho e perdido no Diagnóstico")
-         + check(True, "Documentos", "≥ 1 processo escrito ou PPT de proposta · Vektor: manual, 2 PPTs, win/loss")
+    card(check(True, "Números", "≥ 6 meses e ≥ 30 fechados · ACME: 122 negócios em 12 meses")
+         + check(True, "Conversas", "≥ 2 por etapa, ≥ 1 ganho · ACME: ganho e perdido no Diagnóstico")
+         + check(True, "Documentos", "≥ 1 processo escrito ou PPT de proposta · ACME: manual, 2 PPTs, win/loss")
          + check(False, "Lacunas com dono", "Propostas reais enviadas · gestor comercial · até a próxima semana"), pad=8, gap=0)
     + p("Se faltar alguma coisa, anote o que falta, quem vai trazer e até quando. Não complete com suposição.", 30, INK),
-    "Bloco 2, 3 min. É o primeiro gate. O erro mais comum é começar a escrever com o que tem e completar com suposição. O exemplo Vektor passa, com uma lacuna registrada. Não é preciso ter tudo: é preciso saber o que falta e quem traz.")
+    "Bloco 2, 3 min. É o primeiro gate. O erro mais comum é começar a escrever com o que tem e completar com suposição. O exemplo ACME passa, com uma lacuna registrada. Não é preciso ter tudo: é preciso saber o que falta e quem traz.")
 
 # 13 · metodologia
 def flow(n, t, d):
@@ -279,7 +279,7 @@ screen("r-lente", "3", "Metodologia", "Passo 3 · Metodologia", "A metodologia d
 
 # 14 · metodologia → critério
 sc = "".join(chip(t, RAIL, INK) for t in ["0 ausente", "1 suposto", "2 explorado", "3 confirmado"])
-screen("r-criterio", "3", "Metodologia", "Passo 3 · Exemplo: Challenger na Vektor", "Quando um negócio pode mudar de etapa",
+screen("r-criterio", "3", "Metodologia", "Passo 3 · Exemplo: Challenger na ACME", "Quando um negócio pode mudar de etapa",
     card(table(["Etapa", "O que precisa ter acontecido", "Pergunta para avançar (sim ou não)"],
                [["Qualificação", "Warmer, Take Control", "Diagnóstico agendado com quem vive o problema?"],
                 ["Diagnóstico", "Reframe, Rational Drowning", "Custo do problema em R$ confirmado pelo cliente?"],
@@ -292,7 +292,7 @@ screen("r-criterio", "3", "Metodologia", "Passo 3 · Exemplo: Challenger na Vekt
 # 15 · triangulação
 def tri2(label, txt, src):
     return card(chip(label) + p(txt, 28, INK, 600) + p(src, 24, INK2), pad=24, gap=12, extra="flex:1")
-screen("r-triangulacao", "4", "Analisar", "Exemplo · Vektor", "Quando o manual e a prática não batem",
+screen("r-triangulacao", "4", "Analisar", "Exemplo · ACME", "Quando o manual e a prática não batem",
     row(tri2("O MANUAL DIZ", "“Diagnóstico é opcional, quando o cliente pedir.”", "Manual de vendas")
         + tri2("O MELHOR VENDEDOR DIZ", "“Para mim, o diagnóstico é a venda.”", "Entrevista")
         + tri2("O CRM MOSTRA", "81% avançam para proposta com custo do problema em R$. Sem ele, 28%.", "122 negócios"), 20)
@@ -302,7 +302,7 @@ screen("r-triangulacao", "4", "Analisar", "Exemplo · Vektor", "Quando o manual 
     "Bloco 4, 5 min. Exemplo fictício, mas o padrão é comum: o manual tratava o diagnóstico como opcional, o melhor vendedor o considera a própria venda, e o funil confirma. Regra: observado e medido ganham do declarado. Quando observado e medido discordam, a entrevista desempata.")
 
 # 16 · hipótese da gestão
-screen("r-hipotese", "4", "Analisar", "Exemplo · Vektor", "O que os dados mostraram sobre as perdas por preço",
+screen("r-hipotese", "4", "Analisar", "Exemplo · ACME", "O que os dados mostraram sobre as perdas por preço",
     row(
         card(chip("O QUE A GESTÃO CONCLUIU", CRIT_BG, CRIT) + p("“Estamos perdendo principalmente por preço.”", 30, INK, 600)
              + p("Ação proposta: tabela de desconto de até 15%.", 26, INK2) + p("Fonte: análise de win/loss do semestre", 24, INK2), pad=28, gap=14, extra="flex:1")
@@ -322,7 +322,7 @@ def bar(lbl, v):
             f'<div style="width:96px;height:{int(v*3.2)}px;background:{colr}"></div></div>')
 def kpi(v, lbl):
     return card(p(v, 64, BLUE, 300, "line-height:1") + p(lbl, 24, INK2), pad=22, gap=8)
-screen("r-funil", "4", "Analisar", "Exemplo fictício · 122 negócios em 12 meses", "Onde o funil da Vektor perde negócios",
+screen("r-funil", "4", "Analisar", "Exemplo fictício · 122 negócios em 12 meses", "Onde o funil da ACME perde negócios",
     row(
         f'<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:16px;width:520px">'
         + kpi("30%", "win rate (36 de 119 fechados)") + kpi("54%", "passam do Diagnóstico, a etapa que mais perde")
@@ -336,7 +336,7 @@ screen("r-funil", "4", "Analisar", "Exemplo fictício · 122 negócios em 12 mes
     "Bloco 4, 4 min. Dados sintéticos de treinamento, calculados por script, sem estimativa. Três leituras: o vazamento está numa etapa só; a diferença entre vendedores é de método (mesmo mix de contas); e o fator que separa é sair do diagnóstico com o custo do problema em reais.")
 
 # 18 · ganhos x perdidos
-screen("r-padroes", "4", "Analisar", "Exemplo · Vektor", "O que os vendedores fazem nas reuniões que ganham",
+screen("r-padroes", "4", "Analisar", "Exemplo · ACME", "O que os vendedores fazem nas reuniões que ganham",
     card(table(["Momento", "Nos ganhos", "Nos perdidos"],
                [["Abertura", "Hipótese sobre o negócio do cliente, sem deck", "“Quem somos” e apresentação institucional"],
                 ["Diagnóstico", "Perguntas que transformam operação em reais", "Levantamento técnico; impacto sem número"],
@@ -352,7 +352,7 @@ pchips = "".join(chip(x, BLUE, "#FFFFFF", 26) if x == "Diagnóstico" else chip(x
 def rule(t, d):
     return card(f'<h3 style="font-size:30px;font-weight:600">{t}</h3>' + p(d, 24, INK2), pad=24, gap=8, extra="flex:1")
 screen("r-oque", "5", "Documentar", "Passo 5 · Documentar", "Quais processos documentar, e em que ordem",
-    card(row(pchips, 12, "flex-wrap:wrap") + p("Na Vektor, o primeiro é o Diagnóstico: é onde se perde mais negócio e onde os vendedores mais diferem.", 26, INK2), pad=24, gap=18)
+    card(row(pchips, 12, "flex-wrap:wrap") + p("Na ACME, o primeiro é o Diagnóstico: é onde se perde mais negócio e onde os vendedores mais diferem.", 26, INK2), pad=24, gap=18)
     + row(rule("Um por processo", "Um “handbook de vendas” fica genérico. Um “handbook de Diagnóstico” é usado.")
           + rule("3 a 5 passos", "Checklists de até 15 itens. Detalhe vai para anexo.")
           + rule("Um dono", "Nome, versão e data da próxima revisão.") , 20),
@@ -370,7 +370,7 @@ screen("r-anatomia", "5", "Documentar", "O modelo de handbook", "As 14 partes de
 # 21 · topo
 screen("r-topo", "5", "Documentar", "Parte 0 · Em uma frase", "Comece o handbook pela conclusão",
     row(p("✗&#160;&#160;Visão geral do processo de diagnóstico", 26, INK2, 400, "text-decoration:line-through"), 0)
-    + card(p("HANDBOOK · DIAGNÓSTICO · VEKTOR (FICTÍCIO)", 24, INK2, 600)
+    + card(p("HANDBOOK · DIAGNÓSTICO · ACME (FICTÍCIO)", 24, INK2, 600)
            + p("Diagnóstico que termina com o custo do problema em reais leva 81% dos negócios para a proposta. Sem esse número, 28%.", 34, INK, 600)
            + f'<div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:12px">'
            + "".join(col(p(v, 44, BLUE, 300, "line-height:1") + p(l, 24, INK2), 6, f"background:{RAIL};padding:16px 18px")
@@ -404,7 +404,7 @@ screen("r-rubrica", "5", "Documentar", "Parte 11 · Rubrica da etapa", "Cada han
                 ["4 · Reenquadrar", "Cliente reformula o problema com o reframe", "Aceita a premissa “falta gente”"],
                 ["5 · Fechar o próximo passo", "Data, decisor e critério de sucesso do cliente", "“A gente olha e retorna”"]],
                [28, 38, 34], 24, hl_col0=True), pad=16)
-    + row(chip("Avança se: critérios 3 e 5 com nota 3", BLUE, "#FFFFFF", 26) + p("Exemplo: Diagnóstico da Vektor (fictício)", 24, INK2), 20, "align-items:center"),
+    + row(chip("Avança se: critérios 3 e 5 com nota 3", BLUE, "#FFFFFF", 26) + p("Exemplo: Diagnóstico da ACME (fictício)", 24, INK2), 20, "align-items:center"),
     "Bloco 5, 4 min. Ponto central do método: o handbook não serve só para ler; ele vira régua. Cada passo do handbook vira um critério da rubrica, com a descrição de nota 3 (como os ganhos fazem) e de nota 0 (como os perdidos fazem); as notas 1 e 2 ficam descritas no handbook. O critério de avanço da rubrica é o mesmo critério de saída da etapa no CRM. Assim, o mesmo documento ensina, avalia e governa a passagem de etapa.")
 
 # 23 · tags
@@ -446,7 +446,7 @@ screen("r-uso", "6", "Executar", "Na rotina do vendedor", "Como o vendedor usa a
 # 25b · coaching: scorecard
 def dots(n):
     return row("".join(f'<div style="width:28px;height:28px;background:{BLUE if i < n else "#DDE2EE"}"></div>' for i in range(3)), 6, "align-items:center")
-CRIT_ROWS = [("1 · Abrir pelo impacto", 2, 0, "[01:12] “A Vektor tem doze anos de mercado…”"),
+CRIT_ROWS = [("1 · Abrir pelo impacto", 2, 0, "[01:12] “A ACME tem doze anos de mercado…”"),
              ("2 · Medir a operação", 3, 0, "[11:40] “Quantos engenheiros vocês têm hoje?”"),
              ("3 · Custo em reais", 3, 0, "[14:08] cliente: “Mas a gente vai dar um jeito.”"),
              ("4 · Reenquadrar", 3, 0, "[14:20] “Quantas pessoas vocês imaginam precisar?”"),
@@ -530,8 +530,8 @@ def passo(n, t, d):
 screen("r-amanha", "0", "Visão geral", "Para esta semana", "Por onde começar",
     passo("1", "Mandar o pedido de dados", "As quatro fontes num pedido só, com responsável e prazo de 5 dias úteis.")
     + passo("2", "Escolher um processo", "Aquele em que o funil mais perde negócios. Faça só um, até o fim.")
-    + passo("3", "Treinar com o exemplo", "Kit GTM Handbooks &amp; Skills em skills.scient.cc, com o caso Vektor completo para praticar."),
-    "Fechamento, 3 min. O kit no skills.scient.cc conduz a jornada e já traz o exemplo Vektor com o gabarito. Mas o primeiro passo não depende de ferramenta: é mandar o data request ainda esta semana.")
+    + passo("3", "Treinar com o exemplo", "Kit GTM Handbooks &amp; Skills em skills.scient.cc, com um exemplo completo para praticar."),
+    "Fechamento, 3 min. O kit no skills.scient.cc conduz a jornada e já traz um exemplo completo com gabarito. Mas o primeiro passo não depende de ferramenta: é mandar o data request ainda esta semana.")
 
 # 30 · regras (render próprio)
 SLIDES.append(dict(id="r-regras", kind="regras"))
