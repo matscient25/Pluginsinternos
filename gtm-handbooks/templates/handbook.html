@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Handbook · {{Processo}} · {{Empresa}}</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Troque as cores pelas da sua marca. Mantenha: 1 cor primária, neutros, 3 cores de severidade. */
+:root{
+  --primaria:#0030E8; --primaria-suave:#E8ECFD; --texto:#111111; --texto-2:#585858;
+  --fundo:#FFFFFF; --fundo-2:#F7F8FC; --linha:#E6E6E6;
+  --critico:#C62828; --atencao:#B26A00; --ok:#1E8E5A;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --primaria:#7D93FF; --primaria-suave:#1A2140; --texto:#F2F2F2; --texto-2:#A8A8A8;
+  --fundo:#161616; --fundo-2:#1F1F1F; --linha:#333333; --critico:#FF7A7A; --atencao:#F2B544; --ok:#5AD39A;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fundo);color:var(--texto);font:400 15px/1.6 'Sora',system-ui,sans-serif}
+main{max-width:920px;margin:0 auto;padding:48px 24px 96px}
+.rotulo{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--primaria)}
+h1{font-weight:400;font-size:30px;line-height:1.25;margin:8px 0 24px}
+h2{font-size:18px;font-weight:600;margin:56px 0 16px;padding-top:16px;border-top:1px solid var(--linha)}
+h3{font-size:15px;font-weight:600;margin:32px 0 8px}
+.manchete{font-size:22px;font-weight:500;line-height:1.4;border-left:4px solid var(--primaria);padding:4px 0 4px 16px;margin:24px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha);margin:24px 0}
+.kpi{background:var(--fundo);padding:16px}
+.kpi b{display:block;font-size:26px;font-weight:500}
+.kpi span{font-size:12px;color:var(--texto-2)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+th{text-align:left;font-weight:600;background:var(--fundo-2);border-bottom:1px solid var(--linha);padding:8px}
+td{border-bottom:1px solid var(--linha);padding:8px;vertical-align:top}
+.criterio{background:var(--primaria-suave);padding:12px 16px;margin:16px 0;font-weight:500}
+.criterio::before{content:"✅ "}
+.cuidado{border-left:3px solid var(--atencao);padding:8px 16px;margin:16px 0;color:var(--texto)}
+.cuidado::before{content:"⚠ ";color:var(--atencao)}
+.lacuna{border-left:3px solid var(--critico);padding:8px 16px;margin:8px 0}
+.tag{display:inline-block;font-size:11px;padding:1px 6px;border:1px solid var(--linha);color:var(--texto-2);border-radius:2px;white-space:nowrap}
+.sev-critico{color:var(--critico);font-weight:600}.sev-atencao{color:var(--atencao);font-weight:600}.sev-ok{color:var(--ok);font-weight:600}
+blockquote{margin:12px 0;padding:8px 16px;background:var(--fundo-2);border-left:3px solid var(--linha)}
+.meta{font-size:13px;color:var(--texto-2)}
+@media (max-width:600px){main{padding:32px 16px 64px}h1{font-size:24px}.manchete{font-size:18px}table{display:block;overflow-x:auto}}
+@media print{h2{break-after:avoid}.kpis,table{break-inside:avoid}}
+</style>
+</head>
+<body>
+<main>
+  <div class="rotulo">Handbook · {{Empresa}}</div>
+  <h1>{{Processo}}</h1>
+  <table class="meta">
+    <tr><td>Etapas do funil</td><td>{{entrada}} → {{saída}}</td></tr>
+    <tr><td>Metodologia</td><td>{{metodologia}}</td></tr>
+    <tr><td>Dono · versão</td><td>{{dono}} · 1.0 · {{data}}</td></tr>
+    <tr><td>Evidências</td><td>{{n}} transcrições · funil de {{período}} · {{n}} documentos</td></tr>
+  </table>
+
+  <p class="manchete">{{Manchete que é a conclusão.}}</p>
+  <div class="kpis">
+    <div class="kpi"><b>{{valor}}</b><span>{{KPI · contexto}}</span></div>
+    <div class="kpi"><b>{{valor}}</b><span>{{KPI · contexto}}</span></div>
+    <div class="kpi"><b>{{valor}}</b><span>{{KPI · contexto}}</span></div>
+    <div class="kpi"><b>{{valor}}</b><span>{{KPI · contexto}}</span></div>
+  </div>
+  <p><b>O que significa:</b> {{...}}<br><b>O que não significa:</b> {{...}}</p>
+  <div class="lacuna"><span class="tag">PRECISA DE DADO</span> {{lacuna}} · {{responsável}}</div>
+
+  <!-- Seções 1 a 12: converter do .md. Exemplos de componentes: -->
+  <h2>4. Passo a passo</h2>
+  <h3>4.1 {{Nome do passo}}</h3>
+  <p><b>Foco:</b> {{...}}</p>
+  <blockquote>"{{pergunta literal}}" <span class="tag">OBSERVADO: arquivo 12:40</span></blockquote>
+  <div class="cuidado">{{erro comum}}</div>
+  <div class="criterio">Critério de saída: {{condição binária}}</div>
+
+  <h2>9. Red flags</h2>
+  <table><tr><th>Red flag</th><th>Como detectar</th><th>Severidade</th><th>Ação</th><th>Dono</th></tr>
+  <tr><td>{{flag}}</td><td>{{sinal}}</td><td class="sev-critico">🔴 Crítico</td><td>{{ação}}</td><td>{{papel}}</td></tr></table>
+</main>
+</body>
+</html>
